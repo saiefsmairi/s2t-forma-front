@@ -16,6 +16,7 @@
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start"
   },
   "dependencies": {
+    "@angular-devkit/build-angular": "0.13.4",
     "@angular/animations": "7.2.0",
     "@angular/common": "7.2.0",
     "@angular/compiler": "7.2.0",
@@ -29,7 +30,7 @@
     "bootstrap": "4.1.2",
     "bulma": "^0.8.0",
     "core-js": "2.4.1",
-    "jquery": "^3.2.1",
+    "jquery": "^3.4.1",
     "jw-bootstrap-switch-ng2": "2.0.1",
     "ng2-nouislider": "1.7.12",
     "nouislider": "9.2.0",
@@ -39,16 +40,15 @@
     "zone.js": "0.8.26"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "0.7.0",
     "@angular/cli": "7.2.0",
-    "@angular/compiler-cli": "7.2.0",
+    "@angular/compiler-cli": "^9.0.2",
     "@angular/language-service": "7.2.0",
     "@types/jasmine": "2.5.45",
     "@types/node": "6.0.60",
     "codelyzer": "4.4.3",
     "jasmine-core": "2.6.2",
     "jasmine-spec-reporter": "4.1.0",
-    "karma": "3.0.0",
+    "karma": "^4.4.1",
     "karma-chrome-launcher": "2.1.1",
     "karma-cli": "1.0.1",
     "karma-coverage-istanbul-reporter": "1.2.1",
