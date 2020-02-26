@@ -1,28 +1,36 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from './app.routing';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './modules/home/home.component';
-import { Routes, RouterModule } from '@angular/router';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { FooterComponent } from './shared/footer/footer.component';
 
+import { ComponentsModule } from './components/components.module';
+import { ExamplesModule } from './examples/examples.module';
+import { SignupFormateurComponent } from './signup-formateur/signup-formateur.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 
-const appRoutes: Routes = [
-{path: 'home' , component: HomeComponent}
-];
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-
+    NavbarComponent,
+    FooterComponent,
+    SignupFormateurComponent,
+    SignInComponent
   ],
-  imports: [RouterModule.forRoot(
-    appRoutes,
-    { enableTracing: true } // <-- debugging purposes only
-  ),
+  imports: [
     BrowserModule,
-    AppRoutingModule
+    NgbModule.forRoot(),
+    FormsModule,
+    RouterModule,
+    ComponentsModule,
+    ExamplesModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
