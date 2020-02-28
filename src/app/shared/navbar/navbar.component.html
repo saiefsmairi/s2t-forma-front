@@ -14,16 +14,16 @@
            
          
                 <li class="nav-item" *ngIf="isHome()">
-                    <a [routerLink]="['/signupFormateur']" class="btn btn-danger btn-round"><i class="fa fa-user"></i>Créer un compte Formateur</a>
-                    <a [routerLink]="['/signupApprenant']"  class="btn btn-danger btn-round"><i class="fa fa-user"></i>Créer un compte Apprenant</a>
+                    <a [routerLink]="['/choix']" class="btn btn-danger btn-round"><i class="fa fa-user"></i>Créer Votre Compte</a>
                     <a [routerLink]="['/signin']"  class="btn btn-danger btn-round"><i class="fa fa-user"></i>Connexion</a>
 
                 </li>
-                <li class="nav-item" *ngIf="!isHome()">
+                <li class="nav-item" *ngIf="!isHome()&&!isDashboard()">
                     <a [routerLink]="['/home']"  class="nav-link"><i class="nc-icon nc-layout-11"></i>Connexion</a>
                   
 
                 </li>
+             
                
             </ul>
         </div>

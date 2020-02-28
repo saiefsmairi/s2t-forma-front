@@ -9,14 +9,22 @@ import { SignupComponent } from './examples/signup/signup.component';
 import { LandingComponent } from './examples/landing/landing.component';
 import { SignupFormateurComponent } from './signup-formateur/signup-formateur.component';
 import { SignInComponent } from './sign-in/sign-in.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
+import { ChoixTypeUserComponent } from './choix-type-user/choix-type-user.component';
 
 const routes: Routes =[
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home',             component: ComponentsComponent },
     { path: 'user-profile',     component: ProfileComponent },
-    { path: 'signupApprenant',           component: SignupComponent },
+    { path: 'choix',   component: ChoixTypeUserComponent },
+
+    { path: 'signup/Apprenant',   component: SignupComponent },
+    { path: 'signup/Formateur',   component: SignupComponent },
+
+
     { path: 'signupFormateur',  component: SignupFormateurComponent },
     { path: 'signin',  component: SignInComponent },
+    { path: 'dash',  component: DashboardComponent },
 
     { path: 'landing',          component: LandingComponent },
 ];
