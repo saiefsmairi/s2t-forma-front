@@ -13,7 +13,9 @@ import { ComponentsModule } from './components/components.module';
 import { ExamplesModule } from './examples/examples.module';
 import { SignupFormateurComponent } from './signup-formateur/signup-formateur.component';
 import { SignInComponent } from './sign-in/sign-in.component';
-
+import {HttpClientModule} from '@angular/common/http';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ChoixTypeUserComponent } from './choix-type-user/choix-type-user.component'; 
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { SignInComponent } from './sign-in/sign-in.component';
     NavbarComponent,
     FooterComponent,
     SignupFormateurComponent,
-    SignInComponent
+    SignInComponent,
+    DashboardComponent,
+    ChoixTypeUserComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +35,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
     ComponentsModule,
     ExamplesModule,
     AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
