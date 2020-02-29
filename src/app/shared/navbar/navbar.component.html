@@ -18,8 +18,8 @@
                     <a [routerLink]="['/signin']"  class="btn btn-danger btn-round"><i class="fa fa-user"></i>Connexion</a>
 
                 </li>
-                <li class="nav-item" *ngIf="!isHome()&&!isDashboard()">
-                    <a [routerLink]="['/home']"  class="nav-link"><i class="nc-icon nc-layout-11"></i>Connexion</a>
+                <li class="nav-item" *ngIf="!isHome()&&!isDashboard()&&!isSignin()">
+                    <a [routerLink]="['/signin']"  class="nav-link"><i class="nc-icon nc-layout-11"></i>Connexion</a>
                   
 
                 </li>
