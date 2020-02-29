@@ -17,15 +17,14 @@ const routes: Routes =[
     { path: 'home',             component: ComponentsComponent },
     { path: 'user-profile',     component: ProfileComponent },
     { path: 'choix',   component: ChoixTypeUserComponent },
-
     { path: 'signup/Apprenant',   component: SignupComponent },
     { path: 'signup/Formateur',   component: SignupComponent },
-
-
-    { path: 'signupFormateur',  component: SignupFormateurComponent },
+    { path: 'signup/Societe',  component: SignupComponent },
     { path: 'signin',  component: SignInComponent },
-    { path: 'dash',  component: DashboardComponent },
 
+    //those not needed for now
+    { path: 'signupFormateur',  component: SignupFormateurComponent },
+    { path: 'dash',  component: DashboardComponent },
     { path: 'landing',          component: LandingComponent },
 ];
 

@@ -53,10 +53,10 @@ export class AppComponent implements OnInit {
     removeFooter() {
         var titlee = this.location.prepareExternalUrl(this.location.path());
         titlee = titlee.slice( 1 );
-        if(titlee === 'signupApprenant' || titlee === 'nucleoicons'||titlee ==='signupFormateur'){
+        if(titlee === 'signupApprenant' || titlee === 'nucleoicons'||titlee ==='signupFormateur'||titlee=='choix'){
             return false;
         }
-        else {
+        else  {
             return true;
         }
     }
