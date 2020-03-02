@@ -1,3 +1,5 @@
+
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -10,22 +12,24 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 
 import { ComponentsModule } from './components/components.module';
-import { ExamplesModule } from './examples/examples.module';
-import { SignupFormateurComponent } from './signup-formateur/signup-formateur.component';
-import { SignInComponent } from './sign-in/sign-in.component';
+import { MatSliderModule } from '@angular/material/slider';
+import {MatInputModule} from '@angular/material/input';
+import { SignInComponent } from './components/sign-in/sign-in.component';
 import {HttpClientModule} from '@angular/common/http';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { ChoixTypeUserComponent } from './choix-type-user/choix-type-user.component'; 
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ChoixTypeUserComponent } from './components/choix-type-user/choix-type-user.component';
+import {  SignupComponent} from './components/signup/signup.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    SignupFormateurComponent,
     SignInComponent,
     DashboardComponent,
-    ChoixTypeUserComponent
+    ChoixTypeUserComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -33,9 +37,11 @@ import { ChoixTypeUserComponent } from './choix-type-user/choix-type-user.compon
     FormsModule,
     RouterModule,
     ComponentsModule,
-    ExamplesModule,
+MatSliderModule,
+MatInputModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
