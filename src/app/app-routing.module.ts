@@ -5,6 +5,8 @@ import { HomeV2Component } from './home-v2/home-v2.component';
 import { ChoixComponent } from './choix/choix.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { UserProfilComponent } from './user-profil/user-profil.component';
 
 
 const routes: Routes = [
@@ -15,7 +17,11 @@ const routes: Routes = [
   {path: 'choix', component: ChoixComponent },
   {path: 'signin', component: SigninComponent },
   {path: 'signup', component: SignupComponent },
-  {path: 'signup/:id', component: SignupComponent }
+  {path: 'signup/:id', component: SignupComponent },
+
+  {path: 'dashboard', component: DashboardComponent },
+  {path: 'profil', component: UserProfilComponent },
+
 
 
 
