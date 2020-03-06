@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('s2t-forma app is running!');
+    expect(page.getTitleText()).toEqual('s2t app is running!');
   });
 
   afterEach(async () => {
