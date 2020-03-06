@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HomeV2Component } from './home-v2/home-v2.component';
 import { ChoixComponent } from './choix/choix.component';
 import { SigninComponent } from './signin/signin.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -19,7 +18,6 @@ import { UserProfilComponent } from './user-profil/user-profil.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    HomeV2Component,
     ChoixComponent,
     SigninComponent,
     NavbarComponent,
