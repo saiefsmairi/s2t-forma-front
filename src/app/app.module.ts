@@ -11,6 +11,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SignupComponent } from './signup/signup.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { SidenavDashboardComponent } from './sidenav-dashboard/sidenav-dashboard.component';
+import { UserProfilComponent } from './user-profil/user-profil.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { MatSliderModule } from '@angular/material/slider';
     ChoixComponent,
     SigninComponent,
     NavbarComponent,
-    SignupComponent
+    SignupComponent,
+    DashboardComponent,
+    SidenavDashboardComponent,
+    UserProfilComponent
   ],
   imports: [
     BrowserModule,
