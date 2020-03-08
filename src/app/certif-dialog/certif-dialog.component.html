@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Ajouter Une Certificat / Diplome </h1>
+<div mat-dialog-content>
+<form [formGroup]="form">
+  <mat-form-field>
+    <mat-label>Certificat / Diplome</mat-label>
+    <input matInput name="nomCertif"  formControlName="nomCertif" [(ngModel)]="nom" >
+  </mat-form-field>
+<mat-form-field>
+    <mat-label>Date d'obtention</mat-label>
+    <input matInput type="date" pattern="dd/mm/YYYY" name="dateCertif"  formControlName="dateCertif" required>
+  </mat-form-field>
+
+</form>
+<div mat-dialog-actions>
+  <button mat-button  >No Thanks</button>
+  <button mat-button [mat-dialog-close] cdkFocusInitial (click)="save()">Ok</button>
+</div>
+
