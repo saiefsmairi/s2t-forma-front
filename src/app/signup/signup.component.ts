@@ -38,9 +38,10 @@ export class SignupComponent implements OnInit {
   errorMessage = '';
   type: string;
   hide = true;
-  listCertif: Array<any> ;
+  listCertif: Array<any>;
   nomCertif: string;
   dateCertif: string;
+  i: number;
   private sub: any;
   constructor(
     private route: ActivatedRoute,
@@ -48,7 +49,7 @@ export class SignupComponent implements OnInit {
     private _adapter: DateAdapter<any>,
     private formBuilder: FormBuilder,
     public dialog: MatDialog
-  ) {}
+  ) { }
 
 
   ngOnInit() {
@@ -58,73 +59,123 @@ export class SignupComponent implements OnInit {
     });
     this._adapter.setLocale('fr');
     this.form = this.formBuilder.group({
-      email : new FormControl('', [Validators.required, Validators.email]),
-      cin : new FormControl('', [
+      email: new FormControl('', [Validators.required, Validators.email]),
+      cin: new FormControl('', [
         Validators.required,
         Validators.pattern('[0-9]{8}')
       ]),
-      nom : new FormControl(''),
-      prenom : new FormControl(''),
-      datenais : new FormControl('', [Validators.required]),
-      password : new FormControl('', [Validators.required]),
-      confirmPass : new FormControl('', [Validators.required]),
-      tel : new FormControl('', [
+      nom: new FormControl(''),
+      prenom: new FormControl(''),
+      datenais: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required]),
+      confirmPass: new FormControl('', [Validators.required]),
+      tel: new FormControl('', [
         Validators.required,
         Validators.pattern('[0-9]{8}')
       ]),
       rib: new FormControl('', [Validators.required]),
       listCertif: new FormControl(this.listCertif)
     },
-    {validator: MustMatch('password', 'confirmPass')});
+      { validator: MustMatch('password', 'confirmPass') });
   }
 
   onSubmit() {
     console.log(this.type);
     console.log(this.form);
     this.authService.register(this.f, this.type).subscribe(
-       data => {
-         console.log(data);
-         this.isSuccessful = true;
-         this.isSignUpFailed = false;
-       },
-       err => {
-console.log('breaks here');
-         // this.errorMessage = err.error.message;
-this.isSignUpFailed = true;
-       }
-     );
-   }
+      data => {
+        console.log(data);
+        this.isSuccessful = true;
+        this.isSignUpFailed = false;
+      },
+      err => {
+        console.log('breaks here');
+        // this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
+      }
+    );
+  }
 
 
-get f() { return this.form.controls; }
+  get f() { return this.form.controls; }
 
-openDialog(typeop:string): void {
-  console.log(typeop)
+  openDialog(typeop: string): void {
+    console.log(typeop);
 
-  const dialogRef = this.dialog.open(CertifDialogComponent, {
-    width: '300px',
-  data:{typeop:typeop},
-  });
+    const dialogRef = this.dialog.open(CertifDialogComponent, {
+      width: '300px',
+      data: { typeop },
+    });
 
-  dialogRef.afterClosed().subscribe(result => {
-    console.log('The dialog was closed');
-    if (result != undefined && this.listCertif.length<5) {
+    dialogRef.afterClosed().subscribe(result => {
+      let canAdd: Boolean = true;
+      console.log('The dialog was closed');
+      if (result != undefined && this.listCertif.length < 5) {
+        this.nomCertif = result.nomCertif.value;
+        this.dateCertif = result.dateCertif.value;
+        for (let i = 0; i < this.listCertif.length; i++) {
+          if (this.listCertif[i].name == this.nomCertif) {
+            canAdd = false;
+          }
+        }
+        if (canAdd) {
+          this.listCertif.push({
+            name: this.nomCertif,
+            issue_date: this.dateCertif
+          });
+          console.table(this.listCertif);
+        } else {
+          console.table(this.listCertif);
+        }
 
-  this.nomCertif = result.nomCertif.value;
-  this.dateCertif = result.dateCertif.value;
-  this.listCertif.push({
-name: this.nomCertif,
-issue_date: this.dateCertif
-});
-  console.table(this.listCertif);
+
+
+      }
+    });
+  }
+
+  edit(item: any) {
+
+    const index = this.listCertif.indexOf(item);
+
+    const dialogRef = this.dialog.open(CertifDialogComponent, {
+      width: '300px',
+      data: { typeop: 'edit', name: item.name, issue_date: item.issue_date },
+    });
+    dialogRef.afterClosed().subscribe(result => {
+
+      this.listCertif[index].name = result.nomCertif.value;
+      this.listCertif[index].issue_date = result.dateCertif.value;
+
+    });
+
+  }
+
+  delete(item: any) {
+
+    const index = this.listCertif.indexOf(item);
+
+    const dialogRef = this.dialog.open(CertifDialogComponent, {
+      width: '300px',
+      data: { typeop: 'delete' },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result == 'delete') {
+        if (index > -1) {
+          this.listCertif.splice(index, 1);
+        }
+        console.table(this.listCertif);
+
+      }
+
+    });
+    //   console.log(index);
+    //   if ( index> -1) {
+    //     this.listCertif.splice(index, 1);
+    //   }
+    //   console.table(this.listCertif);
+    // }
+  }
 
 }
-
-
-  });
-}
-
-
-}
-
-

@@ -62,13 +62,13 @@
   <mat-label>Compétences </mat-label>
 <button mat-icon-button (click)="openDialog('add')" type="button"  ><mat-icon>add</mat-icon></button>
   <mat-selection-list formControlName="listCertif"  >
-  <mat-list-item *ngFor="let item of listCertif"  >
+  <mat-list-item *ngFor="let item of listCertif"    >
     <h3 matLine>{{item.name}}</h3>
     <h4 matLine>{{item.issue_date}}</h4>
-    <mat-icon (click)="openDialog('edit')" >edit</mat-icon>
+    <mat-icon (click)="edit(item)" >edit</mat-icon>
     <mat-divider vertical="true"></mat-divider>
-    <mat-icon (click)="openDialog('delete')" >delete</mat-icon>
-    <mat-divider></mat-divider>
+    <mat-icon (click)="delete(item)" >delete</mat-icon>
+<mat-divider></mat-divider>
    </mat-list-item>
    <mat-error *ngIf="listCertif.length==0">Veuillez Ajouter Au moins une certificat </mat-error>
    <mat-error *ngIf="listCertif.length==5">Vous Ajouter Au maximaum 5 certificat </mat-error>

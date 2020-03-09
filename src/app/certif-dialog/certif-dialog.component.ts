@@ -16,9 +16,12 @@ export class CertifDialogComponent implements OnInit {
               private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.nom=this.data.name;
+    this.date=this.data.issue_date;
+
     this.form = this.formBuilder.group({
-      nomCertif : new FormControl('', [Validators.required]),
-      dateCertif : new FormControl('', [Validators.required]),
+      nomCertif : new FormControl(this.nom, [Validators.required]),
+      dateCertif : new FormControl(this.date, [Validators.required]),
     });
 
 
@@ -35,6 +38,14 @@ get f() { return this.form.controls; }
 
 onNoClick(): void {
   this.dialogRef.close();
+}
+
+onDeleteClick(): void {
+  this.dialogRef.close('delete');
+
+}
+onEditClick(): void {
+  this.dialogRef.close(this.f);
 }
 
 }
