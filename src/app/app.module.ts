@@ -24,7 +24,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dialog';
 import {MatListModule} from '@angular/material/list';
-
+import { ModifCertifDialogComponent } from './modif-certif-dialog/modif-certif-dialog.component';
+import {MatDividerModule} from '@angular/material/divider';
 
 
 
@@ -39,7 +40,8 @@ import {MatListModule} from '@angular/material/list';
     DashboardComponent,
     SidenavDashboardComponent,
     UserProfilComponent,
-    CertifDialogComponent
+    CertifDialogComponent,
+    ModifCertifDialogComponent
 
   ],
   imports: [
@@ -57,14 +59,17 @@ import {MatListModule} from '@angular/material/list';
     MatIconModule,
     MatButtonModule,
     MatDialogModule,
-    MatListModule
+    MatListModule,
+    MatDividerModule
 
 
 
 
   ],
   entryComponents :[
-    CertifDialogComponent
+    CertifDialogComponent,
+    ModifCertifDialogComponent
+
   ],
   providers: [
   ],

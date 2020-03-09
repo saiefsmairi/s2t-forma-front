@@ -2,7 +2,7 @@ import { CertifDialogComponent } from './../certif-dialog/certif-dialog.componen
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../Services/auth.service';
-import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { FormControl, Validators, FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import {
   MAT_MOMENT_DATE_FORMATS,
   MomentDateAdapter,
@@ -52,7 +52,7 @@ export class SignupComponent implements OnInit {
 
 
   ngOnInit() {
-    this.listCertif = new Array();
+    this.listCertif = [];
     this.sub = this.route.params.subscribe(params => {
       this.type = params.id;
     });
@@ -72,8 +72,8 @@ export class SignupComponent implements OnInit {
         Validators.required,
         Validators.pattern('[0-9]{8}')
       ]),
-      rib: new FormControl('', [Validators.required])
-
+      rib: new FormControl('', [Validators.required]),
+      listCertif: new FormControl(this.listCertif)
     },
     {validator: MustMatch('password', 'confirmPass')});
   }
@@ -98,21 +98,23 @@ this.isSignUpFailed = true;
 
 get f() { return this.form.controls; }
 
-openDialog(): void {
-  const dialogRef = this.dialog.open(CertifDialogComponent, {
-    width: '400px',
-    data: {nom: this.nomCertif, date: this.dateCertif}
+openDialog(typeop:string): void {
+  console.log(typeop)
 
+  const dialogRef = this.dialog.open(CertifDialogComponent, {
+    width: '300px',
+  data:{typeop:typeop},
   });
 
   dialogRef.afterClosed().subscribe(result => {
     console.log('The dialog was closed');
-    if (result != undefined) {
+    if (result != undefined && this.listCertif.length<5) {
+
   this.nomCertif = result.nomCertif.value;
   this.dateCertif = result.dateCertif.value;
   this.listCertif.push({
-nom: this.nomCertif,
-date: this.dateCertif
+name: this.nomCertif,
+issue_date: this.dateCertif
 });
   console.table(this.listCertif);
 
@@ -124,3 +126,5 @@ date: this.dateCertif
 
 
 }
+
+

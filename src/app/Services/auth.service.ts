@@ -40,8 +40,8 @@ export class AuthService {
       password: user.password.value,
       datenais:user.datenais.value,
       numtel:user.tel.value,
-      rib:user.rib.value
-
+      rib:user.rib.value,
+      listCertif:user.listCertif.value
     }, httpOptions);
   }
 }

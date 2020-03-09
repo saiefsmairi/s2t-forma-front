@@ -21,15 +21,20 @@ export class CertifDialogComponent implements OnInit {
       dateCertif : new FormControl('', [Validators.required]),
     });
 
-console.log(this.data);
-this.nom=this.data.nom;
-this.date=this.data.date;
+
   }
 
 save(){
-  this.dialogRef.close(this.f);
+  if(this.form.valid){
+    this.dialogRef.close(this.f);
+  }
+
 }
 
 get f() { return this.form.controls; }
+
+onNoClick(): void {
+  this.dialogRef.close();
+}
 
 }
