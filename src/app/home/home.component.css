@@ -44,9 +44,25 @@ margin-right: 20px;
 
 #banner{
   color: rgb(151, 36, 36);
-  height: 1000px;
-  padding-top: 5%;
+  padding-top: 1%;
+
+
+max-height: 1000px
 }
+
+#about{
+  position: absolute ;
+  overflow: hidden;
+  min-height: 600px;
+
+
+}
+
+.carousel-item {
+  height: 500px;
+}
+
+
 .play-btn{
   margin-top: 30px;
 }
@@ -82,4 +98,5 @@ margin-right: 20px;
   color:white;
   text-decoration: none;
 }
+
 
