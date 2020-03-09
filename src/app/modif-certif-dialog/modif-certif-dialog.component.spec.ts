@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomeV2Component } from './home-v2.component';
+import { ModifCertifDialogComponent } from './modif-certif-dialog.component';
 
-describe('HomeV2Component', () => {
-  let component: HomeV2Component;
-  let fixture: ComponentFixture<HomeV2Component>;
+describe('ModifCertifDialogComponent', () => {
+  let component: ModifCertifDialogComponent;
+  let fixture: ComponentFixture<ModifCertifDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomeV2Component ]
+      declarations: [ ModifCertifDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HomeV2Component);
+    fixture = TestBed.createComponent(ModifCertifDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

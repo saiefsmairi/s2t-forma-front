@@ -25,6 +25,7 @@ export class AuthService {
   }
 
   register(user, type: string ): Observable<any> {
+
     const params = new HttpParams()
     .set('type', type);
     httpOptions = {
@@ -32,10 +33,15 @@ export class AuthService {
     params
   };
     return this.http.post(AUTH_API + 'signup', {
-
-      username: user.username,
-      email: user.email,
-      password: user.password
+      username: user.cin.value,
+      nom: user.nom.value,
+      prenom: user.prenom.value,
+      email: user.email.value,
+      password: user.password.value,
+      datenais:user.datenais.value,
+      numtel:user.tel.value,
+      rib:user.rib.value,
+      listCertif:user.listCertif.value
     }, httpOptions);
   }
 }
