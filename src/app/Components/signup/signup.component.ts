@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { AuthService } from '../Services/auth.service';
+import { AuthService } from '../../Services/auth.service';
 import { FormControl, Validators, FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import {
   MAT_MOMENT_DATE_FORMATS,
@@ -15,8 +15,9 @@ import {
   MAT_DATE_FORMATS,
   MAT_DATE_LOCALE
 } from '@angular/material/core';
-import { MustMatch } from '../Helpers/MustMatch';
+
 import { MatDialog } from '@angular/material/dialog';
+import { MustMatch } from 'src/app/Helpers/MustMatch';
 
 // tslint:disable-next-line:no-duplicate-imports
 

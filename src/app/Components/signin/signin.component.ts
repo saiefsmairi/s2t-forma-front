@@ -1,11 +1,12 @@
-import { AuthService } from './../Services/auth.service';
+
 import { Component, OnInit } from '@angular/core';
 
 
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
-import { TokenStorageService } from '../services/token-storage.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/Services/auth.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-signin',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators, NgForm } from '@angular/forms';
-import { MustMatch } from '../Helpers/MustMatch';
-import { AuthService } from '../Services/auth.service';
+
+import { AuthService } from '../../Services/auth.service';
 import { MAT_DATE_FORMATS, DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MomentDateAdapter, MAT_MOMENT_DATE_FORMATS, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 
@@ -67,7 +67,7 @@ public removeValidators(form: FormGroup) {
 onSubmit() {
   console.log(this.type);
   console.log(this.form);
-  this.authService.registerGest(this.f, this.type).subscribe(
+  this.authService.registerGest(this.f).subscribe(
      data => {
        console.log(data);
        this.isSuccessful = true;

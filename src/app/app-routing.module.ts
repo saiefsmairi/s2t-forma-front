@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { ChoixComponent } from './choix/choix.component';
-import { SignupComponent } from './signup/signup.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { UserProfilComponent } from './user-profil/user-profil.component';
+import { HomeComponent } from './Components/home/home.component';
+import { ChoixComponent } from './Components/choix/choix.component';
+import { SignupComponent } from './Components/signup/signup.component';
+import { DashboardComponent } from './Components/dashboard/dashboard.component';
+import { UserProfilComponent } from './Components/user-profil/user-profil.component';
 
-import { SigninComponent } from './signin/signin.component';
-import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { SigninComponent } from './Components/signin/signin.component';
+import { AdminDashboardComponent } from './Components/admin-dashboard/admin-dashboard.component';
 
 
 const routes: Routes = [
