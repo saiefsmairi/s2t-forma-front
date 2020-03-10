@@ -1,8 +1,11 @@
+
 <div *ngIf="type=='formateur'">
+
 <form name="form" [formGroup]="form"  *ngIf="!isSuccessful"
 (ngSubmit)="onSubmit()"
  >
   <h1>S'inscrire</h1>
+
   <fieldset>
     <mat-form-field appearance="outline">
       <mat-label>CIN</mat-label>
@@ -141,6 +144,7 @@
   </fieldset>
   <button mat-button type="submit" id="submit" >Inscrivez Vous</button>
   <div class="alert alert-warning" *ngIf="f1.submitted && isSignUpFailed">
+
     Signup failed!<br />{{ errorMessage }}
   </div>
 </form>

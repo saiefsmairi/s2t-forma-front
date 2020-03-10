@@ -1,6 +1,8 @@
 import { CertifDialogComponent } from './../certif-dialog/certif-dialog.component';
 import { Component, OnInit } from '@angular/core';
+
 import { ActivatedRoute, Router } from '@angular/router';
+
 import { AuthService } from '../Services/auth.service';
 import { FormControl, Validators, FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import {
@@ -33,13 +35,17 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class SignupComponent implements OnInit {
   form: FormGroup;
+
   form1: FormGroup;
   form2: FormGroup;
+
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
   type: string;
   hide = true;
+
+
   listCertif: Array<any>;
   nomCertif: string;
   dateCertif: string;
@@ -47,11 +53,13 @@ export class SignupComponent implements OnInit {
   private sub: any;
   constructor(
     private router: Router,
+
     private route: ActivatedRoute,
     private authService: AuthService,
     private _adapter: DateAdapter<any>,
     private formBuilder: FormBuilder,
     public dialog: MatDialog
+
   ) { }
 
 
@@ -247,6 +255,56 @@ export class SignupComponent implements OnInit {
       }
 
     });
+
   }
 
+  onSubmit() {
+    console.log(this.type);
+    console.log(this.form);
+    this.authService.register(this.f, this.type).subscribe(
+       data => {
+         console.log(data);
+         this.isSuccessful = true;
+         this.isSignUpFailed = false;
+       },
+       err => {
+console.log('breaks here');
+         // this.errorMessage = err.error.message;
+this.isSignUpFailed = true;
+       }
+     );
+   }
+
+
+get f() { return this.form.controls; }
+
+openDialog(typeop:string): void {
+  console.log(typeop)
+
+  const dialogRef = this.dialog.open(CertifDialogComponent, {
+    width: '300px',
+  data:{typeop:typeop},
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed');
+    if (result != undefined && this.listCertif.length<5) {
+
+  this.nomCertif = result.nomCertif.value;
+  this.dateCertif = result.dateCertif.value;
+  this.listCertif.push({
+name: this.nomCertif,
+issue_date: this.dateCertif
+});
+  console.table(this.listCertif);
+
 }
+
+
+  });
+}
+
+
+}
+
+

@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ChoixComponent } from './choix/choix.component';
-import { SigninComponent } from './signin/signin.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SignupComponent } from './signup/signup.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -27,6 +26,11 @@ import {MatListModule} from '@angular/material/list';
 import { ModifCertifDialogComponent } from './modif-certif-dialog/modif-certif-dialog.component';
 import {MatDividerModule} from '@angular/material/divider';
 
+import { SigninComponent } from './signin/signin.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+
+
+
 
 
 @NgModule({
@@ -41,7 +45,11 @@ import {MatDividerModule} from '@angular/material/divider';
     SidenavDashboardComponent,
     UserProfilComponent,
     CertifDialogComponent,
-    ModifCertifDialogComponent
+
+    ModifCertifDialogComponent,
+    AdminDashboardComponent,
+  
+
 
   ],
   imports: [
@@ -61,6 +69,7 @@ import {MatDividerModule} from '@angular/material/divider';
     MatDialogModule,
     MatListModule,
     MatDividerModule
+
 
 
 

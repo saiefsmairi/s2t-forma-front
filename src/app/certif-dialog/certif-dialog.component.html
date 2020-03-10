@@ -8,7 +8,9 @@
   </mat-form-field>
 <mat-form-field>
     <mat-label>Date d'obtention</mat-label>
+
     <input matInput type="date"  name="dateCertif"  formControlName="dateCertif" required>
+
   </mat-form-field>
   <div mat-dialog-actions>
     <button mat-raised-button (click)="onNoClick()" >Annuler</button>
@@ -19,6 +21,7 @@
 </div>
 <div *ngIf="data.typeop=='delete'">
   <h1 mat-dialog-title >Supprimez Certificat / Diplome</h1>
+
   <div mat-dialog-content style="height: 100px">
     <div mat-dialog-actions>
       <button mat-raised-button (click)="onNoClick()" >Annuler</button>
@@ -43,5 +46,6 @@
       <button mat-raised-button (click)="onNoClick()" >Annuler</button>
       <button mat-raised-button   (click)="onEditClick()" >Ok</button>
     </div>
+
   </div>
 </div>
