@@ -1,4 +1,8 @@
+import { AuthService } from './../Services/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { TokenStorageService } from '../services/token-storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -6,10 +10,59 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent implements OnInit {
+  form: FormGroup;
+  hide = true;
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+  roles: string[] = [];
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder,
+              private authService: AuthService,
+              private tokenStorage: TokenStorageService,
+              private router: Router) { }
 
   ngOnInit(): void {
+    if (this.tokenStorage.getToken()) {
+      this.isLoggedIn = true;
+      this.roles = this.tokenStorage.getUser().roles;
+      this.router.navigateByUrl('dashboard');
+    }
+
+    this.form = this.formBuilder.group({
+      cin: new FormControl('', [
+        Validators.required,]),
+      password:new FormControl('',[Validators.required]),
+      });
+
   }
+  get f() { return this.form.controls; }
+
+  onSubmit() {
+
+    this.authService.login(this.f).subscribe(
+      data => {
+        this.tokenStorage.saveToken(data.accessToken);
+        this.tokenStorage.saveUser(data);
+
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+        this.roles = this.tokenStorage.getUser().roles;
+        //this.reloadPage();
+        this.router.navigateByUrl('dashboard');
+      },
+      err => {
+        //this.errorMessage = err.error.message;
+        this.isLoginFailed = true;
+      }
+    );
+  }
+
+  reloadPage() {
+    window.location.reload();
+  }
+
+
+
 
 }

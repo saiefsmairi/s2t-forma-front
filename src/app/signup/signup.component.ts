@@ -1,6 +1,6 @@
 import { CertifDialogComponent } from './../certif-dialog/certif-dialog.component';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../Services/auth.service';
 import { FormControl, Validators, FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import {
@@ -33,6 +33,8 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class SignupComponent implements OnInit {
   form: FormGroup;
+  form1: FormGroup;
+  form2: FormGroup;
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
@@ -44,6 +46,7 @@ export class SignupComponent implements OnInit {
   i: number;
   private sub: any;
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private authService: AuthService,
     private _adapter: DateAdapter<any>,
@@ -77,16 +80,86 @@ export class SignupComponent implements OnInit {
       listCertif: new FormControl(this.listCertif)
     },
       { validator: MustMatch('password', 'confirmPass') });
-  }
+
+
+    this.form1 = this.formBuilder.group({
+        email: new FormControl('', [Validators.required, Validators.email]),
+        cin: new FormControl('', [
+          Validators.required,
+          Validators.pattern('[0-9]{8}')
+        ]),
+        nom: new FormControl(''),
+        prenom: new FormControl(''),
+        datenais: new FormControl('', [Validators.required]),
+        password: new FormControl('', [Validators.required]),
+        confirmPass: new FormControl('', [Validators.required]),
+        tel: new FormControl('', [
+          Validators.required,
+          Validators.pattern('[0-9]{8}')
+        ]),
+      },
+        { validator: MustMatch('password', 'confirmPass') });
+
+    this.form2 = this.formBuilder.group({
+          email: new FormControl('', [Validators.required, Validators.email]),
+          cin: new FormControl('', [
+            Validators.required,
+            Validators.pattern('[0-9]{8}')
+          ]),
+          nom: new FormControl(''),
+          password: new FormControl('', [Validators.required]),
+          confirmPass: new FormControl('', [Validators.required]),
+          tel: new FormControl('', [
+            Validators.required,
+            Validators.pattern('[0-9]{8}')
+          ]),
+        },
+          { validator: MustMatch('password', 'confirmPass') });
+      }
 
   onSubmit() {
     console.log(this.type);
     console.log(this.form);
-    this.authService.register(this.f, this.type).subscribe(
+    switch (this.type) {
+     case 'formateur': {
+      this.authService.registerFormateur(this.f).subscribe(
+        data => {
+          console.log(data);
+          this.isSuccessful = true;
+          this.isSignUpFailed = false;
+          this.router.navigateByUrl('login');
+        },
+        err => {
+          console.log('breaks here');
+          // this.errorMessage = err.error.message;
+          this.isSignUpFailed = true;
+        }
+      );
+      break;
+    }
+  case 'apprenant': {
+    this.authService.registerApprenant(this.f1).subscribe(
       data => {
         console.log(data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
+        this.router.navigateByUrl('login');
+      },
+      err => {
+        console.log('breaks here');
+        // this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
+      }
+    );
+    break;
+  }
+  case 'societe': {
+    this.authService.registerSociete(this.f2).subscribe(
+      data => {
+        console.log(data);
+        this.isSuccessful = true;
+        this.isSignUpFailed = false;
+        this.router.navigateByUrl('signin');
       },
       err => {
         console.log('breaks here');
@@ -95,9 +168,13 @@ export class SignupComponent implements OnInit {
       }
     );
   }
+  }
+  }
 
 
   get f() { return this.form.controls; }
+  get f1() { return this.form1.controls; }
+  get f2() { return this.form2.controls; }
 
   openDialog(typeop: string): void {
     console.log(typeop);
@@ -108,7 +185,7 @@ export class SignupComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      let canAdd: Boolean = true;
+      let canAdd = true;
       console.log('The dialog was closed');
       if (result != undefined && this.listCertif.length < 5) {
         this.nomCertif = result.nomCertif.value;
@@ -170,12 +247,6 @@ export class SignupComponent implements OnInit {
       }
 
     });
-    //   console.log(index);
-    //   if ( index> -1) {
-    //     this.listCertif.splice(index, 1);
-    //   }
-    //   console.table(this.listCertif);
-    // }
   }
 
 }

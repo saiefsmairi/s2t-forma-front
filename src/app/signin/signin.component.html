@@ -1,16 +1,18 @@
-<form method="post" action="" style="margin-top: 20px;">
-
-  <h3 id="logo">Log In</h3>
-
-  <label for="username">Username</label>
-  <input type="text" id="username" name="username" placeholder="Type in your username.." autocomplete="off" required />
-
-  <label for="password">Password</label>
-  <input type="password" id="password" name="password" placeholder="Enter your password.." autocomplete="off" required />
-
-  <a class="forgot" href="#">Forgot Password?</a>
-  <a class="register" href="#">Register</a>
-
-  <input type="submit" name="submit" value="Log In" />
-
+<form name="form" [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+   >
+    <h1>Se Connecter</h1>
+    <fieldset>
+  <mat-form-field appearance="outline">
+        <mat-label>CIN</mat-label>
+        <input matInput   formControlName="cin" required maxlength="8"  />
+        <mat-error *ngIf="f.cin.invalid">Veuillez Entrez un CIN valide (8 chiffres)</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Mot de Passe</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'"  formControlName="password">
+        <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </mat-form-field>
+      </fieldset>
+      <button mat-button type="submit" id="submit" >Connecter</button>
 </form>
