@@ -25,8 +25,10 @@ import {MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dia
 import {MatListModule} from '@angular/material/list';
 import { ModifCertifDialogComponent } from './modif-certif-dialog/modif-certif-dialog.component';
 import {MatDividerModule} from '@angular/material/divider';
+
 import { SigninComponent } from './signin/signin.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+
 
 
 
@@ -43,8 +45,11 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     SidenavDashboardComponent,
     UserProfilComponent,
     CertifDialogComponent,
+
     ModifCertifDialogComponent,
     AdminDashboardComponent,
+  
+
 
   ],
   imports: [
@@ -64,6 +69,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     MatDialogModule,
     MatListModule,
     MatDividerModule
+
 
 
 

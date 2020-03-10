@@ -1,68 +1,20 @@
 
-    <form  style="margin-top: 20px;"
-    *ngIf="!isLoggedIn"
-    name="form"
-    (ngSubmit)="f.form.valid && onSubmit()"
-    #f="ngForm"
-    novalidate
-  >
-  <h3 id="logo">Log In</h3>
-
-    <div class="form-group">
-      <label for="username">Username</label>
-      <input
-        type="text"
-        class="form-control"
-        name="username"
-        [(ngModel)]="form.username"
-        required
-        #username="ngModel"
-      />
-      <div
-        class="alert alert-danger"
-        role="alert"
-        *ngIf="f.submitted && username.invalid"
-      >
-        Username is required!
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input
-        type="password"
-        class="form-control"
-        name="password"
-        [(ngModel)]="form.password"
-        required
-        minlength="6"
-        #password="ngModel"
-      />
-      <div
-        class="alert alert-danger"
-        role="alert"
-        *ngIf="f.submitted && password.invalid"
-      >
-        <div *ngIf="password.errors.required">Password is required</div>
-        <div *ngIf="password.errors.minlength">
-          Password must be at least 6 characters
-        </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <button class="btn btn-primary btn-block">
-        Login
-      </button>
-    </div>
-    <div class="form-group">
-      <div
-        class="alert alert-danger"
-        role="alert"
-        *ngIf="f.submitted && isLoginFailed"
-      >
-        Login failed: {{ errorMessage }}
-      </div>
-    </div>
-  </form>
-
-
+<form name="form" [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+   >
+    <h1>Se Connecter</h1>
+    <fieldset>
+  <mat-form-field appearance="outline">
+        <mat-label>CIN</mat-label>
+        <input matInput   formControlName="cin" required maxlength="8"  />
+        <mat-error *ngIf="f.cin.invalid">Veuillez Entrez un CIN valide (8 chiffres)</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Mot de Passe</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'"  formControlName="password">
+        <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </mat-form-field>
+      </fieldset>
+      <button mat-button type="submit" id="submit" >Connecter</button>
+</form>
 
