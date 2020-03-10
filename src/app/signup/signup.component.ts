@@ -258,51 +258,7 @@ export class SignupComponent implements OnInit {
 
   }
 
-  onSubmit() {
-    console.log(this.type);
-    console.log(this.form);
-    this.authService.register(this.f, this.type).subscribe(
-       data => {
-         console.log(data);
-         this.isSuccessful = true;
-         this.isSignUpFailed = false;
-       },
-       err => {
-console.log('breaks here');
-         // this.errorMessage = err.error.message;
-this.isSignUpFailed = true;
-       }
-     );
-   }
 
-
-get f() { return this.form.controls; }
-
-openDialog(typeop:string): void {
-  console.log(typeop)
-
-  const dialogRef = this.dialog.open(CertifDialogComponent, {
-    width: '300px',
-  data:{typeop:typeop},
-  });
-
-  dialogRef.afterClosed().subscribe(result => {
-    console.log('The dialog was closed');
-    if (result != undefined && this.listCertif.length<5) {
-
-  this.nomCertif = result.nomCertif.value;
-  this.dateCertif = result.dateCertif.value;
-  this.listCertif.push({
-name: this.nomCertif,
-issue_date: this.dateCertif
-});
-  console.table(this.listCertif);
-
-}
-
-
-  });
-}
 
 
 }

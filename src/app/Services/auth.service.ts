@@ -25,7 +25,7 @@ export class AuthService {
     }, httpOptions);
   }
 
- 
+
 
   registerFormateur(user): Observable<any> {
     const params = new HttpParams();
@@ -50,12 +50,9 @@ export class AuthService {
 
 
 
-  registerGest(user, type: string ): Observable<any> {
 
-    const params = new HttpParams()
-    .set('type', type);
 
-  registerApprenant(user): Observable<any> {
+  registerGest(user): Observable<any> {
     const params = new HttpParams();
 
 
@@ -65,7 +62,7 @@ export class AuthService {
   };
 
     return this.http.post(AUTH_API + 'adminDashboard', {
-    
+
 
       username: user.cin.value,
       nom: user.nom.value,
@@ -76,7 +73,7 @@ export class AuthService {
       numtel:user.tel.value,
     }, httpOptions);
   }
-  
+
 
   registerApprenant(user): Observable<any> {
     const params = new HttpParams();
