@@ -1,114 +1,94 @@
 @import url(https://fonts.googleapis.com/css?family=Lily+Script+One);
 
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 body {
-	margin:0;
-	font-family:arial,tahoma,sans-serif;
-	font-size:12px;
-	font-weight:normal;
-	direction:ltr;
-  background:white;
+  font-family: 'Nunito', sans-serif;
+  color: #384047;
 }
 
 form {
-	margin:10% auto 0 auto;
-	padding:30px;
-	width:400px;
-	height:auto;
-	overflow:hidden;
-	background:white;
-	border-radius:10px;
+  max-width: 300px;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background: #f4f7f8;
+  border-radius: 8px;
 }
 
-form label {
-	font-size:14px;
-	color:darkgray;
-	cursor:pointer;
+h1 {
+  margin: 0 0 30px 0;
+  text-align: center;
 }
 
-form label,
-form input {
-	float:left;
-	clear:both;
+mat-form-field {
+ width:100%;
 }
 
-form input {
-	margin:15px 0;
-	padding:15px 10px;
-	width:100%;
-	outline:none;
-	border:1px solid #bbb;
-	border-radius:20px;
-	display:inline-block;
-	-webkit-box-sizing:border-box;
-	   -moz-box-sizing:border-box;
-	        box-sizing:border-box;
-    -webkit-transition:0.2s ease all;
-	   -moz-transition:0.2s ease all;
-	    -ms-transition:0.2s ease all;
-	     -o-transition:0.2s ease all;
-	        transition:0.2s ease all;
+input[type="radio"],
+input[type="checkbox"] {
+  margin: 0 4px 8px 0;
 }
 
-form input[type=text]:focus,
-form input[type="password"]:focus {
-	border-color:cornflowerblue;
+select {
+  padding: 6px;
+  height: 32px;
+  border-radius: 2px;
 }
 
-input[type=submit] {
-	padding:15px 50px;
-	width:auto;
-	background:#B73A5D;
-	border:none;
-	color:white;
-	cursor:pointer;
-	display:inline-block;
-	float:right;
-	clear:right;
-	-webkit-transition:0.2s ease all;
-	   -moz-transition:0.2s ease all;
-	    -ms-transition:0.2s ease all;
-	     -o-transition:0.2s ease all;
-	        transition:0.2s ease all;
+#submit{
+color :#FFF;
+  background-color: #B73A5D;
+  font-size: 18px;
+  text-align: center;
+  font-style: normal;
+  border-radius: 5px;
+  width: 100%;
+
 }
 
-input[type=submit]:hover {
-	opacity:0.8;
+fieldset {
+  margin-bottom: 30px;
+  border: none;
 }
 
-input[type="submit"]:active {
-	opacity:0.4;
+legend {
+  font-size: 1.4em;
+  margin-bottom: 10px;
 }
 
-.forgot,
-.register {
-	margin:10px;
-	float:left;
-	clear:left;
-	display:inline-block;
-	color:cornflowerblue;
-	text-decoration:none;
+label {
+  display: block;
+  margin-bottom: 8px;
 }
 
-.forgot:hover,
-.register:hover {
-	color:darkgray;
+label.light {
+  font-weight: 300;
+  display: inline;
 }
 
-#logo {
-	margin:0 auto;
-	width:200px;
-	font-family:'Lily Script One', cursive;
-	font-size:60px;
-	font-weight:bold;
-	text-align:center;
-	color:lightgray;
-	-webkit-transition:0.2s ease all;
-	   -moz-transition:0.2s ease all;
-	    -ms-transition:0.2s ease all;
-	     -o-transition:0.2s ease all;
-	        transition:0.2s ease all;
+.number {
+  background-color: #B73A5D;
+  color: #fff;
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+  font-size: 0.8em;
+  margin-right: 4px;
+  line-height: 30px;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+  border-radius: 100%;
 }
 
-#logo:hover {
-	color:cornflowerblue;
+@media screen and (min-width: 480px) {
+  form {
+    max-width: 480px;
+  }
 }
+

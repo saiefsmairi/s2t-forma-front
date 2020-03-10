@@ -19,20 +19,19 @@ export class AuthService {
 
   login(credentials): Observable<any> {
     return this.http.post(AUTH_API + 'signin', {
-      username: credentials.username,
-      password: credentials.password
+      username: credentials.cin.value,
+      password: credentials.password.value
     }, httpOptions);
   }
 
-  register(user, type: string ): Observable<any> {
+  registerFormateur(user): Observable<any> {
+    const params = new HttpParams();
 
-    const params = new HttpParams()
-    .set('type', type);
     httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     params
   };
-    return this.http.post(AUTH_API + 'signup', {
+    return this.http.post(AUTH_API + 'signup/formateur', {
       username: user.cin.value,
       nom: user.nom.value,
       prenom: user.prenom.value,
@@ -44,4 +43,40 @@ export class AuthService {
       listCertif:user.listCertif.value
     }, httpOptions);
   }
+
+  registerApprenant(user): Observable<any> {
+    const params = new HttpParams();
+
+    httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    params
+  };
+    return this.http.post(AUTH_API + 'signup/apprenant', {
+      username: user.cin.value,
+      nom: user.nom.value,
+      prenom: user.prenom.value,
+      email: user.email.value,
+      password: user.password.value,
+      datenais:user.datenais.value,
+      numtel:user.tel.value,
+    }, httpOptions);
+  }
+
+  registerSociete(user ): Observable<any> {
+    const params = new HttpParams();
+
+    httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    params
+  };
+    return this.http.post(AUTH_API + 'signup/societe', {
+      username: user.cin.value,
+      nom: user.nom.value,
+      email: user.email.value,
+      password: user.password.value,
+      numtel:user.tel.value,
+    }, httpOptions);
+  }
+
+
 }
