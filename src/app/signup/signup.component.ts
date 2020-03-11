@@ -135,11 +135,19 @@ export class SignupComponent implements OnInit {
           console.log(data);
           this.isSuccessful = true;
           this.isSignUpFailed = false;
+<<<<<<< Updated upstream
           this.router.navigateByUrl('login');
         },
         err => {
           console.log('breaks here');
           // this.errorMessage = err.error.message;
+=======
+          this.router.navigateByUrl('signin');
+        },
+        err => {
+          console.log('breaks here');
+          this.errorMessage = err.error.message;
+>>>>>>> Stashed changes
           this.isSignUpFailed = true;
         }
       );
@@ -151,7 +159,11 @@ export class SignupComponent implements OnInit {
         console.log(data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
+<<<<<<< Updated upstream
         this.router.navigateByUrl('login');
+=======
+        this.router.navigateByUrl('signin');
+>>>>>>> Stashed changes
       },
       err => {
         console.log('breaks here');

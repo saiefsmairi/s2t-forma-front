@@ -67,7 +67,7 @@ public removeValidators(form: FormGroup) {
 onSubmit() {
   console.log(this.type);
   console.log(this.form);
-  this.authService.registerGest(this.f, this.type).subscribe(
+  this.authService.registerGest(this.f).subscribe(
      data => {
        console.log(data);
        this.isSuccessful = true;
