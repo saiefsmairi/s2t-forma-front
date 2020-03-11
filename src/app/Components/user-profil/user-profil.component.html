@@ -102,7 +102,7 @@
                 <div class="author">
                   <a href="#">
                     <img class="avatar border-gray" src="https://i.imgur.com/GCBVgXD.jpg" alt="...">
-                    <h5 class="title">Paolo Dybala</h5>
+                    <h5 class="title">{{userData.nom}}</h5>
                   </a>
                   <p class="description">
                     @chetfaker
@@ -279,18 +279,21 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label>Upload Documents</label>
+                        <label>Completer votre dossier</label>
 
 
                       </div>
                     </div>
                   </div>
 
-                  <div class="row">
-                    <div class="update ml-auto mr-auto">
-                      <input type="file" id="myfile" name="myfile"><br><br>
-
+                  <div class="row" *ngFor="let certif of userCertifs ;let i = index;" >
+                    <div class="update ml-auto mr-auto" >
+                      <h5>{{certif.name}}</h5>
+                      <input type="file" accept='image/*' id="myfile" name="myfile" (change)="onFileChanged($event,i)" *ngIf="certif.photoCertif!=null" ><br>
+                      <img [src]="imgURLs[i]"  *ngIf="imgURLs" height="300" width="300"><br>
+                      <input type="button" (click)="onUpload(certif.id)" value="upload" *ngIf="certif.photoCertif!=null"/>
                     </div>
+
                   </div>
 
                   <div class="row">

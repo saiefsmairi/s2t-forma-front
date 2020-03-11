@@ -136,7 +136,7 @@ export class SignupComponent implements OnInit {
           console.log(data);
           this.isSuccessful = true;
           this.isSignUpFailed = false;
-          this.router.navigateByUrl('login');
+          this.router.navigateByUrl('signin');
         },
         err => {
           console.log('breaks here');
@@ -152,7 +152,7 @@ export class SignupComponent implements OnInit {
         console.log(data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
-        this.router.navigateByUrl('login');
+        this.router.navigateByUrl('signin');
       },
       err => {
         console.log('breaks here');
