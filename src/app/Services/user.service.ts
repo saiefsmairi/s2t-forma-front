@@ -24,7 +24,16 @@ export class UserService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
       params
     };
-    return this.http.get(TEST_API + 'profil', httpOptions);
+    return this.http.get(TEST_API + 'profil/'+id, httpOptions);
+
+  }
+
+  getAllUsers(): Observable<any> {
+    const params = new HttpParams();
+    httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),params
+    };
+    return this.http.get(TEST_API + 'GestionUsers', httpOptions);
 
   }
 

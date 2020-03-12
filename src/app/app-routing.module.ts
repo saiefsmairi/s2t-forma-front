@@ -8,6 +8,7 @@ import { UserProfilComponent } from './Components/user-profil/user-profil.compon
 
 import { SigninComponent } from './Components/signin/signin.component';
 import { AdminDashboardComponent } from './Components/admin-dashboard/admin-dashboard.component';
+import { GestionUsersGestionnaireComponent } from './Components/gestion-users-gestionnaire/gestion-users-gestionnaire.component';
 
 
 const routes: Routes = [
@@ -21,7 +22,7 @@ const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent },
   {path: 'profil', component: UserProfilComponent },
   {path: 'Admindashboard', component: AdminDashboardComponent },
-
+  {path: 'GestionUsers', component: GestionUsersGestionnaireComponent },
 
 
 
