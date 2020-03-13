@@ -19,6 +19,7 @@ export class UserService {
 
   getuserByid(id): Observable<any> {
     const params = new HttpParams().set('id', id);
+<<<<<<< HEAD
 
     httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -26,6 +27,24 @@ export class UserService {
     };
     return this.http.get(TEST_API + 'profil', httpOptions);
 
+=======
+
+    httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params
+    };
+    return this.http.get(TEST_API + 'profil/'+id, httpOptions);
+
+  }
+
+  getAllUsers(): Observable<any> {
+    const params = new HttpParams();
+    httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),params
+    };
+    return this.http.get(TEST_API + 'GestionUsers', httpOptions);
+
+>>>>>>> c09dd6b93679a58e583675888f32291b1eb1f3b3
   }
 
   update(user, id): Observable<any> {
