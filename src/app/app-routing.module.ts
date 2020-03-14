@@ -1,3 +1,4 @@
+import { AjoutGestionnaireComponent } from './Components/ajout-gestionnaire/ajout-gestionnaire.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './Components/home/home.component';
@@ -23,7 +24,7 @@ const routes: Routes = [
   {path: 'profil', component: UserProfilComponent },
   {path: 'Admindashboard', component: AdminDashboardComponent },
   {path: 'GestionUsers', component: GestionUsersGestionnaireComponent },
-
+  {path: 'ajout-gestionnaire',component:AjoutGestionnaireComponent}
 
 
 

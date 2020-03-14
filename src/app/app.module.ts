@@ -28,6 +28,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import { SigninComponent } from './Components/signin/signin.component';
 import { AdminDashboardComponent } from './Components/admin-dashboard/admin-dashboard.component';
 import { GestionUsersGestionnaireComponent } from './Components/gestion-users-gestionnaire/gestion-users-gestionnaire.component';
+import { AjoutGestionnaireComponent } from './Components/ajout-gestionnaire/ajout-gestionnaire.component';
 
 
 
@@ -47,6 +48,7 @@ import { GestionUsersGestionnaireComponent } from './Components/gestion-users-ge
     CertifDialogComponent,
     AdminDashboardComponent,
     GestionUsersGestionnaireComponent,
+    AjoutGestionnaireComponent,
 
 
 
