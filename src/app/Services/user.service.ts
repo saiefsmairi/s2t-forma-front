@@ -28,6 +28,17 @@ export class UserService {
 
   }
 
+  getuserByCin(cin): Observable<any> {
+    const params = new HttpParams().set('cin', cin);
+
+    httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params
+    };
+    return this.http.get(TEST_API + 'AjoutSession/'+cin, httpOptions);
+
+  }
+
   getAllUsers(): Observable<any> {
     const params = new HttpParams();
     httpOptions = {

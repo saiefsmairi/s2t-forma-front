@@ -10,6 +10,7 @@ import { UserProfilComponent } from './Components/user-profil/user-profil.compon
 import { SigninComponent } from './Components/signin/signin.component';
 import { AdminDashboardComponent } from './Components/admin-dashboard/admin-dashboard.component';
 import { GestionUsersGestionnaireComponent } from './Components/gestion-users-gestionnaire/gestion-users-gestionnaire.component';
+import { AjoutSessionComponent } from './Components/ajout-session/ajout-session.component';
 
 
 const routes: Routes = [
@@ -24,7 +25,11 @@ const routes: Routes = [
   {path: 'profil', component: UserProfilComponent },
   {path: 'Admindashboard', component: AdminDashboardComponent },
   {path: 'GestionUsers', component: GestionUsersGestionnaireComponent },
+
   {path: 'ajout-gestionnaire',component:AjoutGestionnaireComponent}
+
+  {path: 'AjoutSession', component: AjoutSessionComponent },
+
 
 
 
