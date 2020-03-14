@@ -85,8 +85,8 @@ this.isSignUpFailed = true;
 
 
 
-  // this.form.reset();
-   //this.removeValidators(this.form);
+   this.form.reset();
+  this.removeValidators(this.form);
  }
 
 }
