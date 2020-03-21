@@ -1,0 +1,82 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Ajout Gestionnaire</h4>
+                    </div>
+                    <div class="card-body">
+                        <form  name="form" [formGroup]="form"  (ngSubmit)="onSubmit()" >
+                            <div class="row">
+                                <div class="col-md-5">
+                                  <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="CIN"   formControlName="cin">
+                                    </mat-form-field>
+                                </div>
+                               
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Email address" type="email"  formControlName="email">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Fist Name" type="text"  formControlName="nom">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Last Name" type="text"  formControlName="prenom">
+                                  </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Num° Tél" type="text"  formControlName="tel">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Date de Naissance" type="date" formControlName="datenais"  >
+                                  </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Mot de passe" type="password" formControlName="password">
+                                  </mat-form-field>
+                                </div>
+                               
+                            </div>
+                           
+                 
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right">Ajouter Gestionnaire</button>
+                            <div class="clearfix"></div>
+                        </form>
+                       
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-md-4">
+                <div class="card card-profile">
+                    <div class="card-avatar">
+                        <a href="javascript:void(0)">
+                            <img class="img" src="./assets/img/faces/marc.jpg" />
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">{{nom}} {{prenom}}</h4>
+                      
+                        <a href="javascript:void(0)" class="btn btn-danger btn-round">Follow</a>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+  </div>
+  
