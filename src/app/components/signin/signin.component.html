@@ -1,0 +1,20 @@
+<body>
+<form name="form" [formGroup]="form"
+(ngSubmit)="onSubmit()"
+ >
+  <h1>Se Connecter</h1>
+  <fieldset>
+<mat-form-field appearance="outline">
+      <mat-label>CIN</mat-label>
+      <input matInput   formControlName="cin" required maxlength="8"  />
+      <mat-error *ngIf="f.cin.invalid">Veuillez Entrez un CIN valide (8 chiffres)</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Mot de Passe</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'"  formControlName="password">
+      <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </mat-form-field>
+    </fieldset>
+    <button mat-button type="submit" id="submit" >Connecter</button>
+</form>
+</body>
