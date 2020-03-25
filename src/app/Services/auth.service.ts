@@ -28,6 +28,7 @@ export class AuthService {
 
 
   registerFormateur(user): Observable<any> {
+    console.log(user.datenais.value);
     const params = new HttpParams();
     httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -52,28 +53,7 @@ export class AuthService {
 
 
 
-  registerGest(user): Observable<any> {
-    const params = new HttpParams();
-
-
-    httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-      params
-    };
-
-    return this.http.post(AUTH_API + 'adminDashboard', {
-
-
-      username: user.cin.value,
-      nom: user.nom.value,
-      prenom: user.prenom.value,
-      email: user.email.value,
-      password: user.password.value,
-      datenais: user.datenais.value,
-      numtel: user.tel.value,
-    }, httpOptions);
-  }
-
+  
 
   registerApprenant(user): Observable<any> {
     const params = new HttpParams();
@@ -85,7 +65,6 @@ export class AuthService {
     };
 
     return this.http.post(AUTH_API + 'signup/apprenant', {
-
       username: user.cin.value,
       nom: user.nom.value,
       prenom: user.prenom.value,
@@ -115,22 +94,22 @@ export class AuthService {
   }
 
 
-  registerSession(session, id): Observable<any> {
-    const params = new HttpParams();
-    httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-      params
-    };
+  // registerSession(session, id): Observable<any> {
+  //   const params = new HttpParams();
+  //   httpOptions = {
+  //     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  //     params
+  //   };
 
-    return this.http.post(AUTH_API + 'AjoutSession', {
+  //   return this.http.post(AUTH_API + 'AjoutSession', {
 
-      nom: session.nom.value,
-      duree: session.duree.value,
-      date: session.datenais.value,
-      user_id: id,
+  //     nom: session.nom.value,
+  //     duree: session.duree.value,
+  //     date: session.datenais.value,
+  //     user_id: id,
 
-    }, httpOptions);
-  }
+  //   }, httpOptions);
+  // }
 
 
 }

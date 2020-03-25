@@ -21,11 +21,10 @@
               "src/favicon.ico"
             ],
             "styles": [
-              "node_modules/perfect-scrollbar/css/perfect-scrollbar.css",
-              "src/assets/scss/material-dashboard.scss",
-              "src/assets/css/demo.css",
-              "node_modules/bulma/css/bulma.min.css",
-              "node_modules/ng2-image-viewer/imageviewer.scss"
+              "src/assets/scss/material-dashboard.scss"
+              
+          
+
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.js",
@@ -96,7 +95,7 @@
               "node_modules/perfect-scrollbar/css/perfect-scrollbar.css",
               "src/assets/scss/material-dashboard.scss",
               "src/assets/css/demo.css"
-              
+
             ],
             "assets": [
               "src/assets",

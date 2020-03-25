@@ -43,8 +43,10 @@ import { SigninComponent } from './components/signin/signin.component';
 import { AjoutGestionnaireComponent } from './components/ajout-gestionnaire/ajout-gestionnaire.component';
 import { GestionUsersComponent } from './components/gestion-users/gestion-users.component';
 import { UserInfoDialogComponent } from './components/user-info-dialog/user-info-dialog.component';
-import { ImageViewerModule } from 'ng2-image-viewer';
-
+import { GestionSessionsComponent } from './components/gestion-sessions/gestion-sessions.component';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { AffectFormateurDialogComponent } from './components/affect-formateur-dialog/affect-formateur-dialog.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @NgModule({
@@ -77,7 +79,8 @@ import { ImageViewerModule } from 'ng2-image-viewer';
     MatListModule,
     MatDividerModule,
     MatMomentDateModule,
-    
+    NgxMaterialTimepickerModule,
+    Ng2SearchPipeModule
 
   ],
   declarations: [
@@ -95,7 +98,9 @@ import { ImageViewerModule } from 'ng2-image-viewer';
     FooterComponent,
     AjoutGestionnaireComponent,
     GestionUsersComponent,
-    UserInfoDialogComponent
+    UserInfoDialogComponent,
+    GestionSessionsComponent,
+    AffectFormateurDialogComponent
 
 
   ],

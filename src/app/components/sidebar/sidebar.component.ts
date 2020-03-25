@@ -24,7 +24,7 @@ const USERROUTES: RouteInfo[] = [
 
 const GESTROUTES: RouteInfo[] = [
   { path: '/dashboard', title: 'Tableau de Bord',  icon: 'dashboard', class: '' },
-  { path: '/gestion-users', title: 'Gestion Utilisateurs',  icon: 'persons', class: '' },
+  { path: '/gestion-utilisateurs', title: 'Gestion Utilisateurs',  icon: 'persons', class: '' },
   { path: '/gestion-sessions', title: 'Gestion Sessions',  icon: 'dashboard', class: '' },
 ];
 
@@ -40,13 +40,16 @@ export class SidebarComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(this.userRole);
+   
   this.setRoutes();
     this.menuItems = ROUTES.filter(menuItem => menuItem);
   }
 
 
 setRoutes(){
-switch(this.userRole){
+switch(this.userRole) {
+  
 case 'ROLE_ADMIN':{
   ROUTES = [...ADMINROUTES];
   break;
