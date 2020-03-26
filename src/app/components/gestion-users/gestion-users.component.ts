@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'app/Services/user.service';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
+import { GestionnaireService } from 'app/Services/gestionnaire.service';
 
 @Component({
   selector: 'app-gestion-users',
@@ -12,10 +13,10 @@ import { MatDialog } from '@angular/material/dialog';
 export class GestionUsersComponent implements OnInit {
 
   tab: any[];
-  constructor(private httpClient: HttpClient,  private userService: UserService,public dialog: MatDialog) { }
+  constructor(private httpClient: HttpClient,  private gestionnaireService: GestionnaireService,public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    let res = this.userService.getAllUsers();
+    let res = this.gestionnaireService.getAllUsers();
     res.subscribe(
       data => {
 this.tab=data;
@@ -39,7 +40,7 @@ this.tab=data;
 
   validerCompte(id:any){
 console.log(id);
-this.userService.validerCompte(id).subscribe(data=>{
+this.gestionnaireService.validerCompte(id).subscribe(data=>{
   console.log(data);
 });
   }

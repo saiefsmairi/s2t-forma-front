@@ -1,0 +1,20 @@
+<h4 class="card-title ">Affectation Formateur</h4>
+<div class="card-body">
+    <div class="row">
+        <span class="col-md-2">filter par :</span>
+         <input matInput  type="text" [(ngModel)]="nom"  placeholder="Nom" class="col-md-2"/>
+         <input matInput  type="text" [(ngModel)]="prenom"  placeholder="Prénom" class="col-md-2"/>
+         <input matInput type="text"  [(ngModel)]="name"  placeholder="Compétences" class="col-md-2"/>
+
+    </div>
+<mat-action-list *ngFor="let item of listFormateur | filter:nom | filter:prenom |filter:name">
+<mat-list-item (click)="openDialog(item)">
+    
+    <span mat-line>{{item.nom}} &nbsp; {{item.prenom}}</span>
+    <span mat-line>Certifé en :</span>
+    <span mat-line *ngFor="let certif of item.certifs">
+        {{certif.name}}
+    </span>
+</mat-list-item>
+</mat-action-list>
+</div>

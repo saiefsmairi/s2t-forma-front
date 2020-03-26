@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { AuthService } from 'app/Services/auth.service';
+import { AdminService } from 'app/Services/admin.service';
 
 @Component({
   selector: 'app-ajout-gestionnaire',
@@ -17,7 +18,7 @@ export class AjoutGestionnaireComponent implements OnInit {
 
 
 
-  constructor(    private formBuilder: FormBuilder,private authService: AuthService,
+  constructor(    private formBuilder: FormBuilder,private adminService: AdminService,
 
     ) { }
 
@@ -53,9 +54,9 @@ public removeValidators(form: FormGroup) {
   }
 }
 onSubmit() {
-  console.log(this.type);
+
   console.log(this.form);
-  this.authService.registerGest(this.f).subscribe(
+  this.adminService.registerGest(this.f).subscribe(
      data => {
        console.log(data);
        this.isSuccessful = true;
@@ -68,7 +69,7 @@ this.isSignUpFailed = true;
      }
    );
 
-   this.form.reset();
+  // this.form.reset();
    this.removeValidators(this.form);
  }
 }
