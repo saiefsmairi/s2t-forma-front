@@ -51,13 +51,20 @@
                                   <input matInput [matDatepicker]="picker" readonly formControlName="datenais"  />
                                   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                   <mat-datepicker #picker></mat-datepicker>
+
                                 </mat-form-field>
                               </div>
                           </div>
                           
                           <button mat-raised-button type="submit" class="btn btn-danger pull-right">Mise a jour  Profile</button>
                           <div class="row">&nbsp;</div>
+                         
+
                           
+                          <button mat-raised-button type="submit" class="btn btn-danger pull-right">Mise a jour  Profile</button>
+                          <div class="row">&nbsp;</div>
+                          
+
                         
                           <div class="row" *ngFor="let certif of userCertifs ;let i = index;" >
                             <div class="update ml-auto mr-auto" >
@@ -117,7 +124,9 @@
                     <div  class="pull-left" *ngFor="let item of listCertif">
                       <span>{{item.name}}</span><br/>
                     
+
                     </div>   
+
                   </div>
               </div>
           </div> 

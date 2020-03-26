@@ -48,7 +48,9 @@ import { GestionSessionsComponent } from './components/gestion-sessions/gestion-
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { AffectFormateurDialogComponent } from './components/affect-formateur-dialog/affect-formateur-dialog.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+
 
 
 @NgModule({
@@ -102,8 +104,12 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     GestionUsersComponent,
     UserInfoDialogComponent,
     GestionSessionsComponent,
+
     AffectFormateurDialogComponent,
     ConfirmDialogComponent
+
+    AffectFormateurDialogComponent
+
 
 
   ],

@@ -35,7 +35,7 @@ export class GestionnaireService {
 
     httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-      
+
       params
     };
     return this.http.put(
@@ -56,6 +56,7 @@ export class GestionnaireService {
 
   }
 
+
   public ajoutSession(session:any,formateur_id :any): Observable<any> {
     const params = new HttpParams();
     httpOptions = {
@@ -74,6 +75,7 @@ export class GestionnaireService {
     }, httpOptions);
 
   }
+
 
 
 }
