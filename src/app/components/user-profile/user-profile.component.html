@@ -51,35 +51,20 @@
                                   <input matInput [matDatepicker]="picker" readonly formControlName="datenais"  />
                                   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                   <mat-datepicker #picker></mat-datepicker>
+
                                 </mat-form-field>
                               </div>
                           </div>
                           
                           <button mat-raised-button type="submit" class="btn btn-danger pull-right">Mise a jour  Profile</button>
                           <div class="row">&nbsp;</div>
-                          <div class="row col-md-12">
-                            <div class="card-header  col-md-12">
-                              <h4 class="card-title">Changement Mot De Passe</h4>
-                          </div>
-                          <form  name="form" [formGroup]="Passwordform"  (ngSubmit)="onPasswordchange()"  class="col-md-12">
-                              <div class=" row col-md-6">
-                                <mat-form-field class="example-full-width" appearance="outline">
-                                  <mat-label>Ancienne Mot de Passe</mat-label>
-                                  <input matInput [type]="hide ? 'password' : 'text'"  formControlName="passwordold">
-                                  <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                                </mat-form-field>
-                              </div>
-                              <div class="row col-md-6">
-                                <mat-form-field appearance="outline">
-                                  <mat-label>Nouveau Mot de Passe</mat-label>
-                                  <input matInput [type]="hide ? 'password' : 'text'"  formControlName="passwordnew" >
-                                  <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                                </mat-form-field>
-                              </div>
+                         
+
                           
-                              <button mat-raised-button type="submit" class="btn btn-danger pull-right">Changer Mot De Passe </button>
-                              </form>
-                          </div>
+                          <button mat-raised-button type="submit" class="btn btn-danger pull-right">Mise a jour  Profile</button>
+                          <div class="row">&nbsp;</div>
+                          
+
                         
                           <div class="row" *ngFor="let certif of userCertifs ;let i = index;" >
                             <div class="update ml-auto mr-auto" >
@@ -98,6 +83,33 @@
                       </div>
                   </div>
               </div>
+              <div class="card">
+                <div class="row col-md-12">
+                  <div class="card-header card-header-danger col-md-12">
+                    <h4 class="card-title">Changement Mot De Passe</h4>
+                </div>
+                <div class="card-body">
+                <form  name="form" [formGroup]="Passwordform"  (ngSubmit)="onPasswordchange()"  class="col-md-12">
+                    <div class=" row col-md-6">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Ancienne Mot de Passe</mat-label>
+                        <input matInput [type]="hide ? 'password' : 'text'"  formControlName="passwordold">
+                        <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </mat-form-field>
+                    </div>
+                    <div class="row col-md-6">
+                      <mat-form-field appearance="outline">
+                        <mat-label>Nouveau Mot de Passe</mat-label>
+                        <input matInput [type]="hide ? 'password' : 'text'"  formControlName="passwordnew" >
+                        <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </mat-form-field>
+                    </div>
+                
+                    <button mat-raised-button type="submit" class="btn btn-danger pull-right">Changer Mot De Passe </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
           </div>
           <div class="col-md-4">
               <div class="card card-profile">
@@ -108,8 +120,13 @@
                   </div>
                   <div class="card-body">
                       <h4 class="card-title">{{nom}} {{prenom}}</h4>
+                    <h6 class="pull-left">Compétences :</h6><br>
+                    <div  class="pull-left" *ngFor="let item of listCertif">
+                      <span>{{item.name}}</span><br/>
                     
-                     
+
+                    </div>   
+
                   </div>
               </div>
           </div> 

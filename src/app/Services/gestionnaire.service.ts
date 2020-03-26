@@ -35,6 +35,7 @@ export class GestionnaireService {
 
     httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+
       params
     };
     return this.http.put(
@@ -54,6 +55,27 @@ export class GestionnaireService {
     return this.http.get(TEST_API + 'affectation-formateur', httpOptions);
 
   }
+
+
+  public ajoutSession(session:any,formateur_id :any): Observable<any> {
+    const params = new HttpParams();
+    httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),params
+    };
+    return this.http.post(TEST_API + 'ajout-session',{
+      theme:session.theme.value,
+      date_debut:session.dateDebut.value,
+      date_fin:session.dateFin.value,
+      heure_debut:session.heureDebut.value,
+      heure_fin:session.heureFin.value,
+      prix:session.prix.value,
+      nbApprenant:session.nbApprenant.value,
+      formateur_id:formateur_id
+
+    }, httpOptions);
+
+  }
+
 
 
 }

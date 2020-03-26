@@ -32,6 +32,7 @@ import { GlobalService } from 'app/Services/global.service';
   ]
 })
 export class UserProfileComponent implements OnInit {
+  listCertif:any;
 userData:any;
 userCertifs:any;
   selectedFile: File;
@@ -79,6 +80,7 @@ userCertifs:any;
     
 
   this.userData = JSON.parse(sessionStorage.getItem('auth-user'));
+  this.listCertif=this.userData.certifs;
   this.userCertifs = this.userData.certifs.filter(x => {
     return x.photoCertif == null;
   });

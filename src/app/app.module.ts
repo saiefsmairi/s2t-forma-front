@@ -1,3 +1,4 @@
+import { NotificationsComponent } from './components/notifications/notifications.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -47,6 +48,9 @@ import { GestionSessionsComponent } from './components/gestion-sessions/gestion-
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { AffectFormateurDialogComponent } from './components/affect-formateur-dialog/affect-formateur-dialog.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+
 
 
 @NgModule({
@@ -100,15 +104,22 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     GestionUsersComponent,
     UserInfoDialogComponent,
     GestionSessionsComponent,
+
+    AffectFormateurDialogComponent,
+    ConfirmDialogComponent
+
     AffectFormateurDialogComponent
+
 
 
   ],
   entryComponents :[
     CertifDialogComponent,
-    UserInfoDialogComponent
+    UserInfoDialogComponent,
+    AffectFormateurDialogComponent,
+    ConfirmDialogComponent
   ],
-  providers: [],
+  providers: [NotificationsComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

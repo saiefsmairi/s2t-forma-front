@@ -53,15 +53,24 @@
                               </div> 
                             </div>
                             <div class="row">
-                              <div class="col-md-4">
+
+                              <div class="col-md-2">
+
                               <mat-form-field class="example-full-width" appearance="outline" >
                                 <input matInput placeholder="Prix"  formControlName="prix"  type="number" >
                                 <span matSuffix>DT</span> 
                               </mat-form-field>
                              </div>
+                             <div class="col-md-4">
+                              <mat-form-field class="example-full-width" appearance="outline" >
+                                <input matInput placeholder="Nombre D'apprenant"  formControlName="nbApprenant"  type="number" >
+                              
+                              </mat-form-field>
+                             </div>
                                <div class="col-md-6">
                                 <mat-form-field class="example-full-width" appearance="outline" >
-                                  <input matInput placeholder="Ajouter Un Formateur" readonly disabled    >
+                                  <input matInput placeholder="Ajouter Un Formateur" readonly   value="{{nomPrenomFormateur}}"  >
+
                                   <button mat-icon-button  matSuffix type="button"  (click)="openDialog()"><mat-icon>add</mat-icon></button> 
                                 </mat-form-field>
                                </div>
