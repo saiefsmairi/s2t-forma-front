@@ -157,7 +157,7 @@ this.Passwordform=this.formBuilder.group({
     uploadImageData.set('id', id);
     console.log(uploadImageData);
     this.httpClient
-      .post('http://localhost:9080/api/test/profil', uploadImageData)
+      .post('http://localhost:9080/api/users/profil', uploadImageData)
       .subscribe(response => {
         console.log(response.toString());
         let res = this.userService.getuserByid(this.id);

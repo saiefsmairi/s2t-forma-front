@@ -1,0 +1,118 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Sessions Disponible</h4>
+                        <p class="card-category"> </p>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="row">
+                            <span class="col-md-2">Rechercher par :</span>
+                            <input matInput  type="text" placeholder="Theme" class="col-md-3"  [(ngModel)]="theme"  #ThemeInput (input)="search(ThemeInput.value)"/>
+                        
+                  
+                       
+                            <mat-form-field>
+                                <mat-label>Prix</mat-label>
+                                <mat-select  required [(ngModel)]="selectedValue">
+                                  <mat-option>--</mat-option>
+                                  <mat-option value=">">
+                                  Prix > à
+                                  </mat-option>
+                                  <mat-option  value="inf">
+                                    Prix < à (not working)
+                                   </mat-option>
+                                   <mat-option  value="=" >
+                                    Prix =
+                                   </mat-option>
+                                </mat-select>
+
+                              </mat-form-field>
+                              <input matInput  type="text" placeholder="Prix" class="col-md-3"  [(ngModel)]="prix"  #PrixInput (input)="searchPrix(PrixInput.value)"/>
+
+                        </div>
+                         
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                       THEME
+                                    </th>
+                                    <th>
+                                        PRIX
+                                    </th>
+                                    <th>
+                                        NOMBRE APPRENANT
+                                    </th>
+                                    <th>
+                                        DATE DEBUT
+                                    </th>
+                                    <th>
+                                        DATE FIN 
+                                    </th>
+                                    <th>
+                                        HEURE DEBUT
+                                    </th>
+                                    <th>
+                                        HEURE FIN 
+                                    </th>
+                                    <th>
+                                        DUREE
+                                    </th>
+                                    <th>
+                                        S'INSCRIRE
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of tab">
+                              
+                                        <td>
+                                            {{item.theme}}
+                                        </td>
+                                        <td>
+                                            {{item.prix}}
+                                        </td>
+                                        <td>
+                                            {{item.nbApprenant}}
+                                        </td>
+                                        <td>
+                                            {{item.date_debut}}
+                                        </td>
+                                        <td>
+                                            {{item.date_fin}}
+                                        </td>
+                                        <td>
+                                            {{item.heure_debut}}
+                                        </td>
+                                        <td>
+                                            {{item.heure_fin}}
+                                        </td>
+                                        <td>
+                                            {{item.duree}}
+                                        </td>
+                                    
+                                        <td class="td-actions text-right">
+                                            <button type="button" rel="tooltip" class="btn btn-info btn-simple" (click)="openDialog(item.theme,item.prix)">
+                                                <i class="material-icons">how_to_reg</i>
+                                            </button>
+                              
+                                        </td>
+                                    </tr>
+
+                                    
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+            
+        </div>
+    </div>
+  </div>
+  

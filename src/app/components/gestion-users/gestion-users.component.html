@@ -1,22 +1,178 @@
+
+
 <div class="main-content">
-    <h1>Liste Utilisateurs</h1>
-    <mat-action-list >
-        <mat-list-item *ngFor="let user of tab">
-            <mat-icon mat-list-icon>person</mat-icon>
-            <div mat-line>{{user.nom}} {{user.prenom}}</div>
-            <div mat-line *ngFor="let certif of user.certifs" >
-                <div mat-line>
-                    {{certif.name}}
-                    <mat-icon (click)="openDialog(certif.photoCertif)" >info</mat-icon>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger"  >
+                        <h4 class="card-title " >Liste des Formateurs </h4>
+                        <p class="card-category"> </p>
+                    </div>
+                    <div class="card-body">
+
+                      
+                         
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                       Nom
+                                    </th>
+                                    <th>
+                                        Prenom
+                                    </th>
+                                    <th>
+                                        Email
+                                    </th>
+                                    <th>
+                                        Num Télephone
+                                    </th>
+                                    <th>
+                                        Certif
+                                    </th>
+                                    <th>
+                                        Etat Du Compte
+                                    </th>
+                    
+                                    
+                     <th>Actions</th>
+
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of tab">
+                                        <ng-container *ngIf="item.type_compte=='Formateur'">
+                                        <td>
+                                            <mat-icon mat-list-item>person</mat-icon>
+                                            {{item.nom}}
+                                        </td>
+                                        <td>
+                                            {{item.prenom}}
+                                        </td>
+                                        <td>
+                                            {{item.email}}
+                                        </td>
+                                        <td>
+                                            {{item.num_tel}}
+                                        </td>
+                                  <td>
+                                    <div mat-line *ngFor="let certif of item.certifs" >
+                                        <div mat-line>
+                                            {{certif.name}}
+                                            <mat-icon (click)="openDialog(certif.photoCertif)" >info</mat-icon>
+                                        </div>
+                                    </div>
+                                  </td>
+
+                                  <td>
+                                      <div *ngIf="item.flg_statut==0;else verifier">
+                                        Compte Non Vérifié
+                                      </div>
+                                      <ng-template #verifier>
+                                        Compte Vérifié
+                                      </ng-template>
+                                    </td>
+                        
+                                        <td class="td-actions text-right" *ngIf="item.flg_statut==0">
+                                            <button type="button" rel="tooltip" class="btn btn-info btn-success" (click)="validerCompte(item.user_id)">
+                                                <i class="material-icons">check</i>
+                                                
+                                            </button>
+
+                                        </td>
+
+                                        <td class="td-actions text-right">
+                                            <button type="button" rel="tooltip" class="btn btn-info btn-danger" >
+                                                <i class="material-icons">clear</i>
+                                                
+                                            </button>
+                                        </td>
+                                    </ng-container>
+                                    </tr>
+
+                                    
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
+          
             
-            <mat-divider vertical="true"></mat-divider>
-            <mat-divider vertical="true"></mat-divider>
-            <mat-icon  (click)="validerCompte(user.user_id)" >check</mat-icon>
-        <mat-divider></mat-divider>
-        </mat-list-item>
+        </div>
 
-    </mat-action-list>
-</div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Liste des Apprenants </h4>
+                        <p class="card-category"> </p>
+                    </div>
+                    <div class="card-body">
 
+                      
+                         
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                       Nom
+                                    </th>
+                                    <th>
+                                        Prenom
+                                    </th>
+                                    <th>
+                                        Email
+                                    </th>
+                                    <th>
+                                        Num Télephone
+                                    </th>
+                                    <th>
+                                        Actions
+                                    </th>
+   
+                                    
+                     
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of tab">
+                                        <ng-container *ngIf="item.type_compte=='Apprenant'">
+                                        <td>
+                                            <mat-icon mat-list-item>person</mat-icon>
+                                            {{item.nom}}
+                                        </td>
+                                        <td>
+                                            {{item.prenom}}
+                                        </td>
+                                        <td>
+                                            {{item.email}}
+                                        </td>
+                                        <td>
+                                            {{item.num_tel}}
+                                        </td>
+                           
+                                        <td class="td-actions text-right">
+                                            <button type="button" rel="tooltip" class="btn btn-info btn-danger" >
+                                                <i class="material-icons">clear</i>
+                                                
+                                            </button>
+                                        </td>
+                                        
+                                    </ng-container>
+                                    </tr>
+
+                                    
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+            
+        </div>
+    </div>
+  </div>
+  

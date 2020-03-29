@@ -13,6 +13,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { HomeComponent } from './components/home/home.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { SigninComponent } from './components/signin/signin.component';
+import { ListeSessionComponent } from './components/liste-session/liste-session.component';
 
 const routes: Routes = [
   {
@@ -55,6 +56,14 @@ const routes: Routes = [
     path:'gestion-sessions',
     component:GestionSessionsComponent
    }
+   ,
+   {
+    path:'liste-sessions',
+    component:ListeSessionComponent
+   }
+
+
+   
 ];
 
 @NgModule({
