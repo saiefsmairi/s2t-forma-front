@@ -3,6 +3,8 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 const TEST_API = 'http://localhost:9080/api/users/';
+const MAIL_API = 'http://localhost:9080/api/test/';
+
 const params = new HttpParams();
 
 let httpOptions = {
@@ -62,6 +64,23 @@ export class UserService {
   //   return this.http.get(TEST_API + 'AjoutSession/'+cin, httpOptions);
 
   // }
+
+  SendMail(nom,prenom,email): Observable<any> {
+    const params = new HttpParams();
+    httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params
+    };
+
+    return this.http.post(MAIL_API + 'sendmail', {
+
+      nom: nom,
+      prenom: prenom,
+      email:email,
+      
+
+    }, httpOptions);
+  }
 
   
   passwordChange(user, id): Observable<any> {

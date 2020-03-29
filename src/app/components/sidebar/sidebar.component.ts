@@ -20,6 +20,14 @@ const ADMINROUTES: RouteInfo[] = [
 const USERROUTES: RouteInfo[] = [
   { path: '/dashboard', title: 'Tableau De Bord',  icon: 'dashboard', class: '' },
   { path: '/user-profile', title: 'Mon Profile',  icon: 'person', class: '' },
+  { path: '/liste-sessions', title: 'Liste Sessions',  icon: 'person', class: '' },
+
+];
+
+const SOCIETEROUTES: RouteInfo[] = [
+  { path: '/dashboard', title: 'Tableau De Bord',  icon: 'dashboard', class: '' },
+  { path: '/liste-sessions', title: 'Liste Sessions',  icon: 'person', class: '' },
+
 ];
 
 const GESTROUTES: RouteInfo[] = [
@@ -60,6 +68,9 @@ case 'ROLE_APPRENANT':{
   break;
 }
 case 'ROLE_SOCIETE':{
+  
+  ROUTES = [...SOCIETEROUTES];
+
   break;
 }
 case 'ROLE_GESTIONNAIRE':{
