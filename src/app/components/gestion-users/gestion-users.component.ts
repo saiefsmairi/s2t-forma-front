@@ -58,7 +58,10 @@ export class GestionUsersComponent implements OnInit {
       this.ngOnInit(); 
  
     });
+
     let res = this.userService.getuserByid(id);
+
+    
     res.subscribe(
       data1 => {
 
@@ -80,4 +83,6 @@ export class GestionUsersComponent implements OnInit {
 
 
     }
+
+  
 }
