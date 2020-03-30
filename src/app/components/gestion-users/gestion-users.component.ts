@@ -47,6 +47,26 @@ export class GestionUsersComponent implements OnInit {
     this.gestionnaireService.validerCompte(id).subscribe(data => {
       console.log(data);
     });
+       let res = this.userService.getuserByid(id);
+    res.subscribe(
+      data1 => {
+
+        this.userService.SendMail(data1.nom,data1.prenom,data1.email).subscribe(
+          data => {
+            console.log(data);
+         
+          },
+          err => {
+            console.log("breaks here");
+            // this.errorMessage = err.error.message;
+          }
+        );
+      },
+      err => {
+        console.log("breaks here getuserbyid");
+      }
+    );
+
     window.location.reload();
   }
 }
