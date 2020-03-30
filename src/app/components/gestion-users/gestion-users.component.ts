@@ -42,11 +42,42 @@ export class GestionUsersComponent implements OnInit {
     });
   }
 
+  SupprimerCompte(id:any){
+    this.gestionnaireService.SupprimerUsers(id).subscribe(data => {
+      this.tab=[];
+      this.ngOnInit();
+    });
+
+  }
+
   validerCompte(id: any) {
     console.log(id);
     this.gestionnaireService.validerCompte(id).subscribe(data => {
       console.log(data);
+      this.tab=[];
+      this.ngOnInit(); 
+ 
     });
-    window.location.reload();
-  }
+    let res = this.userService.getuserByid(id);
+    res.subscribe(
+      data1 => {
+
+        this.userService.SendMail(data1.nom,data1.prenom,data1.email).subscribe(
+          data => {
+            console.log(data);
+         
+          },
+          err => {
+            console.log("breaks here");
+            // this.errorMessage = err.error.message;
+          }
+        );
+      },
+      err => {
+        console.log("breaks here getuserbyid");
+      }
+    );
+
+
+    }
 }
