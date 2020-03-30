@@ -47,6 +47,22 @@ export class GestionnaireService {
 
   }
 
+  SupprimerUsers(id): Observable<any> {
+    const params = new HttpParams().set('id', id);
+
+    httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+
+      params
+    };
+    return this.http.delete(
+      TEST_API + 'gestion-users',
+      httpOptions
+    );
+
+  }
+
+
   public getAllFormateurs(): Observable<any> {
     const params = new HttpParams();
     httpOptions = {

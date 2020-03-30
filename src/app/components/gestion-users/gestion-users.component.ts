@@ -42,12 +42,26 @@ export class GestionUsersComponent implements OnInit {
     });
   }
 
+  SupprimerCompte(id:any){
+    this.gestionnaireService.SupprimerUsers(id).subscribe(data => {
+      this.tab=[];
+      this.ngOnInit();
+    });
+
+  }
+
   validerCompte(id: any) {
     console.log(id);
     this.gestionnaireService.validerCompte(id).subscribe(data => {
       console.log(data);
+      this.tab=[];
+      this.ngOnInit(); 
+ 
     });
-       let res = this.userService.getuserByid(id);
+
+    let res = this.userService.getuserByid(id);
+
+    
     res.subscribe(
       data1 => {
 
@@ -67,6 +81,8 @@ export class GestionUsersComponent implements OnInit {
       }
     );
 
-    window.location.reload();
-  }
+
+    }
+
+  
 }
