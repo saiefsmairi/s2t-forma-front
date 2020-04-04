@@ -1,0 +1,44 @@
+
+
+<div class="floating-chat">
+    <i class="fa fa-comments" aria-hidden="true"></i>
+    <div class="chat">
+        <div class="header">
+            <span class="title">
+               Chat bot
+            </span>
+            <button>
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </button>
+                         
+        </div>
+        <ul class="messages">
+			<li class="list-group-item" *ngFor="let msg of messages">
+
+			
+				<div class="self" *ngIf="msg.sender=='user'; else bot">{{msg.content}}</div>
+				<ng-template #bot>
+					<div class="other" *ngIf="msg.content!=''">{{msg.content}}</div>		
+						  </ng-template>
+							
+			</li>
+        
+        </ul>
+        <div class="footer">
+			<form  (onsubmit)="sendMessage(message)">
+
+				<div class="row">
+				    <div class="col">
+						<input style="color:white;width:200px" (keyup.enter)="sendMessage(message)" class="text-box" type="text" #message class="form-control chatinput" placeholder="Entrer votre Message" name="content" [(ngModel)]="message.content" />
+					</div>
+					<div class="col-md-auto" style=" align-items:center;">
+						<button class="btn btn-primary sendbtn" (click)="sendMessage(message)"  style=" margin: 0 auto;" type="button">Envoyer</button>
+
+					</div>
+				</div>
+
+			</form>
+		
+        </div>
+    </div>
+</div>

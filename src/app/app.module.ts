@@ -52,6 +52,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { ListeSessionComponent } from './components/liste-session/liste-session.component';
 import { AjoutRecuSessionDialogComponent } from './components/ajout-recu-session-dialog/ajout-recu-session-dialog.component';
+import { ChatbotComponent } from './components/chatbot/chatbot.component';
+
 
 
 
@@ -114,8 +116,9 @@ import { AjoutRecuSessionDialogComponent } from './components/ajout-recu-session
 
     ListeSessionComponent,
 
-    AjoutRecuSessionDialogComponent
+    AjoutRecuSessionDialogComponent,
 
+    ChatbotComponent,
 
 
   ],
