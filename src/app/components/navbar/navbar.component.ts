@@ -2,6 +2,8 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import { Router } from '@angular/router';
+import { UserService } from 'app/Services/user.service';
+
 
 @Component({
   selector: 'app-navbar',
@@ -14,13 +16,31 @@ export class NavbarComponent implements OnInit {
       mobile_menu_visible: any = 0;
     private toggleButton: any;
     private sidebarVisible: boolean;
+    tab: any[];
+    lengthtab:any;
 
-    constructor(location: Location,  private element: ElementRef, private router: Router) {
+
+    constructor(location: Location,  private element: ElementRef, private router: Router,private userService:UserService) {
       this.location = location;
           this.sidebarVisible = false;
     }
 
     ngOnInit(){
+
+        if(JSON.parse(sessionStorage.getItem('auth-user')).roles=='ROLE_FORMATEUR'||JSON.parse(sessionStorage.getItem('auth-user')).roles=='ROLE_APPRENANT') {
+  let res = this.userService.getlisteNotifByuser(JSON.parse(sessionStorage.getItem('auth-user')).user_id);
+  res.subscribe(
+    data1 => {
+        this.tab = data1;
+        this.lengthtab=this.tab.length;
+        console.log(this.lengthtab);
+    },
+    err => {
+      console.log("breaks here get notif by user");
+    }
+  );
+}
+
       this.listTitles = ROUTES.filter(listTitle => listTitle);
       const navbar: HTMLElement = this.element.nativeElement;
       this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];

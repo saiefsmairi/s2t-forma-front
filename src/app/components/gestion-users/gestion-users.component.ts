@@ -81,6 +81,11 @@ export class GestionUsersComponent implements OnInit {
       }
     );
 
+    this.userService.sendnotif(id,2).subscribe(data=>{
+      console.log('notified');
+    
+    });
+    
 
     }
 
