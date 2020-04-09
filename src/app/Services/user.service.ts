@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 
 const TEST_API = 'http://localhost:9080/api/users/';
 const MAIL_API = 'http://localhost:9080/api/test/';
+const NOTIF_API = 'http://localhost:9080/api/notif/';
+
 
 const params = new HttpParams();
 
@@ -82,6 +84,30 @@ export class UserService {
     }, httpOptions);
   }
 
+   sendnotif(id,notif): Observable<any> {
+    const params = new HttpParams();
+    httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params
+    };
+
+    return this.http.post(NOTIF_API + 'ajout-notif', {
+
+      user_id: id,
+      notif_id: notif
+    }, httpOptions);
+  }
+
+  getlisteNotifByuser(id): Observable<any> {
+    const params = new HttpParams().set('id', id);
+
+    httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params
+    };
+    return this.http.get(NOTIF_API + 'liste_notif/'+id, httpOptions);
+
+  }
   
   passwordChange(user, id): Observable<any> {
     console.log('passchange');

@@ -2,6 +2,7 @@
 import { NotificationsComponent } from './../notifications/notifications.component';
 import { GestionnaireService } from './../../Services/gestionnaire.service';
 
+
 import { AffectFormateurDialogComponent } from './../affect-formateur-dialog/affect-formateur-dialog.component';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -16,6 +17,7 @@ import {
   MAT_DATE_LOCALE
 } from '@angular/material/core';
 import { MatDialog } from '@angular/material/dialog';
+import { UserService } from 'app/Services/user.service';
 @Component({
   selector: 'app-gestion-sessions',
   templateUrl: './gestion-sessions.component.html',
@@ -38,7 +40,7 @@ idFormateur:number;
 
 
   constructor(private fb: FormBuilder , private _adapter: DateAdapter<any>,  public dialog: MatDialog,
-    private gestionnaireService: GestionnaireService,public notification:NotificationsComponent) { 
+    private gestionnaireService: GestionnaireService,public notification:NotificationsComponent,private userService:UserService) { 
 
     this.form=fb.group({
 theme:new FormControl('',[Validators.required]),
@@ -79,9 +81,16 @@ dialogRef.afterClosed().subscribe(result=>{
 
 console.log(this.f);
 this.gestionnaireService.ajoutSession(this.f,this.idFormateur).subscribe(data=>{
-  console.log('posted');
+  console.log('session posted');
   this.notification.showNotification('top','right','success','Session Ajouté');
 });
+
+this.userService.sendnotif(this.idFormateur,1).subscribe(data=>{
+  console.log('notified');
+
+});
+
+
 
 
   }

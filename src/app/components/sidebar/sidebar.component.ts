@@ -17,10 +17,16 @@ const ADMINROUTES: RouteInfo[] = [
   { path: '/ajout-gestionnaire', title: 'Ajout Gestionnaire',  icon: 'add', class: '' },
 ];
 
-const USERROUTES: RouteInfo[] = [
+const APPRENANTROUTES: RouteInfo[] = [
   { path: '/dashboard', title: 'Tableau De Bord',  icon: 'dashboard', class: '' },
   { path: '/user-profile', title: 'Mon Profile',  icon: 'person', class: '' },
   { path: '/liste-sessions', title: 'Liste Sessions',  icon: 'person', class: '' },
+
+];
+
+const FORMATEURROUTES: RouteInfo[] = [
+  { path: '/dashboard', title: 'Tableau De Bord',  icon: 'dashboard', class: '' },
+  { path: '/user-profile', title: 'Mon Profile',  icon: 'person', class: '' },
 
 ];
 
@@ -62,9 +68,12 @@ case 'ROLE_ADMIN':{
   ROUTES = [...ADMINROUTES];
   break;
 }
-case 'ROLE_FORMATEUR':
+case 'ROLE_FORMATEUR': {
+  ROUTES = [...FORMATEURROUTES];
+  break;
+}
 case 'ROLE_APPRENANT':{
-  ROUTES = [...USERROUTES];
+  ROUTES = [...APPRENANTROUTES];
   break;
 }
 case 'ROLE_SOCIETE':{
@@ -81,7 +90,7 @@ case 'ROLE_GESTIONNAIRE':{
 }
 
   isMobileMenu() {
-      if ($(window).width() > 991) {
+      if ( window.innerWidth > 991) {
           return false;
       }
       return true;
