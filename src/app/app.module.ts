@@ -53,6 +53,8 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
 import { ListeSessionComponent } from './components/liste-session/liste-session.component';
 import { AjoutRecuSessionDialogComponent } from './components/ajout-recu-session-dialog/ajout-recu-session-dialog.component';
 import { ChatbotComponent } from './components/chatbot/chatbot.component';
+import { ReclamationComponent } from './components/reclamation/reclamation.component';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 
@@ -88,7 +90,8 @@ import { ChatbotComponent } from './components/chatbot/chatbot.component';
     MatDividerModule,
     MatMomentDateModule,
     NgxMaterialTimepickerModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    MatRadioModule
 
   ],
   declarations: [
@@ -119,6 +122,8 @@ import { ChatbotComponent } from './components/chatbot/chatbot.component';
     AjoutRecuSessionDialogComponent,
 
     ChatbotComponent,
+
+    ReclamationComponent,
 
 
   ],

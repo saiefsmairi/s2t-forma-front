@@ -129,6 +129,25 @@ export class UserService {
 
   }
 
+  public ajoutReclamation(reclamation:any,user_id :any): Observable<any> {
+    console.log(reclamation.details.value);
+    console.log(reclamation.typecheck.value);
+
+    const params = new HttpParams();
+    httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),params
+    };
+    return this.http.post(TEST_API + 'ajout-reclamation',{
+    
+      description:reclamation.details.value,
+      type_prob:reclamation.typecheck.value,
+      user_id:user_id
+
+    }, httpOptions);
+
+  }
+
+
   
 
 }

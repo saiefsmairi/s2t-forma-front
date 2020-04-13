@@ -15,11 +15,14 @@ export class ListeSessionComponent implements OnInit {
   prix;
   value: string;
   selectedValue;
+  role:string;
 
   constructor(private sessionService: SessionService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-
+    if(JSON.parse(sessionStorage.getItem('auth-user')).roles=='ROLE_APPRENANT'||
+    JSON.parse(sessionStorage.getItem('auth-user')).roles=='ROLE_SOCIETE'){
+      this.role="apprenant/societe";
     const res = this.sessionService.getAllSessions();
       res.subscribe(
         data => {
@@ -30,6 +33,22 @@ export class ListeSessionComponent implements OnInit {
           console.log('breaks here getAllSessions');
         }
       );
+      }
+
+     else if(JSON.parse(sessionStorage.getItem('auth-user')).roles=='ROLE_FORMATEUR'){
+       this.role="formateur";
+        const res = this.sessionService.getAllSessionsPerFormateur(JSON.parse(sessionStorage.getItem('auth-user')).user_id);
+      res.subscribe(
+        data => {
+          this.tab = data;
+          console.log(data);
+        },
+        err => {
+          console.log('breaks here getAllSessions');
+        }
+      );
+
+      }
   }
 
   //filters by theme and prix this method weli tahtha 

@@ -26,4 +26,15 @@ export class SessionService {
     return this.http.get(SESSION_API + 'sessions', httpOptions);
 
   }
+
+  getAllSessionsPerFormateur(id): Observable<any> {
+    const params = new HttpParams().set('id', id);
+
+    httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params
+    };
+    return this.http.get(SESSION_API + 'sessions_perUser/'+id, httpOptions);
+
+  }
 }
