@@ -102,7 +102,7 @@ sessionId = Math.random().toString(36).slice(-5);
         }
     }
 
-    let message = new Message("welcome to chat bot", new Date(),"");
+    let message = new Message("Bonjour je suis Chat Bot comment je peux vous aider", new Date(),"");
     this.messages.push(message);
    
   }

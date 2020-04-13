@@ -21,18 +21,28 @@ const APPRENANTROUTES: RouteInfo[] = [
   { path: '/dashboard', title: 'Tableau De Bord',  icon: 'dashboard', class: '' },
   { path: '/user-profile', title: 'Mon Profile',  icon: 'person', class: '' },
   { path: '/liste-sessions', title: 'Liste Sessions',  icon: 'person', class: '' },
+  { path: '/reclamation', title: 'Réclamer un probléme',  icon: 'person', class: '' },
+
+
+  
 
 ];
 
 const FORMATEURROUTES: RouteInfo[] = [
   { path: '/dashboard', title: 'Tableau De Bord',  icon: 'dashboard', class: '' },
   { path: '/user-profile', title: 'Mon Profile',  icon: 'person', class: '' },
+  { path: '/liste-sessions', title: 'Liste Sessions',  icon: 'person', class: '' },
+  { path: '/reclamation', title: 'Réclamer un probléme',  icon: 'person', class: '' },
+
+
 
 ];
 
 const SOCIETEROUTES: RouteInfo[] = [
   { path: '/dashboard', title: 'Tableau De Bord',  icon: 'dashboard', class: '' },
   { path: '/liste-sessions', title: 'Liste Sessions',  icon: 'person', class: '' },
+  { path: '/reclamation', title: 'Réclamer un probléme',  icon: 'person', class: '' },
+
 
 ];
 
