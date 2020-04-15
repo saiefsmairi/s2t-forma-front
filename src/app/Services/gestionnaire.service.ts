@@ -72,6 +72,15 @@ export class GestionnaireService {
 
   }
 
+  public getAllReclamations(): Observable<any> {
+    const params = new HttpParams();
+    httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),params
+    };
+    return this.http.get(TEST_API + 'liste-reclamations', httpOptions);
+
+  }
+
 
   public ajoutSession(session:any,formateur_id :any): Observable<any> {
     const params = new HttpParams();
