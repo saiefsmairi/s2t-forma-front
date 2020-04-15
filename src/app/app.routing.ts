@@ -16,6 +16,7 @@ import { SigninComponent } from './components/signin/signin.component';
 import { ListeSessionComponent } from './components/liste-session/liste-session.component';
 import { ChatbotComponent } from './components/chatbot/chatbot.component';
 import { ReclamationComponent } from './components/reclamation/reclamation.component';
+import { ListeReclamationComponent } from './components/liste-reclamation/liste-reclamation.component';
 
 const routes: Routes = [
   {
@@ -66,7 +67,12 @@ const routes: Routes = [
    {
     path:'reclamation',
     component:ReclamationComponent
+   },
+   {
+    path:'liste-reclamations',
+    component:ListeReclamationComponent
    }
+  
   
 
 

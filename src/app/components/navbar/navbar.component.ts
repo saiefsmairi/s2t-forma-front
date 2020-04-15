@@ -29,17 +29,17 @@ export class NavbarComponent implements OnInit {
 
         if(JSON.parse(sessionStorage.getItem('auth-user')).roles=='ROLE_FORMATEUR'||
         JSON.parse(sessionStorage.getItem('auth-user')).roles=='ROLE_APPRENANT') {
-  let res = this.userService.getlisteNotifByuser(JSON.parse(sessionStorage.getItem('auth-user')).user_id);
-  res.subscribe(
-    data1 => {
-        this.tab = data1;
-        this.lengthtab=this.tab.length;
-       
-    },
-    err => {
-      console.log("breaks here get notif by user");
-    }
-  );
+          let res = this.userService.getlisteNotifByuser(JSON.parse(sessionStorage.getItem('auth-user')).user_id);
+          res.subscribe(
+            data1 => {
+                this.tab = data1;
+                this.lengthtab=this.tab.length;
+               
+            },
+            err => {
+              console.log("breaks here get notif by user");
+            }
+          );
 }
 
       this.listTitles = ROUTES.filter(listTitle => listTitle);
