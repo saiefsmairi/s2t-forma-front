@@ -1,0 +1,39 @@
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+
+<section class="spacer bg-gray card-sm-content ">
+        <div class="c-container ">
+            <h3 class="h3-titlte">Liste Réclamations</h3>
+            <div class="flex-row">
+                <div class="flex-col" *ngFor="let item of tab">
+                    <div class="card-view" style="border: 1px solid var(--theme-color1);">
+                        <div class="r-layout">
+                            <div class="r-img cm-sm">
+                              <img src="https://www.numerama.com/content/uploads/2018/05/slider-facebook-new-profile.jpg" alt="">
+                            </div>
+                            <div class="r-content">
+                              <h4 class="title">{{item.user.nom}} {{item.user.prenom}}</h4>
+                              <p>
+                                 Email : {{item.user.email}}
+                              </p>
+                              <div class="taglist">
+                                <p>
+                                  Probléme d'un : 
+                               </p>
+                                  <div class="tag">{{item.typeProbleme}}</div>
+                                  
+                                </div>
+                              
+                            
+                              <p class="color-text">
+                                {{item.detail}}
+                              </p>
+                              
+                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+              </div>
+        </div>
+      </section>

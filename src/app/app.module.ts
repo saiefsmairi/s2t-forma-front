@@ -55,6 +55,7 @@ import { AjoutRecuSessionDialogComponent } from './components/ajout-recu-session
 import { ChatbotComponent } from './components/chatbot/chatbot.component';
 import { ReclamationComponent } from './components/reclamation/reclamation.component';
 import {MatRadioModule} from '@angular/material/radio';
+import { ListeReclamationComponent } from './components/liste-reclamation/liste-reclamation.component';
 
 
 
@@ -119,7 +120,9 @@ import {MatRadioModule} from '@angular/material/radio';
     AjoutRecuSessionDialogComponent,
     ChatbotComponent,
     ReclamationComponent,
-    
+
+    ListeReclamationComponent,
+
 
   ],
   entryComponents :[

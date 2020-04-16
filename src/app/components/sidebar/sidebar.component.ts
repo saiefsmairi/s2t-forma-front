@@ -50,6 +50,8 @@ const GESTROUTES: RouteInfo[] = [
   { path: '/dashboard', title: 'Tableau de Bord',  icon: 'dashboard', class: '' },
   { path: '/gestion-utilisateurs', title: 'Gestion Utilisateurs',  icon: 'persons', class: '' },
   { path: '/gestion-sessions', title: 'Gestion Sessions',  icon: 'dashboard', class: '' },
+  { path: '/liste-reclamations', title: 'Liste Réclamations',  icon: 'dashboard', class: '' },
+
 ];
 
 @Component({
