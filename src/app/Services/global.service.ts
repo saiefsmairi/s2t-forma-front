@@ -6,7 +6,7 @@ export class GlobalService {
  itemValue = new BehaviorSubject(this.theItem);
 
  set theItem(value :any) {
-   this.itemValue.next(value); // this will make sure to tell every subscriber about the change.
+   this.itemValue.next(value); 
    localStorage.setItem('theItem', value);
  }
 

@@ -91,7 +91,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatMomentDateModule,
     NgxMaterialTimepickerModule,
     Ng2SearchPipeModule,
-    MatRadioModule
+    MatRadioModule,
+  
 
   ],
   declarations: [
@@ -111,20 +112,14 @@ import {MatRadioModule} from '@angular/material/radio';
     GestionUsersComponent,
     UserInfoDialogComponent,
     GestionSessionsComponent,
-
     AffectFormateurDialogComponent,
     ConfirmDialogComponent,
-
     AffectFormateurDialogComponent,
-
     ListeSessionComponent,
-
     AjoutRecuSessionDialogComponent,
-
     ChatbotComponent,
-
     ReclamationComponent,
-
+    
 
   ],
   entryComponents :[

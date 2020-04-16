@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs/Subscription';
 import PerfectScrollbar from 'perfect-scrollbar';
 import * as $ from "jquery";
 import { TokenStorageService } from './Services/token-storage.service';
+import { GlobalService } from './Services/global.service';
 
 @Component({
   selector: 'app-root',
@@ -17,10 +18,14 @@ export class AppComponent implements OnInit {
   private _router: Subscription;
   private lastPoppedUrl: string;
   private yScrollStack: number[] = [];
+
 isLoggedIn: boolean ;
- 
+ userToken:any;
   constructor( public location: Location, private router: Router,
-    private tokenService: TokenStorageService) {}
+    private tokenService: TokenStorageService,
+    ) {
+  
+    }
   ngOnInit() {
       this.isLoggedIn=this.tokenService.getToken()==null? false:true;
       

@@ -145,9 +145,10 @@ export class NavbarComponent implements OnInit {
     }
 
     logout(){
-       
-        this.router.navigateByUrl('signin');
         sessionStorage.clear();
+       this.router.navigate(['']);
+    
+        
 
  
 
