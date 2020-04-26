@@ -16,10 +16,12 @@ export class ListeSessionComponent implements OnInit {
   value: string;
   selectedValue;
   role:string;
+  userId:any;
 
   constructor(private sessionService: SessionService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.userId=JSON.parse(sessionStorage.getItem('auth-user')).id;
     if(JSON.parse(sessionStorage.getItem('auth-user')).roles=='ROLE_APPRENANT'||
     JSON.parse(sessionStorage.getItem('auth-user')).roles=='ROLE_SOCIETE'){
       this.role="apprenant/societe";
@@ -97,11 +99,11 @@ searchPrix(test: any) {
 
 }
 
-openDialog(theme:any,prix:any){
+openDialog(sessionId,prix):any{
 
   const dialogRef = this.dialog.open(AjoutRecuSessionDialogComponent, {
     width: '700px',
-    data: { theme,prix },
+    data: { sessionId,prix,userId:this.userId },
   });
 
 dialogRef.afterClosed().subscribe(result=>{

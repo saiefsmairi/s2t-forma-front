@@ -1,0 +1,11 @@
+<h4 class="card-title ">Modifier Votre Photo De Profile</h4>
+<div class="card-body">
+    <input  type="file" accept='image/gif, image/jpeg' id="myfile"  name="myfile" (change)="onFileChanged($event)" ><br>
+<div class="row" > 
+        <img [src]="Photo"   height="300" width="300"><br>
+  </div>
+  <mat-dialog-actions >
+    <button mat-raised-button disabled="{{!changed}}" (click)="onUpload()" value="upload" >Enregistrer </button>
+    <button mat-raised-button  >Annuler </button>
+</mat-dialog-actions>
+</div>
