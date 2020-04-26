@@ -38,7 +38,6 @@ minDate:any =new Date();
 nomPrenomFormateur:string;
 idFormateur:number;
 
-
   constructor(private fb: FormBuilder , private _adapter: DateAdapter<any>,  public dialog: MatDialog,
     private gestionnaireService: GestionnaireService,public notification:NotificationsComponent,private userService:UserService) { 
 
@@ -55,8 +54,16 @@ nbApprenant:new FormControl('',[Validators.required])
 
     });
   }
+  dateFilter = (d: Date): boolean => {
+
+    const date = d.getDay(); 
+    console.log(d);
+    // Even dates are disabled.
+    return date % 2 == 0;
+  }
 
   ngOnInit(): void {
+   
     this._adapter.setLocale('fr');
   }
 
@@ -80,10 +87,10 @@ dialogRef.afterClosed().subscribe(result=>{
   onSubmit(){
 
 console.log(this.f);
-this.gestionnaireService.ajoutSession(this.f,this.idFormateur).subscribe(data=>{
-  console.log('session posted');
-  this.notification.showNotification('top','right','success','Session Ajouté');
-});
+// this.gestionnaireService.ajoutSession(this.f,this.idFormateur).subscribe(data=>{
+//   console.log('session posted');
+//   this.notification.showNotification('top','right','success','Session Ajouté');
+// });
 
 this.userService.sendnotif(this.idFormateur,1).subscribe(data=>{
   console.log('notified');

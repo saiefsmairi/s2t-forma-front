@@ -1,3 +1,4 @@
+
 import { GestionSessionsComponent } from './components/gestion-sessions/gestion-sessions.component';
 import { GestionUsersComponent } from './components/gestion-users/gestion-users.component';
 import { AjoutGestionnaireComponent } from './components/ajout-gestionnaire/ajout-gestionnaire.component';
@@ -27,6 +28,7 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+  
   },
   {
     path: 'user-profile',

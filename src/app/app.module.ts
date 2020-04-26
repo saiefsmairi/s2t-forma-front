@@ -57,7 +57,17 @@ import { ReclamationComponent } from './components/reclamation/reclamation.compo
 import {MatRadioModule} from '@angular/material/radio';
 import { ListeReclamationComponent } from './components/liste-reclamation/liste-reclamation.component';
 
+import { FilePondModule, registerPlugin } from 'ngx-filepond';
 
+import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
+import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
+import FilePondPluginImageTransform from 'filepond-plugin-image-transform';
+import FilePondPluginImageCrop from 'filepond-plugin-image-crop';
+import { PhotoProfileDialogComponent } from './components/photo-profile-dialog/photo-profile-dialog.component';
+registerPlugin(FilePondPluginFileValidateType);
+registerPlugin(FilePondPluginImagePreview);
+registerPlugin(FilePondPluginImageTransform);
+registerPlugin(FilePondPluginImageCrop);
 
 
 @NgModule({
@@ -92,7 +102,8 @@ import { ListeReclamationComponent } from './components/liste-reclamation/liste-
     MatMomentDateModule,
     NgxMaterialTimepickerModule,
     Ng2SearchPipeModule,
-    MatRadioModule
+    MatRadioModule,
+    FilePondModule
 
   ],
   declarations: [
@@ -112,21 +123,15 @@ import { ListeReclamationComponent } from './components/liste-reclamation/liste-
     GestionUsersComponent,
     UserInfoDialogComponent,
     GestionSessionsComponent,
-
     AffectFormateurDialogComponent,
     ConfirmDialogComponent,
-
     AffectFormateurDialogComponent,
-
     ListeSessionComponent,
-
     AjoutRecuSessionDialogComponent,
-
     ChatbotComponent,
-
     ReclamationComponent,
-
     ListeReclamationComponent,
+    PhotoProfileDialogComponent,
 
 
   ],
@@ -134,7 +139,8 @@ import { ListeReclamationComponent } from './components/liste-reclamation/liste-
     CertifDialogComponent,
     UserInfoDialogComponent,
     AffectFormateurDialogComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    PhotoProfileDialogComponent
   ],
   providers: [NotificationsComponent],
   bootstrap: [AppComponent]

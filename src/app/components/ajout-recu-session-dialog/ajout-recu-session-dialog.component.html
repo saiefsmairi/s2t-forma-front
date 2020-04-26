@@ -5,9 +5,16 @@
         <div class="row">
         <p>Veuillez Ajouter Le Recu du payement de cette session de {{theme}} qui coute {{prix}} DT:</p>
         </div>
-        <input type="file" accept='image/*' id="myfile" name="myfile" >
-        <input type="button" value="upload" />
+        <input  type="file" accept='image/gif, image/jpeg' id="myfile"  name="myfile" (change)="onFileChanged($event)" ><br>
+        <div  > 
+            <img *ngIf="Photo" [src]="Photo"   height="300" width="300"><br>
+      </div>
+      
 
     </div>
+    <mat-dialog-actions >
+        <button mat-raised-button disabled="{{!changed}}" (click)="onUpload()" value="upload" >Enregistrer </button>
+        <button mat-raised-button  >Annuler </button>
+    </mat-dialog-actions>
 
 </div>

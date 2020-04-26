@@ -22,7 +22,7 @@
                               <div class="col-md-5">
                                 <mat-form-field class="example-full-width" appearance="outline">
                                   <mat-label>Date Début</mat-label>
-                                  <input matInput [matDatepicker]="picker" readonly [min]="minDate" formControlName="dateDebut"   />
+                                  <input matInput   [matDatepickerFilter]="dateFilter" [matDatepicker]="picker" readonly [min]="minDate" formControlName="dateDebut"   />
                                   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                   <mat-datepicker #picker></mat-datepicker>
                                 </mat-form-field>
@@ -30,7 +30,7 @@
                                <div class="col-md-5">
                                 <mat-form-field class="example-full-width" appearance="outline">
                                   <mat-label>Date Fin</mat-label>
-                                  <input matInput [matDatepicker]="picker2" readonly  formControlName="dateFin"  [min]="picker._selected"  />
+                                  <input matInput  [matDatepickerFilter]="dateFilter" [matDatepicker]="picker2" readonly  formControlName="dateFin"  [min]="picker._selected"  />
                                   <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                                   <mat-datepicker #picker2></mat-datepicker>
                                 </mat-form-field>

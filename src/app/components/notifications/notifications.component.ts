@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-declare var $: any;
+import * as $ from 'jquery';
+import 'bootstrap-notify';
+
 @Component({
   selector: 'app-notifications',
   templateUrl: './notifications.component.html',
@@ -13,7 +15,7 @@ export class NotificationsComponent implements OnInit {
 
      
 
-      $.notify({
+      $['notify']({
           icon: "notifications",
           message: message
 

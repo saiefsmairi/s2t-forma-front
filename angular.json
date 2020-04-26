@@ -21,7 +21,10 @@
               "src/favicon.ico"
             ],
             "styles": [
-              "src/assets/scss/material-dashboard.scss"
+              "src/assets/scss/material-dashboard.scss",
+              "node_modules/filepond/dist/filepond.min.css",
+              "node_modules/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
+              
               
           
 
