@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { AppRoutingModule } from './app.routing';
 
@@ -64,6 +65,7 @@ import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
 import FilePondPluginImageTransform from 'filepond-plugin-image-transform';
 import FilePondPluginImageCrop from 'filepond-plugin-image-crop';
 import { PhotoProfileDialogComponent } from './components/photo-profile-dialog/photo-profile-dialog.component';
+import { RepondreReclamationGestDialogComponent } from './components/repondre-reclamation-gest-dialog/repondre-reclamation-gest-dialog.component';
 registerPlugin(FilePondPluginFileValidateType);
 registerPlugin(FilePondPluginImagePreview);
 registerPlugin(FilePondPluginImageTransform);
@@ -103,7 +105,8 @@ registerPlugin(FilePondPluginImageCrop);
     NgxMaterialTimepickerModule,
     Ng2SearchPipeModule,
     MatRadioModule,
-    FilePondModule
+    FilePondModule,
+    MatSnackBarModule
 
   ],
   declarations: [
@@ -132,6 +135,7 @@ registerPlugin(FilePondPluginImageCrop);
     ReclamationComponent,
     ListeReclamationComponent,
     PhotoProfileDialogComponent,
+    RepondreReclamationGestDialogComponent,
 
 
   ],
