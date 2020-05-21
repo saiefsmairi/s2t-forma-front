@@ -66,6 +66,7 @@ import FilePondPluginImageTransform from 'filepond-plugin-image-transform';
 import FilePondPluginImageCrop from 'filepond-plugin-image-crop';
 import { PhotoProfileDialogComponent } from './components/photo-profile-dialog/photo-profile-dialog.component';
 import { RepondreReclamationGestDialogComponent } from './components/repondre-reclamation-gest-dialog/repondre-reclamation-gest-dialog.component';
+import { ModifierUserByGestionnaireComponent } from './components/modifier-user-by-gestionnaire/modifier-user-by-gestionnaire.component';
 registerPlugin(FilePondPluginFileValidateType);
 registerPlugin(FilePondPluginImagePreview);
 registerPlugin(FilePondPluginImageTransform);
@@ -136,6 +137,7 @@ registerPlugin(FilePondPluginImageCrop);
     ListeReclamationComponent,
     PhotoProfileDialogComponent,
     RepondreReclamationGestDialogComponent,
+    ModifierUserByGestionnaireComponent,
 
 
   ],

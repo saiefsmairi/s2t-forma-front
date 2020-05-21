@@ -17,8 +17,12 @@
                             <table class="table">
                                 <thead class=" text-primary">
                                     <th>
+                                        Cin
+                                     </th>
+                                    <th>
                                        Nom
                                     </th>
+                              
                                     <th>
                                         Prenom
                                     </th>
@@ -42,10 +46,14 @@
                                 <tbody>
                                     <tr *ngFor="let item of tab">
                                         <ng-container *ngIf="item.type_compte=='Formateur'">
+                                            <td>
+                                                <mat-icon mat-list-item>person</mat-icon>
+                                                {{item.cin}}
+                                            </td>
                                         <td>
-                                            <mat-icon mat-list-item>person</mat-icon>
                                             {{item.nom}}
                                         </td>
+                                     
                                         <td>
                                             {{item.prenom}}
                                         </td>
@@ -79,6 +87,13 @@
                                                 
                                             </button>
 
+                                        </td>
+
+                                        <td class="td-actions text-right">
+                                            <button type="button" rel="tooltip" class="btn btn-info btn-info" (click)="openDialogToModify(item.nom,item.prenom,item.cin,item.email,item.num_tel,item.user_id)"  >
+                                                <i class="material-icons">edit</i>
+                                                
+                                            </button>
                                         </td>
 
                                         <td class="td-actions text-right">
@@ -117,8 +132,12 @@
                             <table class="table">
                                 <thead class=" text-primary">
                                     <th>
+                                        Cin
+                                     </th>
+                                    <th>
                                        Nom
                                     </th>
+                                  
                                     <th>
                                         Prenom
                                     </th>
@@ -138,10 +157,15 @@
                                 <tbody>
                                     <tr *ngFor="let item of tab">
                                         <ng-container *ngIf="item.type_compte=='Apprenant'">
+                                            <td>
+                                                <mat-icon mat-list-item>person</mat-icon>
+                                                {{item.cin}}
+                                            </td>
                                         <td>
-                                            <mat-icon mat-list-item>person</mat-icon>
+                                           
                                             {{item.nom}}
                                         </td>
+                                     
                                         <td>
                                             {{item.prenom}}
                                         </td>
@@ -152,6 +176,13 @@
                                             {{item.num_tel}}
                                         </td>
                            
+                                        
+                                        <td class="td-actions text-right">
+                                            <button type="button" rel="tooltip" class="btn btn-info btn-info" (click)="openDialogToModify(item.nom,item.prenom,item.cin,item.email,item.num_tel,item.user_id)"  >
+                                                <i class="material-icons">edit</i>
+                                                
+                                            </button>
+                                        </td>
                                         <td class="td-actions text-right">
                                             <button type="button" rel="tooltip" class="btn btn-info btn-danger"  (click)="SupprimerCompte(item.user_id)">
                                                 <i class="material-icons">clear</i>

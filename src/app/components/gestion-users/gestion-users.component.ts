@@ -4,6 +4,7 @@ import { UserService } from "app/Services/user.service";
 import { HttpClient } from "@angular/common/http";
 import { MatDialog } from "@angular/material/dialog";
 import { GestionnaireService } from "app/Services/gestionnaire.service";
+import { ModifierUserByGestionnaireComponent } from "../modifier-user-by-gestionnaire/modifier-user-by-gestionnaire.component";
 
 @Component({
   selector: "app-gestion-users",
@@ -25,7 +26,7 @@ export class GestionUsersComponent implements OnInit {
       data => {
       
         this.tab = data;
-     
+ 
       },
       err => {
         console.log("breaks here getallusers");
@@ -49,6 +50,22 @@ export class GestionUsersComponent implements OnInit {
     });
 
   }
+
+  openDialogToModify(nom,prenom,cin,email,tel,id:any){
+
+    const dialogRef = this.dialog.open(ModifierUserByGestionnaireComponent, {
+      width: '500px',
+      data: {nom,prenom,cin,email, tel,id },
+    });
+  
+  dialogRef.afterClosed().subscribe(result=>{
+    console.log('The dialog was closed');
+    this.ngOnInit();
+
+  })
+  
+  
+}
 
   validerCompte(id: any) {
     console.log(id);

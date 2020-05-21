@@ -62,6 +62,43 @@ export class GestionnaireService {
 
   }
 
+  update(user, id,key): Observable<any> {
+    var email1;
+    var cin1;
+    console.log(user[key].value);
+              if((key=='cin'||key=='email')||(key=='cin'&&key=='email')){
+                email1=user['email'].value;
+               cin1=user['cin'].value;
+              }
+              else {
+                email1=user.email.value;
+                cin1=user.cin.value;
+              }
+
+              console.log(email1);
+              console.log(cin1);
+    const params = new HttpParams().set('id', id);
+
+    httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params
+    };
+    return this.http.put(
+      TEST_API + 'update-users-profil',
+      {
+  
+        nom: user.nom.value,
+        prenom: user.prenom.value,
+        email: email1,
+        cin: cin1,
+      //  datenais: user.datenais.value,
+        tel:user.tel.value
+      },
+      httpOptions
+    );
+
+  }
+
 
   public getAllFormateurs(): Observable<any> {
     const params = new HttpParams();
