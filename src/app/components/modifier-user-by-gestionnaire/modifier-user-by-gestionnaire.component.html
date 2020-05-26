@@ -52,7 +52,7 @@
                               <div class="col-md">
                                 <mat-form-field class="example-full-width" appearance="outline">
                                   <mat-label>Num° Tél</mat-label>
-                                  <input matInput placeholder="Num° Tél" type="text" value="{{tel}}" formControlName="tel">
+                                  <input matInput placeholder="Num° Tél" type="text" value="{{tel}}" formControlName="tel" maxlength=8 >
                                   <mat-error *ngIf="f.tel.invalid">Numéro de téléphone invalide </mat-error>
 
                                 </mat-form-field>

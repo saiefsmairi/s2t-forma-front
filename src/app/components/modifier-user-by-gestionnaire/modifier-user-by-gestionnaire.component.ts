@@ -83,7 +83,7 @@ export class ModifierUserByGestionnaireComponent implements OnInit {
           },
           err => {
             console.log('breaks here on updated profil by gestionnaire');
-            this._snackBar.open("profil mis à jour echoué , cin ou email existe déja","", {
+            this._snackBar.open("profil mis à jour echoué , les données que vous avez entrez existe déja","", {
               duration: 4000,
             });
           }

@@ -13,6 +13,15 @@ import { ModifierUserByGestionnaireComponent } from "../modifier-user-by-gestion
 })
 export class GestionUsersComponent implements OnInit {
   tab: any[];
+  tabFormateur:any [];
+  tabApprenant:any [];
+
+  cin;
+  nom;
+  tel;
+  cin2;
+  nom2;
+  tel2;
   constructor(
     private httpClient: HttpClient,
     private userService: UserService,
@@ -21,15 +30,28 @@ export class GestionUsersComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    let res = this.gestionnaireService.getAllUsers();
+    let res = this.gestionnaireService.AllFormateurs();
     res.subscribe(
       data => {
       
-        this.tab = data;
+        this.tabFormateur = data;
  
       },
       err => {
-        console.log("breaks here getallusers");
+        console.log("breaks here getalformateurs");
+        // this.errorMessage = err.error.message;
+      }
+    );
+
+    let res2 = this.gestionnaireService.AllApprenant();
+    res2.subscribe(
+      data => {
+      
+        this.tabApprenant = data;
+ 
+      },
+      err => {
+        console.log("breaks here getallapprenants");
         // this.errorMessage = err.error.message;
       }
     );
@@ -43,9 +65,15 @@ export class GestionUsersComponent implements OnInit {
     });
   }
 
-  SupprimerCompte(id:any){
+  SupprimerCompte(id:any,type_compte){
     this.gestionnaireService.SupprimerUsers(id).subscribe(data => {
-      this.tab=[];
+      if(type_compte=='Formateur'){
+        this.tabFormateur=[];
+      }
+      else  if(type_compte=='Apprenant'){
+        this.tabApprenant=[];
+      }
+      
       this.ngOnInit();
     });
 
@@ -66,6 +94,36 @@ export class GestionUsersComponent implements OnInit {
   
   
 }
+
+
+searchBycin(type: any) {
+  if (this.cin !='') {
+    this.tabFormateur = this.tabFormateur.filter(res => {
+      return res.cin.toLocaleLowerCase().match(this.cin.toLocaleLowerCase());
+    })
+  } else if (this.cin =='') {
+    this.tabFormateur = [];
+    this.ngOnInit();
+    
+  }
+}
+
+
+
+searchByNom() {
+  if (this.nom !='') {
+    this.tabFormateur = this.tabFormateur.filter(res => {
+      return res.nom.toLocaleLowerCase().match(this.nom.toLocaleLowerCase());
+    })
+  } else if (this.nom =='') {
+    this.tabFormateur = [];
+    this.ngOnInit();
+    
+  }
+
+}
+
+
 
   validerCompte(id: any) {
     console.log(id);

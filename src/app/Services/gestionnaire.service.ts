@@ -21,12 +21,21 @@ export class GestionnaireService {
   constructor(private http : HttpClient) { }
 
 
- public getAllUsers(): Observable<any> {
+ public AllFormateurs(): Observable<any> {
     const params = new HttpParams();
     httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),params
     };
-    return this.http.get(TEST_API + 'gestion-users', httpOptions);
+    return this.http.get(TEST_API + 'getAllFormateurs', httpOptions);
+
+  }
+
+  public AllApprenant(): Observable<any> {
+    const params = new HttpParams();
+    httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),params
+    };
+    return this.http.get(TEST_API + 'getAllApprenant', httpOptions);
 
   }
 
@@ -65,18 +74,22 @@ export class GestionnaireService {
   update(user, id,key): Observable<any> {
     var email1;
     var cin1;
+    var tel1;
+
     console.log(user[key].value);
-              if((key=='cin'||key=='email')||(key=='cin'&&key=='email')){
+              if((key=='cin'||key=='email'||key=='tel')||(key=='cin'&&key=='email'&&key=='tel')){
                 email1=user['email'].value;
                cin1=user['cin'].value;
+               tel1=user['tel'].value;
               }
               else {
                 email1=user.email.value;
                 cin1=user.cin.value;
+                tel1=user.tel.value;
+
               }
 
-              console.log(email1);
-              console.log(cin1);
+       
     const params = new HttpParams().set('id', id);
 
     httpOptions = {
@@ -92,7 +105,7 @@ export class GestionnaireService {
         email: email1,
         cin: cin1,
       //  datenais: user.datenais.value,
-        tel:user.tel.value
+        tel:tel1
       },
       httpOptions
     );
