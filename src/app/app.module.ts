@@ -58,19 +58,23 @@ import { ReclamationComponent } from './components/reclamation/reclamation.compo
 import {MatRadioModule} from '@angular/material/radio';
 import { ListeReclamationComponent } from './components/liste-reclamation/liste-reclamation.component';
 
-import { FilePondModule, registerPlugin } from 'ngx-filepond';
 
-import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
-import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
-import FilePondPluginImageTransform from 'filepond-plugin-image-transform';
-import FilePondPluginImageCrop from 'filepond-plugin-image-crop';
+
 import { PhotoProfileDialogComponent } from './components/photo-profile-dialog/photo-profile-dialog.component';
+
+import { GestionRecuComponent } from './components/gestion-recu/gestion-recu.component';
+import { PhotoRecuDialogComponent } from './components/photo-recu-dialog/photo-recu-dialog.component';
+import { SessionComponent } from './components/session/session.component';
+import { AjoutSupportCoursDialogComponent } from './components/ajout-support-cours-dialog/ajout-support-cours-dialog.component';
+
+import { PdfPreviewDialogComponent } from './components/pdf-preview-dialog/pdf-preview-dialog.component';
+
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+
 import { RepondreReclamationGestDialogComponent } from './components/repondre-reclamation-gest-dialog/repondre-reclamation-gest-dialog.component';
 import { ModifierUserByGestionnaireComponent } from './components/modifier-user-by-gestionnaire/modifier-user-by-gestionnaire.component';
-registerPlugin(FilePondPluginFileValidateType);
-registerPlugin(FilePondPluginImagePreview);
-registerPlugin(FilePondPluginImageTransform);
-registerPlugin(FilePondPluginImageCrop);
+
 
 
 @NgModule({
@@ -106,8 +110,12 @@ registerPlugin(FilePondPluginImageCrop);
     NgxMaterialTimepickerModule,
     Ng2SearchPipeModule,
     MatRadioModule,
-    FilePondModule,
+
+    PdfViewerModule,
+    NgxExtendedPdfViewerModule
+
     MatSnackBarModule
+
 
   ],
   declarations: [
@@ -136,12 +144,21 @@ registerPlugin(FilePondPluginImageCrop);
     ReclamationComponent,
     ListeReclamationComponent,
     PhotoProfileDialogComponent,
+
+    GestionRecuComponent,
+    PhotoRecuDialogComponent,
+    SessionComponent,
+    AjoutSupportCoursDialogComponent,
+    PdfPreviewDialogComponent,
+
+
     RepondreReclamationGestDialogComponent,
     ModifierUserByGestionnaireComponent,
 
 
+
   ],
-  entryComponents :[
+  entryComponents : [
     CertifDialogComponent,
     UserInfoDialogComponent,
     AffectFormateurDialogComponent,

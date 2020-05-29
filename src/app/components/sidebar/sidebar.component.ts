@@ -20,8 +20,8 @@ const ADMINROUTES: RouteInfo[] = [
 const APPRENANTROUTES: RouteInfo[] = [
   { path: '/dashboard', title: 'Tableau De Bord',  icon: 'dashboard', class: '' },
   { path: '/user-profile', title: 'Mon Profile',  icon: 'person', class: '' },
-  { path: '/liste-sessions', title: 'Liste Sessions',  icon: 'person', class: '' },
-  { path: '/reclamation', title: 'Réclamer un probléme',  icon: 'person', class: '' },
+  { path: '/liste-sessions', title: 'Liste Sessions',  icon: 'list_alt', class: '' },
+  { path: '/reclamation', title: 'Réclamer un probléme',  icon: 'report_problem', class: '' },
 
 
   
@@ -31,8 +31,8 @@ const APPRENANTROUTES: RouteInfo[] = [
 const FORMATEURROUTES: RouteInfo[] = [
   { path: '/dashboard', title: 'Tableau De Bord',  icon: 'dashboard', class: '' },
   { path: '/user-profile', title: 'Mon Profile',  icon: 'person', class: '' },
-  { path: '/liste-sessions', title: 'Liste Sessions',  icon: 'person', class: '' },
-  { path: '/reclamation', title: 'Réclamer un probléme',  icon: 'person', class: '' },
+  { path: '/liste-sessions', title: 'Liste Sessions',  icon: 'list_alt', class: '' },
+  { path: '/reclamation', title: 'Réclamer un probléme',  icon: 'report_problem', class: '' },
 
 
 
@@ -40,8 +40,8 @@ const FORMATEURROUTES: RouteInfo[] = [
 
 const SOCIETEROUTES: RouteInfo[] = [
   { path: '/dashboard', title: 'Tableau De Bord',  icon: 'dashboard', class: '' },
-  { path: '/liste-sessions', title: 'Liste Sessions',  icon: 'person', class: '' },
-  { path: '/reclamation', title: 'Réclamer un probléme',  icon: 'person', class: '' },
+  { path: '/liste-sessions', title: 'Liste Sessions',  icon: 'list_alt', class: '' },
+  { path: '/reclamation', title: 'Réclamer un probléme',  icon: 'report_problem', class: '' },
 
 
 ];
@@ -50,7 +50,8 @@ const GESTROUTES: RouteInfo[] = [
   { path: '/dashboard', title: 'Tableau de Bord',  icon: 'dashboard', class: '' },
   { path: '/gestion-utilisateurs', title: 'Gestion Utilisateurs',  icon: 'persons', class: '' },
   { path: '/gestion-sessions', title: 'Gestion Sessions',  icon: 'dashboard', class: '' },
-  { path: '/liste-reclamations', title: 'Liste Réclamations',  icon: 'dashboard', class: '' },
+  { path: '/liste-reclamations', title: 'Liste Réclamations',  icon: 'list_alt', class: '' },
+  { path: '/gestion-recu', title: 'Gestion Recu',  icon: 'view_list', class: '' },
 
 ];
 

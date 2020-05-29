@@ -51,7 +51,6 @@ this.changed=true;
     this.Photo= this.Photo.replace('data:image/jpeg;base64,','');
     this.Photo=  this.Photo.replace('data:image/png;base64,','');
       this.dialogRef.close(this.Photo);
-
 }
 
 }

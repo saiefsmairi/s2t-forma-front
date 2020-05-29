@@ -38,6 +38,7 @@ export class GestionUsersComponent implements OnInit {
  
       },
       err => {
+
         console.log("breaks here getalformateurs");
         // this.errorMessage = err.error.message;
       }
@@ -52,6 +53,7 @@ export class GestionUsersComponent implements OnInit {
       },
       err => {
         console.log("breaks here getallapprenants");
+
         // this.errorMessage = err.error.message;
       }
     );

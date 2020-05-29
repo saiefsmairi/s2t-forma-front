@@ -1,3 +1,4 @@
+import { TokenStorageService } from './../../Services/token-storage.service';
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
@@ -20,7 +21,8 @@ export class NavbarComponent implements OnInit {
     lengthtab:any;
 
 
-    constructor(location: Location,  private element: ElementRef, private router: Router,private userService:UserService) {
+    constructor(location: Location,  private element: ElementRef, private router: Router,private userService:UserService
+        ,public tokenService:TokenStorageService) {
       this.location = location;
           this.sidebarVisible = false;
     }
@@ -144,10 +146,12 @@ export class NavbarComponent implements OnInit {
       return 'Dashboard';
     }
 
-    logout(){
-        sessionStorage.clear();
-       this.router.navigate(['']);
-    
+    logout($event:Event){
+   
+        this.tokenService.signOut();
+      
+       this.router.navigate(['signin']);
+      
         
 
  

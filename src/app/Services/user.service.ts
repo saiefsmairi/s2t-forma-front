@@ -47,7 +47,7 @@ export class UserService {
         prenom: user.prenom.value,
         email: user.email.value,
         cin: user.cin.value,
-      //  datenais: user.datenais.value,
+
         tel:user.tel.value
       },
       httpOptions
@@ -166,7 +166,16 @@ export class UserService {
 
       });
 }
-  
+public getUserSessions(id): Observable<any>{
+
+  const params = new HttpParams().set('id', id);
+
+    httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params
+    };
+    return this.http.get(USERS_API + 'dashboard-apprenant/'+id, httpOptions);
+}
 
 }
 

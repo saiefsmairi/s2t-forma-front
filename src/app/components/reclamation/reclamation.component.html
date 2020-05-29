@@ -1,46 +1,63 @@
-
-<div class="container">
+<div class="wrapper">
+  <div class="sidebar" data-color="danger" data-background-color="white" data-image="./assets/img/sidebar-1.jpg">
+      <app-sidebar></app-sidebar>
+     
+  </div>
+  <div class="main-panel">
+      <app-navbar></app-navbar>
+      <div class="main-content">
+        <div class="container">
  
-  <form  name="form"  [formGroup]="form" (ngSubmit)="onFormSubmit()"   >
-    <h1>FORMULAIRE DE RECLAMTION</h1>
-  
-    <div class="form-group">
-      <mat-form-field class="example-full-width">
-        <mat-label>Nom</mat-label>
-        <input matInput placeholder="Nom"  value={{nom}}  readonly style="color: black;">
-      </mat-form-field>
-    </div>
-    <div class="form-group">
-      <mat-form-field class="example-full-width">
-        <mat-label>Email</mat-label>
-        <input matInput placeholder="Email"  value={{email}} readonly style="color: black;" >
-      </mat-form-field>
-    </div>
-
-       <div class="checkbox">
-      <mat-label>Probléme au niveau de </mat-label>
-      <mat-radio-group class="example-radio-group" style=" display: flex; flex-direction: column; margin: 15px 0;"  required formControlName="typecheck">
-        <mat-radio-button value="Formateur" >Formateur</mat-radio-button>
-        <mat-radio-button value="Apprenant" >Apprenant</mat-radio-button>
-        <mat-radio-button value="Cours"  >Cours</mat-radio-button>
-        <mat-radio-button value="Payement"  >Payement</mat-radio-button>
-        <mat-radio-button value="Autre"  >Autre</mat-radio-button>
-
-
-    </mat-radio-group>
-    </div>
-   
-    <div class="form-group">
-      <mat-form-field class="example-full-width">
-        <mat-label>Décrire votre probléme avec plus détails</mat-label>
-        <textarea matInput formControlName="details"></textarea>
-      </mat-form-field>
+          <form  name="form"  [formGroup]="form" (ngSubmit)="onFormSubmit()"   >
+            <h1>FORMULAIRE DE RECLAMTION</h1>
+          
+            <div class="form-group">
+              <mat-form-field class="example-full-width">
+                <mat-label>Nom</mat-label>
+                <input matInput placeholder="Nom"  value={{nom}}  readonly style="color: black;">
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+              <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Email"  value={{email}} readonly style="color: black;" >
+              </mat-form-field>
+            </div>
+        
+               <div class="checkbox">
+              <mat-label>Probléme au niveau de </mat-label>
+              <mat-radio-group class="example-radio-group" style=" display: flex; flex-direction: column; margin: 15px 0;"  required formControlName="typecheck">
+                <mat-radio-button value="Formateur" >Formateur</mat-radio-button>
+                <mat-radio-button value="Apprenant" >Apprenant</mat-radio-button>
+                <mat-radio-button value="Cours"  >Cours</mat-radio-button>
+                <mat-radio-button value="Payement"  >Payement</mat-radio-button>
+                <mat-radio-button value="Autre"  >Autre</mat-radio-button>
+        
+        
+            </mat-radio-group>
+            </div>
+           
+            <div class="form-group">
+              <mat-form-field class="example-full-width">
+                <mat-label>Décrire votre probléme avec plus détails</mat-label>
+                <textarea matInput formControlName="details"></textarea>
+              </mat-form-field>
+              </div>
+              <div class="button-container">
+                <button type="submit" class="button" ><span>Submit</span></button>
+            
+              </div>
+         
+          </form>
+         
+        </div>
       </div>
-      <div class="button-container">
-        <button type="submit" class="button" ><span>Submit</span></button>
-    
-      </div>
- 
-  </form>
- 
+      
+
+          <app-footer></app-footer>
+
+  </div>
+
+
+
 </div>

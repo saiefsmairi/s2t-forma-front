@@ -18,6 +18,8 @@ import { ListeSessionComponent } from './components/liste-session/liste-session.
 import { ChatbotComponent } from './components/chatbot/chatbot.component';
 import { ReclamationComponent } from './components/reclamation/reclamation.component';
 import { ListeReclamationComponent } from './components/liste-reclamation/liste-reclamation.component';
+import { GestionRecuComponent } from './components/gestion-recu/gestion-recu.component';
+import { SessionComponent } from './components/session/session.component';
 
 const routes: Routes = [
   {
@@ -73,6 +75,14 @@ const routes: Routes = [
    {
     path:'liste-reclamations',
     component:ListeReclamationComponent
+   },
+   {
+    path:'gestion-recu',
+    component:GestionRecuComponent
+   },
+   {
+    path:'session/:id',
+    component:SessionComponent
    }
   
   

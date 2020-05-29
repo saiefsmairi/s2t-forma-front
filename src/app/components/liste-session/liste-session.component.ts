@@ -25,7 +25,7 @@ export class ListeSessionComponent implements OnInit {
     if(JSON.parse(sessionStorage.getItem('auth-user')).roles=='ROLE_APPRENANT'||
     JSON.parse(sessionStorage.getItem('auth-user')).roles=='ROLE_SOCIETE'){
       this.role="apprenant/societe";
-    const res = this.sessionService.getAllSessions();
+    const res = this.sessionService.getAllSessions(this.userId);
       res.subscribe(
         data => {
           this.tab = data;
