@@ -28,6 +28,7 @@ export class GestionUsersComponent implements OnInit {
      
       },
       err => {
+        alert(err.message);
         console.log("breaks here getallusers");
         // this.errorMessage = err.error.message;
       }

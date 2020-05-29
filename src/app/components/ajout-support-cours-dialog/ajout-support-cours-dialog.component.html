@@ -1,0 +1,47 @@
+<div *ngIf="typeop=='Add'">
+  <h1 mat-dialog-title >Ajouter Un Support de cours </h1>
+  <div mat-dialog-content style="height: 200px">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" >
+     <mat-form-field>
+      <mat-label>Nom de Support de cours </mat-label>
+      <input matInput name="name"  formControlName="name"  required >
+    </mat-form-field>
+  
+      <mat-label>Document</mat-label><br/>
+  
+      <input  type="file"  name="file" accept="application/pdf"  id="myfile"  (change)="onFileChanged($event)"  required>
+  
+     
+    <div mat-dialog-actions>
+      <button mat-raised-button (click)="onNoClick()" >Annuler</button>
+      <button mat-raised-button   type="submit"  >Ok</button>
+    </div>
+  </form>
+  </div>
+</div>
+
+
+<!--Modification Support Cours-->
+<div *ngIf="typeop=='Edit'">
+<h1 mat-dialog-title >Modifier Un Support de cours </h1>
+<div mat-dialog-content style="height: 200px">
+<form [formGroup]="form" (ngSubmit)="onEdit()" >
+   <mat-form-field>
+    <mat-label>Nom de Support de cours </mat-label>
+    <input matInput name="name"  formControlName="name"   required >
+  </mat-form-field>
+
+    <mat-label>Document</mat-label><br/>
+
+    <input  type="file"  name="file" accept="application/pdf"  id="myfile" required (change)="onFileChanged($event)"  required>
+
+   
+  <div mat-dialog-actions>
+    <button mat-raised-button (click)="onNoClick()" >Annuler</button>
+    <button mat-raised-button   type="submit"  >Ok</button>
+  </div>
+</form>
+</div>
+</div>
+
+

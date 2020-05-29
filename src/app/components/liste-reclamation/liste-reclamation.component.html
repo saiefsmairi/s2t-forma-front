@@ -1,8 +1,15 @@
-<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
 
-<section class="spacer bg-gray card-sm-content ">
+<div class="wrapper">
+  <div class="sidebar" data-color="danger" data-background-color="white" data-image="./assets/img/sidebar-1.jpg">
+      <app-sidebar></app-sidebar>
+     
+  </div>
+  <div class="main-panel">
+      <app-navbar></app-navbar>
+      <div class="main-content">
+       
         <div class="c-container ">
-            <h3 class="h3-titlte">Liste Réclamations</h3>
+     
             <div class="flex-row">
                 <div class="flex-col" *ngFor="let item of tab">
                     <div class="card-view" style="border: 1px solid var(--theme-color1);">
@@ -36,4 +43,17 @@
                
               </div>
         </div>
-      </section>
+    
+      </div>
+      
+
+          <app-footer></app-footer>
+
+  </div>
+
+
+
+</div>
+
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+

@@ -101,6 +101,30 @@ export class GestionnaireService {
 
   }
 
+  public getAllRecus(): Observable<any> {
+    const params = new HttpParams();
+    httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),params
+    };
+    return this.http.get(TEST_API + 'gestion-recu', httpOptions);
 
+  }
+
+  public verifierRecu(userId,sessionId,idRecu :any){
+    const params = new HttpParams();
+    httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),params
+    };
+   
+
+     this.http.post(TEST_API + 'gestion-recu',{
+       userId,
+       sessionId,
+       idRecu
+     }, httpOptions).subscribe(response=>{
+
+     });
+
+  }
 
 }

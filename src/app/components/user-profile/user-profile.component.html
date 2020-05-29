@@ -1,118 +1,134 @@
 <app-chatbot></app-chatbot>
-
-<div class="main-content">
-
-  <div class="container-fluid">
-      <div class="row">
-          <div class="col-md-8">
-              <div class="card">
-                  <div class="card-header card-header-danger">
-                      <h4 class="card-title">Modifier Profile</h4>
-                  </div>
-                  <div class="card-body">
-                      <form  name="form" [formGroup]="form"  (ngSubmit)="onSubmit()" >
-                          <div class="row">
-                              <div class="col-md-5">
-                                <mat-form-field class="example-full-width" appearance="outline">
-                                  <mat-label>CIN</mat-label>
-                                    <input matInput placeholder="CIN" value="{{cin}}" formControlName="cin" readonly>
-                                  </mat-form-field>
-                              </div>
-                             
-                              <div class="col-md-4">
-                                  <mat-form-field class="example-full-width" appearance="outline">
-                                    <mat-label>E-mail</mat-label>
-                                    <input matInput placeholder="Email address" type="email" value="{{email}}" formControlName="email">
-                                  </mat-form-field>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-6">
-                                <mat-form-field class="example-full-width" appearance="outline">
-                                  <mat-label>Nom</mat-label>
-                                  <input matInput placeholder="Nom" type="text" value="{{nom}}" formControlName="nom">
-                                </mat-form-field>
-                              </div>
-                              <div class="col-md-6">
-                                <mat-form-field class="example-full-width" appearance="outline">
-                                  <mat-label>Prénom</mat-label>
-                                  <input matInput placeholder="Prénom" type="text" value="{{prenom}}" formControlName="prenom">
-                                </mat-form-field>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width" appearance="outline">
-                                  <mat-label>Num° Tél</mat-label>
-                                  <input matInput placeholder="Num° Tél" type="text" value="{{tel}}" formControlName="tel">
-                                </mat-form-field>
-                              </div>
-                            
-                          </div>
-                          
-                          <button mat-raised-button type="submit" class="btn btn-danger pull-right">Mise a jour  Profile</button>
-                          <div class="row">&nbsp;</div>
-                         
-
-                          
-                         
-                          
-
-                        
-                          
-               
-                       
-                         
-                      </form>
-                      <div >
-                        {{message}}
-                      </div>
-                  </div>
-              </div>
-             
-              <div class="card">
-                <div class="row col-md-12">
-                  <div class="card-header card-header-danger col-md-12">
-                    <h4 class="card-title">Changement Mot De Passe</h4>
-                </div>
-                <div class="card-body">
-                <form  name="form" [formGroup]="Passwordform"  (ngSubmit)="onPasswordchange()"  class="col-md-12">
-                    <div class=" row col-md-6">
-                      <mat-form-field class="example-full-width" appearance="outline">
-                        <mat-label>Ancienne Mot de Passe</mat-label>
-                        <input matInput [type]="hide ? 'password' : 'text'"  formControlName="passwordold">
-                        <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                      </mat-form-field>
-                    </div>
-                    <div class="row col-md-6">
-                      <mat-form-field appearance="outline">
-                        <mat-label>Nouveau Mot de Passe</mat-label>
-                        <input matInput [type]="hide ? 'password' : 'text'"  formControlName="passwordnew" >
-                        <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                      </mat-form-field>
-                    </div>
-                 
-                    
-                
-                
-                    <button mat-raised-button type="submit" class="btn btn-danger pull-right">Changer Mot De Passe </button>
-                    </form>
-                  </div>
-                </div>
-              </div>
-          </div>
-          <div class="col-md-4">
-              <div class="card card-profile">
-                <img class="card-avatar" (click)="openDialog()" [src]="photoProfil"  />   
-                  <div class="card-body">
-                      <h4 class="card-title">{{nom}} {{prenom}}</h4>
-                    <h6 class="pull-left">Compétences :</h6><br>
-                    <div  class="pull-left" *ngFor="let item of listCertif">
-                      <span>{{item.name}}</span><br/>
-                    </div>   
-                  </div>
-                 
-          </div> 
-      </div>
+<div class="wrapper">
+  <div class="sidebar" data-color="danger" data-background-color="white" data-image="./assets/img/sidebar-1.jpg">
+      <app-sidebar></app-sidebar>
+     
   </div>
+  <div class="main-panel">
+      <app-navbar></app-navbar>
+    
+      <div class="main-content">
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header card-header-danger">
+                            <h4 class="card-title">Modifier Profile</h4>
+                        </div>
+                        <div class="card-body">
+                            <form  name="form" [formGroup]="form"  (ngSubmit)="onSubmit()" >
+                                <div class="row">
+                                    <div class="col-md-5">
+                                      <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>CIN</mat-label>
+                                          <input matInput placeholder="CIN" value="{{cin}}" formControlName="cin" readonly>
+                                        </mat-form-field>
+                                    </div>
+                                   
+                                    <div class="col-md-4">
+                                        <mat-form-field class="example-full-width" appearance="outline">
+                                          <mat-label>E-mail</mat-label>
+                                          <input matInput placeholder="Email address" type="email" value="{{email}}" formControlName="email">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                      <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Nom</mat-label>
+                                        <input matInput placeholder="Nom" type="text" value="{{nom}}" formControlName="nom">
+                                      </mat-form-field>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Prénom</mat-label>
+                                        <input matInput placeholder="Prénom" type="text" value="{{prenom}}" formControlName="prenom">
+                                      </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                      <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Num° Tél</mat-label>
+                                        <input matInput placeholder="Num° Tél" type="text" value="{{tel}}" formControlName="tel">
+                                      </mat-form-field>
+                                    </div>
+                                  
+                                </div>
+                                
+                                <button mat-raised-button type="submit" class="btn btn-danger pull-right">Mise a jour  Profile</button>
+                                <div class="row">&nbsp;</div>
+                               
+      
+                                
+                               
+                                
+      
+                              
+                                
+                     
+                             
+                               
+                            </form>
+                            <div >
+                              {{message}}
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="card">
+                      <div class="row col-md-12">
+                        <div class="card-header card-header-danger col-md-12">
+                          <h4 class="card-title">Changement Mot De Passe</h4>
+                      </div>
+                      <div class="card-body">
+                      <form  name="form" [formGroup]="Passwordform"  (ngSubmit)="onPasswordchange()"  class="col-md-12">
+                          <div class=" row col-md-6">
+                            <mat-form-field class="example-full-width" appearance="outline">
+                              <mat-label>Ancienne Mot de Passe</mat-label>
+                              <input matInput [type]="hide ? 'password' : 'text'"  formControlName="passwordold">
+                              <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </mat-form-field>
+                          </div>
+                          <div class="row col-md-6">
+                            <mat-form-field appearance="outline">
+                              <mat-label>Nouveau Mot de Passe</mat-label>
+                              <input matInput [type]="hide ? 'password' : 'text'"  formControlName="passwordnew" >
+                              <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </mat-form-field>
+                          </div>
+                       
+                          
+                      
+                      
+                          <button mat-raised-button type="submit" class="btn btn-danger pull-right">Changer Mot De Passe </button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-profile">
+                      <img class="card-avatar" (click)="openDialog()" [src]="photoProfil"  />   
+                        <div class="card-body">
+                            <h4 class="card-title">{{nom}} {{prenom}}</h4>
+                          <h6 class="pull-left">Compétences :</h6><br>
+                          <div  class="pull-left" *ngFor="let item of listCertif">
+                            <span>{{item.name}}</span><br/>
+                          </div>   
+                        </div>
+                       
+                </div> 
+            </div>
+        </div>
+      </div>
+      
+
+          <app-footer></app-footer>
+
+  </div>
+
+
+
 </div>

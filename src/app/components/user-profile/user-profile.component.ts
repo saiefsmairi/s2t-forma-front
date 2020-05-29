@@ -260,10 +260,12 @@ openDialog() {
 
 dialogRef.afterClosed().subscribe(result => {
   if(result!=null){
-    console.log(result);
+    
     this.userObject.photoProfil = result;
+    sessionStorage.setItem(this.USER_KEY, JSON.stringify(this.userObject));
     this.globalSrv.theItem = this.userObject;
-    this.notif.showNotification('top','right','success','Photo Modifiée avec succées ')
+    this.notif.showNotification('top','right','success','Photo Modifiée avec succées ');
+ 
   }
 
 

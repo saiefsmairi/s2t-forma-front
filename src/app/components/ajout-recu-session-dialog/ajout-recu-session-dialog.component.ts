@@ -54,7 +54,7 @@ export class AjoutRecuSessionDialogComponent implements OnInit {
         }
         onUpload() {
 
-          console.log('1')
+        
             const uploadImageData = new FormData();
            uploadImageData.append('imageFile', this.selectedFile,this.sessionId);
            uploadImageData.set('sessionId', this.sessionId);

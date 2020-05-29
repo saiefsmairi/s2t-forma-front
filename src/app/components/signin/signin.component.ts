@@ -56,7 +56,7 @@ export class SigninComponent implements OnInit {
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
 
-        this.reloadPage();
+     
         this.router.navigate(['dashboard']);
       },
       err => {
@@ -69,9 +69,6 @@ export class SigninComponent implements OnInit {
 
 
 
-  reloadPage() {
-    window.location.reload();
-  }
 
 
 

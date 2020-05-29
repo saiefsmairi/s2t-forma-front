@@ -1,5 +1,40 @@
-<div class="main-content">
-  
+<div class="wrapper">
+    <div class="sidebar" data-color="danger" data-background-color="white" >
+        <app-sidebar></app-sidebar>
+       
+    </div>
+    <div class="main-panel">
+        <app-navbar></app-navbar>
+        <div class="main-content">
+
+           <!--Apprenant--> 
+  Vos Sessions 
+  <mat-selection-list >
+      <mat-list-item *ngFor="let item of listSessions" >
+        <h3 matLine>{{item.theme}}</h3>
+        
+      
+        <mat-divider vertical="true"></mat-divider>
+       <button mat-raised-button  [routerLink]="['/session', item.session_id]">open</button>
+    <mat-divider></mat-divider>
+      </mat-list-item>
+     
+    
+   
+  </mat-selection-list>
+
+
+
+
+        </div>
+        
+
+            <app-footer></app-footer>
+
+    </div>
+
+
+
 </div>
 
 <app-chatbot></app-chatbot>
