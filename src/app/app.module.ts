@@ -112,7 +112,7 @@ import { ModifierUserByGestionnaireComponent } from './components/modifier-user-
     MatRadioModule,
 
     PdfViewerModule,
-    NgxExtendedPdfViewerModule
+    NgxExtendedPdfViewerModule,
 
     MatSnackBarModule
 
