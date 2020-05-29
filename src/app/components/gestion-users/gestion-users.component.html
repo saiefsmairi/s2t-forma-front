@@ -14,11 +14,29 @@
                       
                          
                         <div class="table-responsive">
+                            
+                            <div class="row">
+                                <span class="col col-lg-2">Rechercher par :</span>
+                                <input  matInput  type="text" placeholder="Cin" class="col-md-3"  [(ngModel)]="cin"    (input)="searchBycin('Formateur')"/>
+                            
+                                <input matInput  type="text" placeholder="Nom" class="col-md-3"  [(ngModel)]="nom"  (input)="searchByNom('Formateur')"/>
+
+                                  <input matInput  type="text" placeholder="Num Tél" class="col-md-3"  [(ngModel)]="tel"  />
+    
+                            </div>
+                                       
+                        
                             <table class="table">
+                                
                                 <thead class=" text-primary">
+                                    
+                                    <th>
+                                        Cin
+                                     </th>
                                     <th>
                                        Nom
                                     </th>
+                              
                                     <th>
                                         Prenom
                                     </th>
@@ -40,12 +58,15 @@
 
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let item of tab">
-                                        <ng-container *ngIf="item.type_compte=='Formateur'">
+                                    <tr *ngFor="let item of tabFormateur |filter:tel ">
+                                            <td>
+                                                <mat-icon mat-list-item>person</mat-icon>
+                                                {{item.cin}}
+                                            </td>
                                         <td>
-                                            <mat-icon mat-list-item>person</mat-icon>
                                             {{item.nom}}
                                         </td>
+                                     
                                         <td>
                                             {{item.prenom}}
                                         </td>
@@ -82,12 +103,18 @@
                                         </td>
 
                                         <td class="td-actions text-right">
-                                            <button type="button" rel="tooltip" class="btn btn-info btn-danger"  (click)="SupprimerCompte(item.user_id)">
+                                            <button type="button" rel="tooltip" class="btn btn-info btn-info" (click)="openDialogToModify(item.nom,item.prenom,item.cin,item.email,item.num_tel,item.user_id)"  >
+                                                <i class="material-icons">edit</i>
+                                                
+                                            </button>
+                                        </td>
+
+                                        <td class="td-actions text-right">
+                                            <button type="button" rel="tooltip" class="btn btn-info btn-danger"  (click)="SupprimerCompte(item.user_id,item.type_compte)">
                                                 <i class="material-icons">clear</i>
                                                 
                                             </button>
                                         </td>
-                                    </ng-container>
                                     </tr>
 
                                     
@@ -114,11 +141,25 @@
                       
                          
                         <div class="table-responsive">
+                            <div class="row">
+                                <span class="col col-lg-2">Rechercher par :</span>
+                                <input  matInput  type="text" placeholder="Cin" class="col-md-3"  [(ngModel)]="cin2"   />
+                            
+                                <input matInput  type="text" placeholder="Nom" class="col-md-3"  [(ngModel)]="nom2" />
+
+                                  <input matInput  type="text" placeholder="Num Tél" class="col-md-3"  [(ngModel)]="tel2"  />
+    
+                            </div>
+                                     
                             <table class="table">
                                 <thead class=" text-primary">
                                     <th>
+                                        Cin
+                                     </th>
+                                    <th>
                                        Nom
                                     </th>
+                                  
                                     <th>
                                         Prenom
                                     </th>
@@ -136,12 +177,16 @@
                      
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let item of tab">
-                                        <ng-container *ngIf="item.type_compte=='Apprenant'">
+                                    <tr *ngFor="let item of tabApprenant |filter:cin2| filter:nom2 |filter:tel2 ">
+                                            <td>
+                                                <mat-icon mat-list-item>person</mat-icon>
+                                                {{item.cin}}
+                                            </td>
                                         <td>
-                                            <mat-icon mat-list-item>person</mat-icon>
+                                           
                                             {{item.nom}}
                                         </td>
+                                     
                                         <td>
                                             {{item.prenom}}
                                         </td>
@@ -152,14 +197,20 @@
                                             {{item.num_tel}}
                                         </td>
                            
+                                        
                                         <td class="td-actions text-right">
-                                            <button type="button" rel="tooltip" class="btn btn-info btn-danger"  (click)="SupprimerCompte(item.user_id)">
+                                            <button type="button" rel="tooltip" class="btn btn-info btn-info" (click)="openDialogToModify(item.nom,item.prenom,item.cin,item.email,item.num_tel,item.user_id)"  >
+                                                <i class="material-icons">edit</i>
+                                                
+                                            </button>
+                                        </td>
+                                        <td class="td-actions text-right">
+                                            <button type="button" rel="tooltip" class="btn btn-info btn-danger"  (click)="SupprimerCompte(item.user_id,item.type_compte)">
                                                 <i class="material-icons">clear</i>
                                                 
                                             </button>
                                         </td>
                                         
-                                    </ng-container>
                                     </tr>
 
                                     

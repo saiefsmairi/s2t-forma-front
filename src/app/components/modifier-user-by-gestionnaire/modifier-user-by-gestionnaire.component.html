@@ -1,0 +1,86 @@
+
+
+<div class="main-content">
+
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title">Modifier Le Compte de <b>{{nom}} {{prenom}}</b></h4>
+                  </div>
+                  <div class="card-body">
+                      <form  name="form" [formGroup]="form"  (ngSubmit)="onSubmit()" >
+                          <div class="row">
+                              <div class="col-md">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                  <mat-label>CIN</mat-label>
+                                  <mat-error *ngIf="f.cin.invalid">Veuillez Entrez un CIN valide (8 chiffres)</mat-error>
+
+                                    <input matInput placeholder="CIN" value="{{cin}}" formControlName="cin" maxlength=8 >
+                                  </mat-form-field>
+                              </div>
+                             
+                              <div class="col-md">
+                                  <mat-form-field class="example-full-width" appearance="outline">
+                                    <mat-label>E-mail</mat-label>
+                                    <input matInput placeholder="Email address" type="email" value="{{email}}" formControlName="email">
+                                    <mat-error *ngIf="f.email.invalid">Veuillez Entrez une adresse mail valid </mat-error>
+
+                                  </mat-form-field>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                  <mat-label>Nom</mat-label>
+                                  <input matInput placeholder="Nom" type="text" value="{{nom}}" formControlName="nom">
+                                  <mat-error *ngIf="f.nom.invalid">Le Nom est obligatoire </mat-error>
+
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                  <mat-label>Prénom</mat-label>
+                                  <input matInput placeholder="Prénom" type="text" value="{{prenom}}" formControlName="prenom">
+                                  <mat-error *ngIf="f.nom.invalid">Le prenom est obligatoire </mat-error>
+
+                                </mat-form-field>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                  <mat-label>Num° Tél</mat-label>
+                                  <input matInput placeholder="Num° Tél" type="text" value="{{tel}}" formControlName="tel" maxlength=8 >
+                                  <mat-error *ngIf="f.tel.invalid">Numéro de téléphone invalide </mat-error>
+
+                                </mat-form-field>
+                              </div>
+                            
+                          </div>
+
+                          <button mat-raised-button type="submit"  [disabled]="form.invalid" class="btn btn-danger pull-right">Mise a jour Compte</button>
+                          <button mat-raised-button (click)="onNoClick()" class="btn btn-danger pull-right">Annuler</button>
+
+
+                          <div class="row">&nbsp;</div>
+                         
+
+                    
+
+                        
+                          
+               
+                       
+                         
+                      </form>
+                    
+                  </div>
+              </div>
+             
+          
+          </div>
+   
+  </div>
+</div>

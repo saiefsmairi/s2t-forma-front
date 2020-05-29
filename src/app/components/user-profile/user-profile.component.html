@@ -55,6 +55,15 @@
                          
 
                           
+                          <div class="row" *ngFor="let certif of userCertifs ;let i = index;" >
+                            <div class="update ml-auto mr-auto" >
+                              <h5>{{certif.name}}</h5>
+                              <input type="file" accept='image/*' id="myfile" name="myfile" (change)="onFileChanged($event,i)" >
+                              <img [src]="imgURLs[i]"  *ngIf="imgURLs" height="300" width="300"><br>
+                              <input type="button" (click)="onUpload(certif.id)" value="upload" />
+                            </div>
+                          </div>
+               
                          
                           
 

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GestionnaireService } from 'app/Services/gestionnaire.service';
+import { RepondreReclamationGestDialogComponent } from '../repondre-reclamation-gest-dialog/repondre-reclamation-gest-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -10,7 +12,7 @@ import { GestionnaireService } from 'app/Services/gestionnaire.service';
 export class ListeReclamationComponent implements OnInit {
   tab: any[];
 
-  constructor(private gestionnaireService:GestionnaireService) { }
+  constructor(public dialog: MatDialog,private gestionnaireService:GestionnaireService) { }
 
   ngOnInit(): void {
     let res = this.gestionnaireService.getAllReclamations();
@@ -28,5 +30,18 @@ export class ListeReclamationComponent implements OnInit {
   );
 
   }
+  openDialog(nom,prenom,email:any){
 
+    const dialogRef = this.dialog.open(RepondreReclamationGestDialogComponent, {
+      width: '500px',
+      data: {  nom,prenom,email},
+    });
+  
+  dialogRef.afterClosed().subscribe(result=>{
+    console.log('The dialog was closed');
+
+  })
+  
+  
+}
 }

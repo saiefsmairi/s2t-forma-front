@@ -47,7 +47,7 @@ export class UserService {
         prenom: user.prenom.value,
         email: user.email.value,
         cin: user.cin.value,
-        datenais: user.datenais.value,
+      //  datenais: user.datenais.value,
         tel:user.tel.value
       },
       httpOptions
@@ -120,8 +120,7 @@ export class UserService {
   }
 
   public ajoutReclamation(reclamation:any,user_id :any): Observable<any> {
-    console.log(reclamation.details.value);
-    console.log(reclamation.typecheck.value);
+  
 
     const params = new HttpParams();
     httpOptions = {
@@ -136,6 +135,25 @@ export class UserService {
     }, httpOptions);
 
   }
+
+  SendMailReponseRecla(nom,prenom,email,reponse): Observable<any> {
+    const params = new HttpParams();
+    httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params
+    };
+
+    return this.http.post(MAIL_API + 'sendmailReponseRecla', {
+
+      nom: nom,
+      prenom: prenom,
+      email:email,
+      reponseRecla:reponse
+      
+
+    }, httpOptions);
+  }
+
 
 
   public ajoutModifPhotoProfil(photo):any {
