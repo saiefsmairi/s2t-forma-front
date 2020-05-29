@@ -55,11 +55,13 @@ nbApprenant:new FormControl('',[Validators.required])
     });
   }
   dateFilter = (d: Date): boolean => {
+   
 
-    const date = d.getDay(); 
+    const date =new Date(d).getDay();
     console.log(d);
-    // Even dates are disabled.
-    return date % 2 == 0;
+    // SEBT W AHAD are disabled.
+    return date !== 0 && date !== 6;
+
   }
 
   ngOnInit(): void {
@@ -83,14 +85,15 @@ dialogRef.afterClosed().subscribe(result=>{
 
 }
 
+get f(){return this.form.controls}
 
   onSubmit(){
 
-console.log(this.f);
-// this.gestionnaireService.ajoutSession(this.f,this.idFormateur).subscribe(data=>{
-//   console.log('session posted');
-//   this.notification.showNotification('top','right','success','Session Ajouté');
-// });
+
+ this.gestionnaireService.ajoutSession(this.f,this.idFormateur).subscribe(data=>{
+   console.log('session posted');
+   this.notification.showNotification('top','right','success','Session Ajouté');
+ });
 
 this.userService.sendnotif(this.idFormateur,1).subscribe(data=>{
   console.log('notified');
@@ -102,6 +105,5 @@ this.userService.sendnotif(this.idFormateur,1).subscribe(data=>{
 
   }
 
-get f(){return this.form.controls}
 
 }

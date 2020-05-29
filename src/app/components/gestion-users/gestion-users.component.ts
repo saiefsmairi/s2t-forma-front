@@ -4,6 +4,7 @@ import { UserService } from "app/Services/user.service";
 import { HttpClient } from "@angular/common/http";
 import { MatDialog } from "@angular/material/dialog";
 import { GestionnaireService } from "app/Services/gestionnaire.service";
+import { ModifierUserByGestionnaireComponent } from "../modifier-user-by-gestionnaire/modifier-user-by-gestionnaire.component";
 
 @Component({
   selector: "app-gestion-users",
@@ -12,6 +13,15 @@ import { GestionnaireService } from "app/Services/gestionnaire.service";
 })
 export class GestionUsersComponent implements OnInit {
   tab: any[];
+  tabFormateur:any [];
+  tabApprenant:any [];
+
+  cin;
+  nom;
+  tel;
+  cin2;
+  nom2;
+  tel2;
   constructor(
     private httpClient: HttpClient,
     private userService: UserService,
@@ -20,16 +30,30 @@ export class GestionUsersComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    let res = this.gestionnaireService.getAllUsers();
+    let res = this.gestionnaireService.AllFormateurs();
     res.subscribe(
       data => {
       
-        this.tab = data;
-     
+        this.tabFormateur = data;
+ 
       },
       err => {
-        alert(err.message);
-        console.log("breaks here getallusers");
+
+        console.log("breaks here getalformateurs");
+        // this.errorMessage = err.error.message;
+      }
+    );
+
+    let res2 = this.gestionnaireService.AllApprenant();
+    res2.subscribe(
+      data => {
+      
+        this.tabApprenant = data;
+ 
+      },
+      err => {
+        console.log("breaks here getallapprenants");
+
         // this.errorMessage = err.error.message;
       }
     );
@@ -43,13 +67,65 @@ export class GestionUsersComponent implements OnInit {
     });
   }
 
-  SupprimerCompte(id:any){
+  SupprimerCompte(id:any,type_compte){
     this.gestionnaireService.SupprimerUsers(id).subscribe(data => {
-      this.tab=[];
+      if(type_compte=='Formateur'){
+        this.tabFormateur=[];
+      }
+      else  if(type_compte=='Apprenant'){
+        this.tabApprenant=[];
+      }
+      
       this.ngOnInit();
     });
 
   }
+
+  openDialogToModify(nom,prenom,cin,email,tel,id:any){
+
+    const dialogRef = this.dialog.open(ModifierUserByGestionnaireComponent, {
+      width: '500px',
+      data: {nom,prenom,cin,email, tel,id },
+    });
+  
+  dialogRef.afterClosed().subscribe(result=>{
+    console.log('The dialog was closed');
+    this.ngOnInit();
+
+  })
+  
+  
+}
+
+
+searchBycin(type: any) {
+  if (this.cin !='') {
+    this.tabFormateur = this.tabFormateur.filter(res => {
+      return res.cin.toLocaleLowerCase().match(this.cin.toLocaleLowerCase());
+    })
+  } else if (this.cin =='') {
+    this.tabFormateur = [];
+    this.ngOnInit();
+    
+  }
+}
+
+
+
+searchByNom() {
+  if (this.nom !='') {
+    this.tabFormateur = this.tabFormateur.filter(res => {
+      return res.nom.toLocaleLowerCase().match(this.nom.toLocaleLowerCase());
+    })
+  } else if (this.nom =='') {
+    this.tabFormateur = [];
+    this.ngOnInit();
+    
+  }
+
+}
+
+
 
   validerCompte(id: any) {
     console.log(id);

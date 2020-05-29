@@ -1,0 +1,7 @@
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Répondre à cette Réclamation</mat-label>
+        <textarea matInput #reponse   [(ngModel)]="reponse.content"></textarea>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="sendReponse(reponse.content)"  style="display: flex; justify-content: center; margin: 0 auto;" > Envoyer</button>
+  

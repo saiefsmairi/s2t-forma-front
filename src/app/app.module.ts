@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { AppRoutingModule } from './app.routing';
 
@@ -60,6 +61,7 @@ import { ListeReclamationComponent } from './components/liste-reclamation/liste-
 
 
 import { PhotoProfileDialogComponent } from './components/photo-profile-dialog/photo-profile-dialog.component';
+
 import { GestionRecuComponent } from './components/gestion-recu/gestion-recu.component';
 import { PhotoRecuDialogComponent } from './components/photo-recu-dialog/photo-recu-dialog.component';
 import { SessionComponent } from './components/session/session.component';
@@ -69,6 +71,10 @@ import { PdfPreviewDialogComponent } from './components/pdf-preview-dialog/pdf-p
 
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+
+import { RepondreReclamationGestDialogComponent } from './components/repondre-reclamation-gest-dialog/repondre-reclamation-gest-dialog.component';
+import { ModifierUserByGestionnaireComponent } from './components/modifier-user-by-gestionnaire/modifier-user-by-gestionnaire.component';
+
 
 
 @NgModule({
@@ -104,8 +110,12 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
     NgxMaterialTimepickerModule,
     Ng2SearchPipeModule,
     MatRadioModule,
+
     PdfViewerModule,
     NgxExtendedPdfViewerModule
+
+    MatSnackBarModule
+
 
   ],
   declarations: [
@@ -134,11 +144,16 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
     ReclamationComponent,
     ListeReclamationComponent,
     PhotoProfileDialogComponent,
+
     GestionRecuComponent,
     PhotoRecuDialogComponent,
     SessionComponent,
     AjoutSupportCoursDialogComponent,
     PdfPreviewDialogComponent,
+
+
+    RepondreReclamationGestDialogComponent,
+    ModifierUserByGestionnaireComponent,
 
 
 
