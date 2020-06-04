@@ -177,4 +177,21 @@ export class GestionnaireService {
 
   }
 
+  public getAllSessions(): Observable<any> {
+    const params = new HttpParams();
+    httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),params
+    };
+    return this.http.get(TEST_API + 'gestion-sessions', httpOptions);
+
+  }
+  public DeleteSession(id:any): Observable<any> {
+    const params = new HttpParams().set('id',id);
+    httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),params
+    };
+    return this.http.delete(TEST_API + 'delete-session/'+id, httpOptions);
+
+  }
+
 }

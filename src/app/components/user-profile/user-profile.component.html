@@ -59,17 +59,6 @@
                                 
                                 <button mat-raised-button type="submit" class="btn btn-danger pull-right">Mise a jour  Profile</button>
                                 <div class="row">&nbsp;</div>
-                               
-      
-                                
-                               
-                                
-      
-                              
-                                
-                     
-                             
-                               
                             </form>
                             <div >
                               {{message}}
@@ -98,33 +87,6 @@
                               <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                             </mat-form-field>
                           </div>
-
-                          
-                          <button mat-raised-button type="submit" class="btn btn-danger pull-right">Mise a jour  Profile</button>
-                          <div class="row">&nbsp;</div>
-                         
-
-                          
-                          <div class="row" *ngFor="let certif of userCertifs ;let i = index;" >
-                            <div class="update ml-auto mr-auto" >
-                              <h5>{{certif.name}}</h5>
-                              <input type="file" accept='image/*' id="myfile" name="myfile" (change)="onFileChanged($event,i)" >
-                              <img [src]="imgURLs[i]"  *ngIf="imgURLs" height="300" width="300"><br>
-                              <input type="button" (click)="onUpload(certif.id)" value="upload" />
-                            </div>
-                          </div>
-               
-                         
-                          
-
-                        
-                          
-               
-
-                       
-                          
-                      
-                      
                           <button mat-raised-button type="submit" class="btn btn-danger pull-right">Changer Mot De Passe </button>
                           </form>
                         </div>

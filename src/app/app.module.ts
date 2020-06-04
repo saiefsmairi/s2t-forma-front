@@ -45,7 +45,7 @@ import { SigninComponent } from './components/signin/signin.component';
 import { AjoutGestionnaireComponent } from './components/ajout-gestionnaire/ajout-gestionnaire.component';
 import { GestionUsersComponent } from './components/gestion-users/gestion-users.component';
 import { UserInfoDialogComponent } from './components/user-info-dialog/user-info-dialog.component';
-import { GestionSessionsComponent } from './components/gestion-sessions/gestion-sessions.component';
+import { AjoutSessionComponent } from './components/ajout-session/ajout-session.component';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { AffectFormateurDialogComponent } from './components/affect-formateur-dialog/affect-formateur-dialog.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
@@ -74,6 +74,9 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 
 import { RepondreReclamationGestDialogComponent } from './components/repondre-reclamation-gest-dialog/repondre-reclamation-gest-dialog.component';
 import { ModifierUserByGestionnaireComponent } from './components/modifier-user-by-gestionnaire/modifier-user-by-gestionnaire.component';
+import { GestionSessionsComponent } from './components/gestion-sessions/gestion-sessions.component';
+import { CompletionDossierComponent } from './components/completion-dossier/completion-dossier.component';
+import { UploadCertifDialogComponent } from './components/upload-certif-dialog/upload-certif-dialog.component';
 
 
 
@@ -112,7 +115,7 @@ import { ModifierUserByGestionnaireComponent } from './components/modifier-user-
     MatRadioModule,
 
     PdfViewerModule,
-    NgxExtendedPdfViewerModule
+    NgxExtendedPdfViewerModule,
 
     MatSnackBarModule
 
@@ -134,7 +137,7 @@ import { ModifierUserByGestionnaireComponent } from './components/modifier-user-
     AjoutGestionnaireComponent,
     GestionUsersComponent,
     UserInfoDialogComponent,
-    GestionSessionsComponent,
+    AjoutSessionComponent,
     AffectFormateurDialogComponent,
     ConfirmDialogComponent,
     AffectFormateurDialogComponent,
@@ -154,6 +157,9 @@ import { ModifierUserByGestionnaireComponent } from './components/modifier-user-
 
     RepondreReclamationGestDialogComponent,
     ModifierUserByGestionnaireComponent,
+    GestionSessionsComponent,
+    CompletionDossierComponent,
+    UploadCertifDialogComponent,
 
 
 

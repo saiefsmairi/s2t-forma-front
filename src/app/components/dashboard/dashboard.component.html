@@ -7,21 +7,23 @@
         <app-navbar></app-navbar>
         <div class="main-content">
 
-           <!--Apprenant--> 
-  Vos Sessions 
-  <mat-selection-list >
-      <mat-list-item *ngFor="let item of listSessions" >
-        <h3 matLine>{{item.theme}}</h3>
-        
-      
-        <mat-divider vertical="true"></mat-divider>
-       <button mat-raised-button  [routerLink]="['/session', item.session_id]">open</button>
-    <mat-divider></mat-divider>
-      </mat-list-item>
-     
-    
-   
-  </mat-selection-list>
+         <div *ngIf="userRole == 'ROLE_APPRENANT' || userRole == 'ROLE_FORMATEUR' ">
+            Vos Sessions 
+            <mat-selection-list >
+                <mat-list-item *ngFor="let item of listSessions" >
+                  <h3 matLine>{{item.theme}}</h3>
+                  
+                
+                  <mat-divider vertical="true"></mat-divider>
+                 <button mat-raised-button  [routerLink]="['/session', item.session_id]">open</button>
+              <mat-divider></mat-divider>
+                </mat-list-item>
+               
+              
+             
+            </mat-selection-list>
+          
+         </div>
 
 
 
