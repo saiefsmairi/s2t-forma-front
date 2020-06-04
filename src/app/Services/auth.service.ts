@@ -28,6 +28,8 @@ export class AuthService {
 
 
   registerFormateur(user): Observable<any> {
+    console.log(user.listCertif.value);
+    debugger;
     console.log(user.datenais.value);
     const params = new HttpParams();
     httpOptions = {

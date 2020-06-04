@@ -12,6 +12,8 @@ import { UserService } from 'app/Services/user.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+    user:any=JSON.parse(sessionStorage.getItem('auth-user'));
+    username=this.user.nom+" "+this.user.prenom;
     private listTitles: any[];
     location: Location;
       mobile_menu_visible: any = 0;

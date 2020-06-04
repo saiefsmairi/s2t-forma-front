@@ -1,0 +1,76 @@
+<div class="wrapper">
+  <div class="sidebar" data-color="danger" data-background-color="white">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="main-panel">
+    <app-navbar></app-navbar>
+    <div class="main-content">
+      <div>
+        <div class="card-header card-header-danger">
+          <div class="card-icon">
+            <i class="material-icons">help</i>
+          </div>
+          Veuillez Déposer des photos claires de vos diplomes/certificats dans
+          votre Inscription
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row">
+        <div class="card col-md-7 ">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Certificats a déposer</h4>
+          </div>
+          <div class="card-body">
+<div *ngIf="userCertifs">
+  <mat-list  *ngFor="let certif of userCertifs; let i = index">
+    <mat-list-item class="row">
+      <h5 class="col-md-10">{{ certif.name }}</h5>
+
+      <button
+        mat-icon-button
+        class="col-md-2 pull-right"
+        (click)="openDialog(certif.id)"
+      >
+        <mat-icon>publish</mat-icon>
+      </button>
+    </mat-list-item>
+  </mat-list>
+</div>
+<div *ngIf="userCertifs.length<1">
+  <p >Vous Avez déja déposer des photos de tous vos certificats  </p>
+</div>
+            
+           
+          </div>
+        </div>
+        <div class="col">
+          &nbsp;
+        </div>
+        <div class="card col-md-4">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Certificats déja déposée</h4>
+          </div>
+          <div class="card-body">
+            <mat-list *ngFor="let certif of listCertif; let i = index">
+              <mat-list-item class="row">
+                <h5 class="col-md-10">{{ certif.name }}</h5>
+
+                <button
+                  mat-icon-button
+                  class="col-md-2 pull-right"
+                  (click)="displayCertif(certif.photoCertif)"
+                >
+                  <mat-icon>visibility</mat-icon>
+                </button>
+              </mat-list-item>
+            </mat-list>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <app-footer></app-footer>
+  </div>
+</div>

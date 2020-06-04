@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { AuthService } from '../../Services/auth.service';
-import { FormControl, Validators, FormGroup, FormBuilder, FormArray } from '@angular/forms';
+import { FormControl, Validators, FormGroup, FormBuilder, FormArray, Form } from '@angular/forms';
 import {
   MAT_MOMENT_DATE_FORMATS,
   MomentDateAdapter,
@@ -51,6 +51,7 @@ export class SignupComponent implements OnInit {
   nomCertif: string;
   dateCertif: string;
   i: number;
+
   private sub: any;
   constructor(
     private router: Router,
@@ -260,6 +261,9 @@ export class SignupComponent implements OnInit {
   }
 
 
+reset(form:FormGroup ){
+form.reset();
+}
 
 
 }

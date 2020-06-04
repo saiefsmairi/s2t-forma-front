@@ -21,8 +21,8 @@ const ADMINROUTES: RouteInfo[] = [
 const APPRENANTROUTES: RouteInfo[] = [
   { path: '/dashboard', title: 'Tableau De Bord',  icon: 'dashboard', class: '' },
   { path: '/user-profile', title: 'Mon Profile',  icon: 'person', class: '' },
-  { path: '/liste-sessions', title: 'Liste Sessions',  icon: 'list_alt', class: '' },
-  { path: '/reclamation', title: 'Réclamer un probléme',  icon: 'report_problem', class: '' },
+  { path: '/liste-sessions', title: 'Liste Sessions',  icon: 'list_alt', class: ''},
+  { path: '/reclamation', title: 'Réclamer un probléme',  icon: 'report_problem', class: ''},
 
 
   
@@ -32,8 +32,7 @@ const APPRENANTROUTES: RouteInfo[] = [
 const FORMATEURROUTES: RouteInfo[] = [
   { path: '/dashboard', title: 'Tableau De Bord',  icon: 'dashboard', class: '' },
   { path: '/user-profile', title: 'Mon Profile',  icon: 'person', class: '' },
-  { path: '/liste-sessions', title: 'Liste Sessions',  icon: 'list_alt', class: '' },
-  { path: '/reclamation', title: 'Réclamer un probléme',  icon: 'report_problem', class: '' },
+ { path: '/reclamation', title: 'Réclamer un probléme',  icon: 'report_problem', class: '' },
 
 
 
@@ -49,10 +48,11 @@ const SOCIETEROUTES: RouteInfo[] = [
 
 const GESTROUTES: RouteInfo[] = [
   { path: '/dashboard', title: 'Tableau de Bord',  icon: 'dashboard', class: '' },
-  { path: '/gestion-utilisateurs', title: 'Gestion Utilisateurs',  icon: 'persons', class: '' },
-  { path: '/gestion-sessions', title: 'Gestion Sessions',  icon: 'dashboard', class: '' },
-  { path: '/liste-reclamations', title: 'Liste Réclamations',  icon: 'list_alt', class: '' },
-  { path: '/gestion-recu', title: 'Gestion Recu',  icon: 'view_list', class: '' },
+  { path: '/gestion-utilisateurs', title: 'Gestion Utilisateurs',  icon: 'persons', class: ''},
+  { path: '/ajout-session', title: 'Ajout Session',  icon: 'add', class: ''  },
+  { path: '/gestion-sessions', title: 'Gestion Sessions',  icon: 'settings', class: ''  },
+  { path: '/liste-reclamations', title: 'Liste Réclamations',  icon: 'list_alt', class: ''},
+  { path: '/gestion-recu', title: 'Gestion Recu',  icon: 'view_list', class: ''},
 
 ];
 
@@ -63,12 +63,13 @@ const GESTROUTES: RouteInfo[] = [
 })
 export class SidebarComponent implements OnInit {
   userRole:any= JSON.parse(sessionStorage.getItem('auth-user')).roles[0];
+  userStatut:any=JSON.parse(sessionStorage.getItem('auth-user')).flg_statut;
   menuItems: any[];
 
   constructor() { }
 
   ngOnInit() {
-    console.log(this.userRole);
+    
    
   this.setRoutes();
     this.menuItems = ROUTES.filter(menuItem => menuItem);
@@ -84,6 +85,9 @@ case 'ROLE_ADMIN':{
 }
 case 'ROLE_FORMATEUR': {
   ROUTES = [...FORMATEURROUTES];
+  if(this.userStatut===0){
+    ROUTES.push({path: '/completion-dossier', title: 'Completion Dossier',  icon: 'warning', class: ''})
+  }
   break;
 }
 case 'ROLE_APPRENANT':{
@@ -91,7 +95,9 @@ case 'ROLE_APPRENANT':{
   break;
 }
 case 'ROLE_SOCIETE':{
-  
+  if(this.userStatut===0){
+    ROUTES.push({path: '/completion-dossier', title: 'Completion Dossier',  icon: 'warning', class: ''})
+  }
   ROUTES = [...SOCIETEROUTES];
 
   break;
@@ -102,6 +108,9 @@ case 'ROLE_GESTIONNAIRE':{
 }
 }
 }
+
+
+
 
   isMobileMenu() {
       if ( window.innerWidth > 991) {
