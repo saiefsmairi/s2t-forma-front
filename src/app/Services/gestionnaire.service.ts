@@ -122,6 +122,16 @@ export class GestionnaireService {
 
   }
 
+  
+  public getAllGestionnaire(): Observable<any> {
+    const params = new HttpParams();
+    httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),params
+    };
+    return this.http.get(TEST_API + 'getAllGestionnaire', httpOptions);
+
+  }
+
   public getAllReclamations(): Observable<any> {
     const params = new HttpParams();
     httpOptions = {

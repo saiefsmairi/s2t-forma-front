@@ -15,8 +15,9 @@ declare interface RouteInfo {
 const ADMINROUTES: RouteInfo[] = [
   { path: '/dashboard', title: 'Tableau De Bord',  icon: 'dashboard', class: '' },
   { path: '/ajout-gestionnaire', title: 'Ajout Gestionnaire',  icon: 'add', class: '' },
-];
+  { path: '/liste-All-Users', title: 'Liste des utilisateurs',  icon: 'list_alt', class: '' },
 
+];
 const APPRENANTROUTES: RouteInfo[] = [
   { path: '/dashboard', title: 'Tableau De Bord',  icon: 'dashboard', class: '' },
   { path: '/user-profile', title: 'Mon Profile',  icon: 'person', class: '' },

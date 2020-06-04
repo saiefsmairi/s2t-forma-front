@@ -12,6 +12,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 import { AppRoutingModule } from './app.routing';
 
@@ -74,9 +75,14 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 
 import { RepondreReclamationGestDialogComponent } from './components/repondre-reclamation-gest-dialog/repondre-reclamation-gest-dialog.component';
 import { ModifierUserByGestionnaireComponent } from './components/modifier-user-by-gestionnaire/modifier-user-by-gestionnaire.component';
+
 import { GestionSessionsComponent } from './components/gestion-sessions/gestion-sessions.component';
 import { CompletionDossierComponent } from './components/completion-dossier/completion-dossier.component';
 import { UploadCertifDialogComponent } from './components/upload-certif-dialog/upload-certif-dialog.component';
+
+import { ModifierPresenceParFormateurDialogComponent } from './components/modifier-presence-par-formateur-dialog/modifier-presence-par-formateur-dialog.component';
+import { ListeAllUsersAdminComponent } from './components/liste-all-users-admin/liste-all-users-admin.component';
+
 
 
 
@@ -116,6 +122,10 @@ import { UploadCertifDialogComponent } from './components/upload-certif-dialog/u
 
     PdfViewerModule,
     NgxExtendedPdfViewerModule,
+
+
+
+    MatCheckboxModule,
 
     MatSnackBarModule
 
@@ -157,9 +167,14 @@ import { UploadCertifDialogComponent } from './components/upload-certif-dialog/u
 
     RepondreReclamationGestDialogComponent,
     ModifierUserByGestionnaireComponent,
+
     GestionSessionsComponent,
     CompletionDossierComponent,
     UploadCertifDialogComponent,
+
+    ModifierPresenceParFormateurDialogComponent,
+    ListeAllUsersAdminComponent,
+
 
 
 

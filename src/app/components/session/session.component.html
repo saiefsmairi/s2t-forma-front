@@ -70,21 +70,76 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card">
-              <div class="card-header card-header-danger">
-                <h4 class="card-title">Apprenants Inscrits</h4>
-              </div>
-              <div class="card-body">
-                <mat-list *ngFor="let apprenant of listeApprenantsInscrits">
-                  <mat-list-item
-                    >{{ apprenant.nom }} {{ apprenant.prenom }}</mat-list-item
-                  >
-                </mat-list>
-              </div>
+
+
+            <div class="row" *ngFor="let document of listeDocuments">
+<div >
+    <div class="card-header">
+        <h4 class="card-title">{{document.name}}</h4>
+       
+    </div>
+    <div >
+        <a  class="col-md-10" (click)="openPdf(document.id)" >{{document.filename}}</a>
+        <button mat-icon-button (click)="EditSupport(document)">
+            <mat-icon>create</mat-icon>
+          </button>
+          <button mat-icon-button (click)="DeletePdf(document.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+    </div>
+</div>
+  
+  
+   
+
             </div>
-          </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-4">
+    <div class="card">
+        <div class="card-header card-header-danger">
+            <h4 class="card-title">Apprenants Inscrits</h4>
+        </div>
+        <div class="card-body">
+            <mat-list *ngFor="let apprenant of  listeApprenantsInscrits">
+                <mat-list-item>{{apprenant.nom}} {{apprenant.prenom}}</mat-list-item>
+
+                <div class="container">
+                    <div class="row">
+                      <div class="col-sm">
+                       <button mat-raised-button color="primary" type="submit" (click)='OnPresenceButtonClick(apprenant.user_id,"Present")'>Present</button>
+                      </div>
+                      <div class="col-sm">
+                        <button mat-raised-button color="primary" type="submit" (click)='OnPresenceButtonClick(apprenant.user_id,"Absent")'>Absent</button>
+                    </div>
+                    <div class=".col-	">
+                    <button mat-icon-button (click)="EditPresence(apprenant.user_id,apprenant.nom,apprenant.prenom)">
+                        <mat-icon>create</mat-icon>
+                      </button>
+                    </div>
+                    </div>
+                 
+                  </div>
+
+
+                </mat-list>
+                
+
+        </div>
+        
+      
+
+    </div>
+</div>
+</div>
+        </div>
+
+           
+
+
+
+
         </div>
       </div>
     </div>
