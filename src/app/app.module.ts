@@ -12,6 +12,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 import { AppRoutingModule } from './app.routing';
 
@@ -74,6 +75,8 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 
 import { RepondreReclamationGestDialogComponent } from './components/repondre-reclamation-gest-dialog/repondre-reclamation-gest-dialog.component';
 import { ModifierUserByGestionnaireComponent } from './components/modifier-user-by-gestionnaire/modifier-user-by-gestionnaire.component';
+import { ModifierPresenceParFormateurDialogComponent } from './components/modifier-presence-par-formateur-dialog/modifier-presence-par-formateur-dialog.component';
+import { ListeAllUsersAdminComponent } from './components/liste-all-users-admin/liste-all-users-admin.component';
 
 
 
@@ -113,7 +116,7 @@ import { ModifierUserByGestionnaireComponent } from './components/modifier-user-
 
     PdfViewerModule,
     NgxExtendedPdfViewerModule,
-
+    MatCheckboxModule,
     MatSnackBarModule
 
 
@@ -154,6 +157,8 @@ import { ModifierUserByGestionnaireComponent } from './components/modifier-user-
 
     RepondreReclamationGestDialogComponent,
     ModifierUserByGestionnaireComponent,
+    ModifierPresenceParFormateurDialogComponent,
+    ListeAllUsersAdminComponent,
 
 
 

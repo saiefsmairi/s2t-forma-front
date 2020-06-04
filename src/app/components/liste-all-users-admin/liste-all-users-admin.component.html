@@ -1,0 +1,286 @@
+<div class="wrapper">
+    <div class="sidebar" data-color="danger" data-background-color="white" >
+        <app-sidebar></app-sidebar>
+       
+    </div>
+    <div class="main-panel">
+        <app-navbar></app-navbar>
+        <div class="main-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-danger"  >
+                                <h4 class="card-title " >Liste des Formateurs </h4>
+                                <p class="card-category"> </p>
+                            </div>
+                            <div class="card-body">
+        
+                              
+                                 
+                                <div class="table-responsive">
+                                    
+                                    <div class="row">
+                                        <span class="col col-lg-2">Rechercher par :</span>
+                                        <input  matInput  type="text" placeholder="Cin" class="col-md-3"  [(ngModel)]="cin"    (input)="searchBycin('Formateur')"/>
+                                    
+                                        <input matInput  type="text" placeholder="Nom" class="col-md-3"  [(ngModel)]="nom"  (input)="searchByNom('Formateur')"/>
+        
+                                          <input matInput  type="text" placeholder="Num Tél" class="col-md-3"  [(ngModel)]="tel"  />
+            
+                                    </div>
+                                               
+                                
+                                    <table class="table">
+                                        
+                                        <thead class=" text-primary">
+                                            
+                                            <th>
+                                                Cin
+                                             </th>
+                                            <th>
+                                               Nom
+                                            </th>
+                                      
+                                            <th>
+                                                Prenom
+                                            </th>
+                                            <th>
+                                                Email
+                                            </th>
+                                            <th>
+                                                Num Télephone
+                                            </th>
+                                            <th>
+                                                Certif
+                                            </th>
+                                            <th>
+                                                Etat Du Compte
+                                            </th>
+                            
+                                            
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of tabFormateur |filter:tel ">
+                                                    <td>
+                                                        <mat-icon mat-list-item>person</mat-icon>
+                                                        {{item.cin}}
+                                                    </td>
+                                                <td>
+                                                    {{item.nom}}
+                                                </td>
+                                             
+                                                <td>
+                                                    {{item.prenom}}
+                                                </td>
+                                                <td>
+                                                    {{item.email}}
+                                                </td>
+                                                <td>
+                                                    {{item.num_tel}}
+                                                </td>
+                                          <td>
+                                            <div mat-line *ngFor="let certif of item.certifs" >
+                                                <div mat-line>
+                                                    {{certif.name}}
+                                                    <mat-icon (click)="openDialog(certif.photoCertif)" >info</mat-icon>
+                                                </div>
+                                            </div>
+                                          </td>
+        
+                                          <td>
+                                              <div *ngIf="item.flg_statut==0;else verifier">
+                                                Compte Non Vérifié
+                                              </div>
+                                              <ng-template #verifier>
+                                                Compte Vérifié
+                                              </ng-template>
+                                            </td>
+                                
+                                            </tr>
+        
+                                            
+        
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  
+                    
+                </div>
+        
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-danger">
+                                <h4 class="card-title ">Liste des Apprenants </h4>
+                                <p class="card-category"> </p>
+                            </div>
+                            <div class="card-body">
+        
+                              
+                                 
+                                <div class="table-responsive">
+                                    <div class="row">
+                                        <span class="col col-lg-2">Rechercher par :</span>
+                                        <input  matInput  type="text" placeholder="Cin" class="col-md-3"  [(ngModel)]="cin2"   />
+                                    
+                                        <input matInput  type="text" placeholder="Nom" class="col-md-3"  [(ngModel)]="nom2" />
+        
+                                          <input matInput  type="text" placeholder="Num Tél" class="col-md-3"  [(ngModel)]="tel2"  />
+            
+                                    </div>
+                                             
+                                    <table class="table">
+                                        <thead class=" text-primary">
+                                            <th>
+                                                Cin
+                                             </th>
+                                            <th>
+                                               Nom
+                                            </th>
+                                          
+                                            <th>
+                                                Prenom
+                                            </th>
+                                            <th>
+                                                Email
+                                            </th>
+                                            <th>
+                                                Num Télephone
+                                            </th>
+                                    
+           
+                                            
+                             
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of tabApprenant |filter:cin2| filter:nom2 |filter:tel2 ">
+                                                    <td>
+                                                        <mat-icon mat-list-item>person</mat-icon>
+                                                        {{item.cin}}
+                                                    </td>
+                                                <td>
+                                                   
+                                                    {{item.nom}}
+                                                </td>
+                                             
+                                                <td>
+                                                    {{item.prenom}}
+                                                </td>
+                                                <td>
+                                                    {{item.email}}
+                                                </td>
+                                                <td>
+                                                    {{item.num_tel}}
+                                                </td>
+                                   
+                                                
+                                            </tr>
+        
+                                            
+        
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  
+                    
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-danger">
+                                <h4 class="card-title ">Liste des Gestionnaire </h4>
+                                <p class="card-category"> </p>
+                            </div>
+                            <div class="card-body">
+        
+                              
+                                 
+                                <div class="table-responsive">
+                                    <div class="row">
+                                        <span class="col col-lg-2">Rechercher par :</span>
+                                        <input  matInput  type="text" placeholder="Cin" class="col-md-3"  [(ngModel)]="cin2"   />
+                                    
+                                        <input matInput  type="text" placeholder="Nom" class="col-md-3"  [(ngModel)]="nom2" />
+        
+                                          <input matInput  type="text" placeholder="Num Tél" class="col-md-3"  [(ngModel)]="tel2"  />
+            
+                                    </div>
+                                             
+                                    <table class="table">
+                                        <thead class=" text-primary">
+                                            <th>
+                                                Cin
+                                             </th>
+                                            <th>
+                                               Nom
+                                            </th>
+                                          
+                                            <th>
+                                                Prenom
+                                            </th>
+                                            <th>
+                                                Email
+                                            </th>
+                                            <th>
+                                                Num Télephone
+                                            </th>
+                                    
+           
+                                            
+                             
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of tabGestionnaire |filter:cin2| filter:nom2 |filter:tel2 ">
+                                                    <td>
+                                                        <mat-icon mat-list-item>person</mat-icon>
+                                                        {{item.cin}}
+                                                    </td>
+                                                <td>
+                                                   
+                                                    {{item.nom}}
+                                                </td>
+                                             
+                                                <td>
+                                                    {{item.prenom}}
+                                                </td>
+                                                <td>
+                                                    {{item.email}}
+                                                </td>
+                                                <td>
+                                                    {{item.num_tel}}
+                                                </td>
+                                   
+                                                
+                                            </tr>
+        
+                                            
+        
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  
+                    
+                </div>
+            </div>
+        </div>
+        
+
+            <app-footer></app-footer>
+            <app-chatbot></app-chatbot>
+
+    </div>
+
+
+
+</div>

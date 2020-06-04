@@ -20,6 +20,7 @@ import { ReclamationComponent } from './components/reclamation/reclamation.compo
 import { ListeReclamationComponent } from './components/liste-reclamation/liste-reclamation.component';
 import { GestionRecuComponent } from './components/gestion-recu/gestion-recu.component';
 import { SessionComponent } from './components/session/session.component';
+import { ListeAllUsersAdminComponent } from './components/liste-all-users-admin/liste-all-users-admin.component';
 
 const routes: Routes = [
   {
@@ -84,8 +85,12 @@ const routes: Routes = [
     path:'session/:id',
     component:SessionComponent
    }
-  
-  
+   ,
+   {
+    path:'liste-All-Users',
+    component:ListeAllUsersAdminComponent
+   }
+   
 
 
    
