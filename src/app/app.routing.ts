@@ -20,8 +20,12 @@ import { ReclamationComponent } from './components/reclamation/reclamation.compo
 import { ListeReclamationComponent } from './components/liste-reclamation/liste-reclamation.component';
 import { GestionRecuComponent } from './components/gestion-recu/gestion-recu.component';
 import { SessionComponent } from './components/session/session.component';
+
 import { AjoutSessionComponent } from './components/ajout-session/ajout-session.component';
 import { GestionSessionsComponent } from './components/gestion-sessions/gestion-sessions.component';
+
+import { ListeAllUsersAdminComponent } from './components/liste-all-users-admin/liste-all-users-admin.component';
+
 
 const routes: Routes = [
   {
@@ -93,8 +97,12 @@ const routes: Routes = [
      path:'completion-dossier',
      component:CompletionDossierComponent
    }
-  
-  
+   ,
+   {
+    path:'liste-All-Users',
+    component:ListeAllUsersAdminComponent
+   }
+   
 
 
    

@@ -1,0 +1,27 @@
+<h1 mat-dialog-title >Modifier l'état de présence </h1>
+  <div mat-dialog-content style="height: 200px">
+  
+     <mat-form-field>
+      <mat-label>Nom Prenom de l'apprenant</mat-label>
+      <input matInput name="name" readonly value="{{nom}} {{prenom}}"  required  >
+    </mat-form-field>
+  
+    <form  name="form" [formGroup]="form"  (ngSubmit)="onSubmit()" >
+
+      <mat-form-field>
+        <mat-label>Selectionner le nouveau état de présence</mat-label>
+        <mat-select [(value)]="selected" formControlName="selectedEtat" >
+          <mat-option value="Present" [disabled]="etatfromregistre=='Present'" >Present</mat-option>
+          <mat-option value="Absent"  [disabled]="etatfromregistre=='Absent'">Absent</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+        
+
+    <div mat-dialog-actions>
+      <button mat-raised-button (click)="onNoClick()" type="button" >Quitter</button>
+      <button mat-raised-button   type="submit" [disabled]="form.invalid"    >Update</button>
+    </div>
+    </form>
+    
+  </div>

@@ -2,6 +2,7 @@ import { SessionService } from 'app/Services/session.service';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { UserService } from 'app/Services/user.service';
 
 @Component({
   templateUrl: './ajout-support-cours-dialog.component.html',
@@ -16,9 +17,11 @@ export class AjoutSupportCoursDialogComponent implements OnInit {
   pdfPath;
   typeop;
   document:any;
+  listeApprenantsInscrits: any;
   constructor(public dialogRef: MatDialogRef<AjoutSupportCoursDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialog: MatDialog,
+    private userService:UserService,
     private formBuilder: FormBuilder,
     public sessionService : SessionService) {
     
@@ -26,9 +29,8 @@ export class AjoutSupportCoursDialogComponent implements OnInit {
   ngOnInit(): void {
 this.typeop=this.data.typeop;
 this.document=this.data.document;
-console.log(this.document)
+console.log("wiw",this.data.id);
   this.FormInit();
-
 
 
   }
@@ -59,8 +61,31 @@ onSubmit(){
   uploadPdfData.set('name', this.f.name.value);
 console.log( uploadPdfData.get('sessionId'))
 this.sessionService.ajoutSupportCours(uploadPdfData).subscribe(res=>{
+
+
+
+  
+
 this.dialogRef.close("ajouté");
  });
+
+ 
+ this.sessionService.getSessionInfo(this.data.id, 'formateur').subscribe(data => {
+  //console.log(data);
+ 
+  this.listeApprenantsInscrits = data.apprenants;
+ // console.log(this.listeApprenantsInscrits);
+ this.listeApprenantsInscrits.forEach(element => {
+  console.log(element.user_id);
+
+  this.userService.sendnotif(element.user_id,4).subscribe(data=>{
+    console.log('notified');
+  
+  });
+});
+});
+
+
 
 }
 
