@@ -82,6 +82,7 @@ import { UploadCertifDialogComponent } from './components/upload-certif-dialog/u
 
 import { ModifierPresenceParFormateurDialogComponent } from './components/modifier-presence-par-formateur-dialog/modifier-presence-par-formateur-dialog.component';
 import { ListeAllUsersAdminComponent } from './components/liste-all-users-admin/liste-all-users-admin.component';
+import { ModifSessionDialogComponent } from './components/modif-session-dialog/modif-session-dialog.component';
 
 
 
@@ -174,6 +175,7 @@ import { ListeAllUsersAdminComponent } from './components/liste-all-users-admin/
 
     ModifierPresenceParFormateurDialogComponent,
     ListeAllUsersAdminComponent,
+    ModifSessionDialogComponent,
 
 
 
