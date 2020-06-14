@@ -1,0 +1,85 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+          
+                    <div class="card-body">
+                        <form  name="form"  [formGroup]="form"  (ngSubmit)="onSubmit()" >
+                            <div class="row">
+                                <div class="col-md-12">
+                                  <mat-form-field class="example-full-width"  appearance="outline">
+                                    <mat-label>Théme de La session</mat-label>
+                                      <input matInput placeholder="Théme De La Session" formControlName="theme"  >
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-5">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                  <mat-label>Date Début</mat-label>
+                                  <input matInput   [matDatepickerFilter]="dateFilter" [matDatepicker]="picker" readonly [min]="minDate" formControlName="dateDebut"   />
+                                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                  <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+                              </div>
+                               <div class="col-md-5">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                  <mat-label>Date Fin</mat-label>
+                                  <input matInput  [matDatepickerFilter]="dateFilter" [matDatepicker]="picker2" readonly  formControlName="dateFin"  [min]="picker._selected"  />
+                                  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                  <mat-datepicker #picker2></mat-datepicker>
+                                </mat-form-field>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width"  appearance="outline" >
+                                  <mat-label>Heure Debut</mat-label>
+                                  <input matInput [ngxTimepicker]="toggleTimepicker"  [format]="24"  min="08:00 am" max="01:00 pm" formControlName="heureDebut"  readonly>
+                                  <ngx-material-timepicker-toggle [for]="toggleTimepicker" matSuffix></ngx-material-timepicker-toggle>
+                                  <ngx-material-timepicker #toggleTimepicker></ngx-material-timepicker>
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-6">
+                                <mat-form-field  appearance="outline">
+                                  <mat-label>Heure Fin</mat-label>
+                                  <input matInput [ngxTimepicker]="toggleTimepicker1"  [format]="24" [min]="toggleTimepicker.time" max="4:00 pm" readonly  formControlName="heureFin" >
+                                  <ngx-material-timepicker-toggle [for]="toggleTimepicker1" matSuffix></ngx-material-timepicker-toggle>
+                                  <ngx-material-timepicker #toggleTimepicker1></ngx-material-timepicker>
+                                </mat-form-field>
+                              </div> 
+                            </div>
+                            <div class="row">
+  
+                              <div class="col-md-2">
+  
+                              <mat-form-field class="example-full-width" appearance="outline" >
+                                <input matInput placeholder="Prix"  formControlName="prix"  type="number" >
+                                <span matSuffix>DT</span> 
+                              </mat-form-field>
+                             </div>
+                             <div class="col-md-4">
+                              <mat-form-field class="example-full-width" appearance="outline" >
+                                <input matInput placeholder="Nombre D'apprenant"  formControlName="nbApprenant"  type="number" >
+                              
+                              </mat-form-field>
+                             </div>
+                               <div class="col-md-6">
+                                <mat-form-field class="example-full-width" appearance="outline" >
+                                  <input matInput placeholder="Ajouter Un Formateur" readonly   value="{{nomPrenomFormateur}}"  >
+  
+                                  <button mat-icon-button  matSuffix type="button"  (click)="openDialog()"><mat-icon>add</mat-icon></button> 
+                                </mat-form-field>
+                               </div>
+                            </div>
+                           
+                 
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right">Ajouter Session</button>
+                            
+                        </form>
+                       
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+  

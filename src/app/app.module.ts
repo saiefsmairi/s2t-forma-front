@@ -82,10 +82,12 @@ import { UploadCertifDialogComponent } from './components/upload-certif-dialog/u
 
 import { ModifierPresenceParFormateurDialogComponent } from './components/modifier-presence-par-formateur-dialog/modifier-presence-par-formateur-dialog.component';
 import { ListeAllUsersAdminComponent } from './components/liste-all-users-admin/liste-all-users-admin.component';
+
+import { ModifSessionDialogComponent } from './components/modif-session-dialog/modif-session-dialog.component';
+
 import { StatsAdminComponent } from './components/stats-admin/stats-admin.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { StatsSessionsComponent } from './components/stats-sessions/stats-sessions.component';
-
 
 
 
@@ -178,8 +180,12 @@ import { StatsSessionsComponent } from './components/stats-sessions/stats-sessio
 
     ModifierPresenceParFormateurDialogComponent,
     ListeAllUsersAdminComponent,
+
+    ModifSessionDialogComponent,
+
     StatsAdminComponent,
     StatsSessionsComponent,
+
 
 
 

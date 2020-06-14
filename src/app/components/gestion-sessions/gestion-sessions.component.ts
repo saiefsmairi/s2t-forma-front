@@ -1,5 +1,7 @@
+import { MatDialog } from '@angular/material/dialog';
 import { GestionnaireService } from 'app/Services/gestionnaire.service';
 import { Component, OnInit } from '@angular/core';
+import { ModifSessionDialogComponent } from '../modif-session-dialog/modif-session-dialog.component';
 
 @Component({
   selector: 'app-gestion-sessions',
@@ -8,7 +10,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GestionSessionsComponent implements OnInit {
 listeSessions:any;
-  constructor(public gestService:GestionnaireService) { }
+  constructor(public gestService:GestionnaireService,
+    public dialog:MatDialog) { }
 
   ngOnInit(): void {
 this.reloadData();
@@ -26,6 +29,14 @@ this.reloadData();
     this.gestService.DeleteSession(id).subscribe(res=>{
       this.reloadData();
     })
+  }
+
+  EditSession(session:any ){
+    const dialogRef = this.dialog.open(ModifSessionDialogComponent, {
+      width: '800px',
+      data:session,
+     
+    });
   }
 
 }
