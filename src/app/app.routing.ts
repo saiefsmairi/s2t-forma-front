@@ -1,5 +1,5 @@
+import { CompletionDossierComponent } from './components/completion-dossier/completion-dossier.component';
 
-import { GestionSessionsComponent } from './components/gestion-sessions/gestion-sessions.component';
 import { GestionUsersComponent } from './components/gestion-users/gestion-users.component';
 import { AjoutGestionnaireComponent } from './components/ajout-gestionnaire/ajout-gestionnaire.component';
 import { ChoixComponent } from './components/choix/choix.component';
@@ -20,9 +20,14 @@ import { ReclamationComponent } from './components/reclamation/reclamation.compo
 import { ListeReclamationComponent } from './components/liste-reclamation/liste-reclamation.component';
 import { GestionRecuComponent } from './components/gestion-recu/gestion-recu.component';
 import { SessionComponent } from './components/session/session.component';
+
+import { AjoutSessionComponent } from './components/ajout-session/ajout-session.component';
+import { GestionSessionsComponent } from './components/gestion-sessions/gestion-sessions.component';
+
 import { ListeAllUsersAdminComponent } from './components/liste-all-users-admin/liste-all-users-admin.component';
 import { StatsAdminComponent } from './components/stats-admin/stats-admin.component';
 import { StatsSessionsComponent } from './components/stats-sessions/stats-sessions.component';
+
 
 const routes: Routes = [
   {
@@ -63,10 +68,13 @@ const routes: Routes = [
     component:GestionUsersComponent
    },
    {
+    path:'ajout-session',
+    component:AjoutSessionComponent
+   },
+   {
     path:'gestion-sessions',
     component:GestionSessionsComponent
-   }
-   ,
+   },
    {
     path:'liste-sessions',
     component:ListeSessionComponent
@@ -86,6 +94,10 @@ const routes: Routes = [
    {
     path:'session/:id',
     component:SessionComponent
+   },
+   {
+     path:'completion-dossier',
+     component:CompletionDossierComponent
    }
    ,
    {

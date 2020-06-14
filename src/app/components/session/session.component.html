@@ -1,40 +1,63 @@
 
   
 <div class="wrapper">
-    <div class="sidebar" data-color="danger" data-background-color="white" >
-        <app-sidebar></app-sidebar>
-       
-    </div>
-    <div class="main-panel">
-        <app-navbar></app-navbar>
-        <div class="main-content">
 
-           <div class="container-fluid" *ngIf="userRole=='ROLE_APPRENANT'">
-<<<<<<< Updated upstream
+  <div class="sidebar" data-color="danger" data-background-color="white">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="main-panel">
+    <app-navbar></app-navbar>
+    <div class="main-content">
+      <div class="container-fluid" *ngIf="userRole == 'ROLE_APPRENANT'">
+        <div class="row">
+            <div class="col-md-8">
+              <div class="card">
+                <div class="card-header card-header-danger">
+                  <h4 class="card-title">Support De Cours</h4>
 
-           </div>
-           <div class="container-fluid" *ngIf="userRole=='ROLE_FORMATEUR'">
-<div class="row">
-    <div class="col-md-8">
-    <div class="card">
-        <div class="card-header card-header-danger">
-            <h4 class="card-title">Support De Cours</h4>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-5">
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                   
+                  </div>
+                  <div class="row" *ngFor="let document of listeDocuments">
+                    <div>
+                      <div class="card-header">
+                        <h4 class="card-title">{{ document.name }}</h4>
+                      </div>
+                      <div>
+                        <a class="col-md-10" (click)="openPdf(document.id)">{{
+                          document.filename
+                        }}</a>
+                      
+                      </div>
+                    </div>
+                  </div>
+                </div>
+      </div>
+      </div>
+      </div>
+      </div>
+      <div class="container-fluid" *ngIf="userRole == 'ROLE_FORMATEUR'">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="card">
+              <div class="card-header card-header-danger">
+                <h4 class="card-title">Support De Cours</h4>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-5">
                     Ajouter Un Support de Cours
-                </div>
-                <div class="col-md-5">
-                
-                </div>
-                <div class="col-md-2">
-                    <button mat-icon-button (click)="addSupport()" >
-                        <mat-icon>add</mat-icon>
-                      </button>
+                  </div>
+                  <div class="col-md-5"></div>
+                  <div class="col-md-2">
+                    <button mat-icon-button (click)="addSupport()">
+                      <mat-icon>add</mat-icon>
+                    </button>
+                  </div>
                 </div>
 
-            </div>
             <div class="row" *ngFor="let document of listeDocuments">
 <div >
     <div class="card-header">
@@ -54,7 +77,7 @@
   
   
    
-=======
+
             <div class="row">
               <div class="col-md-8">
                 <div class="card">
@@ -178,7 +201,7 @@
       </div>
       
     
->>>>>>> Stashed changes
+
 
   </div>
 </div>
@@ -282,21 +305,16 @@
 
 
 
+
         </div>
-        
-
-            <app-footer></app-footer>
-
+      </div>
     </div>
 
+    <app-footer></app-footer>
+  </div>
 
-<<<<<<< Updated upstream
 
 </div>
 
 <app-chatbot></app-chatbot>
-=======
 
-<app-chatbot></app-chatbot>
-
->>>>>>> Stashed changes
