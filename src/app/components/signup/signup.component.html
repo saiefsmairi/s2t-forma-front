@@ -1,95 +1,107 @@
 <app-home-navbar></app-home-navbar>
 <app-chatbot></app-chatbot>
-<body>
-  
-  <div class="card">
-    <div class="card-body">
-<h1>Inscription</h1>
-<div *ngIf="type=='formateur'">
 
-    <form name="form" [formGroup]="form"  *ngIf="!isSuccessful"
+<div style="margin-top: 100px;">
+  <div class="tile" style="margin: 0 auto; max-width: 600px;">
+    <div class="tile-header" style="width:300px;margin: 0 auto">
+
+    </div>
+    
+    <div class="tile-body" *ngIf="type=='formateur'">
+      <form name="form" [formGroup]="form"  *ngIf="!isSuccessful"
     (ngSubmit)="onSubmit()"  
-     >
-    
-    
-      <div class="row form-group">
-        <mat-form-field appearance="outline" class="col-md-3">
-          <mat-label>CIN</mat-label>
-          <input matInput  formControlName="cin" required maxlength="8"  />
-          <mat-error *ngIf="f.cin.invalid">Veuillez Entrez un CIN valid (8 chiffres)</mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="col-md-4">
-          <mat-label>Nom</mat-label>
-          <input matInput  formControlName="nom" required/>
-          <mat-error *ngIf="f.nom.invalid">Votre Nom est obligatoire </mat-error>
-        </mat-form-field>
-    
-        <mat-form-field appearance="outline" class="col-md-4">
-          <mat-label>Prenom</mat-label>
-          <input matInput formControlName="prenom" required  />
-          <mat-error *ngIf="f.prenom.invalid">Votre Prénom est obligatoire </mat-error>
-        </mat-form-field>
-        
-        
+     >      
+      <div class="row">
+        <div class="col">
+          <mat-form-field>
+            <mat-label>CIN</mat-label>
+            <input matInput  formControlName="cin" required maxlength="8"  />
+            <mat-error *ngIf="f.cin.invalid">Veuillez Entrez un CIN valid (8 chiffres)</mat-error>
+          </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field >
+              <mat-label>Nom</mat-label>
+              <input matInput  formControlName="nom" required/>
+              <mat-error *ngIf="f.nom.invalid">Votre Nom est obligatoire </mat-error>
+            </mat-form-field>
+            </div>
       </div>
-       
-      <div class="row form-group">
-        <mat-form-field appearance="outline" class="col-md-4">
-          <mat-label>Email</mat-label>
-          <input matInput placeholder="exemple@example.com" formControlName="email" required />
-          <mat-error *ngIf="f.email.invalid">Veuillez Entrez une adresse mail valid </mat-error>
-        </mat-form-field>
-        
-        <mat-form-field appearance="outline" class="col-md-4">
+      <div class="row">
+        <div class="col">
+          <mat-form-field >
+            <mat-label>Prenom</mat-label>
+            <input matInput formControlName="prenom" required  />
+            <mat-error *ngIf="f.prenom.invalid">Votre Prénom est obligatoire </mat-error>
+          </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="exemple@example.com" formControlName="email" required />
+              <mat-error *ngIf="f.email.invalid">Veuillez Entrez une adresse mail valid </mat-error>
+            </mat-form-field>
+            </div>
+      </div>
+      <div class="row">
+        <div class="col">
+             
+        <mat-form-field>
           <mat-label>Mot de Passe</mat-label>
           <input matInput [type]="hide ? 'password' : 'text'"  formControlName="password">
           <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </mat-form-field>
-    
-        <mat-form-field appearance="outline" class="col-md-4">
+          </div>
+          <div class="col">
+           
+        <mat-form-field>
           <mat-label>Confirmation Mot de Passe</mat-label>
           <input matInput type="password" formControlName="confirmPass">
         </mat-form-field>
 
-
+            </div>
       </div>
-        
-    
-      
-        
-      <div class="row form-group">
+      <div class="row">
+        <div class="col">
+          <mat-form-field>
+            <mat-label>Date Naissance</mat-label>
+            <input matInput [matDatepicker]="picker" readonly formControlName="datenais" required />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          </div>
+          <div class="col">
+           
+            <mat-form-field>
+          
+              <mat-label>Num Tél</mat-label>
+              
+              <input matInput formControlName="tel" required type="tel" maxlength="8" minlength="8"  />
+              <mat-error *ngIf="f.tel.invalid">Le numéro de téléphone est obligatoire </mat-error>
+            </mat-form-field>
 
-        <mat-form-field appearance="outline" class="col-md-3">
-          <mat-label>Date Naissance</mat-label>
-          <input matInput [matDatepicker]="picker" readonly formControlName="datenais" required />
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-    
-        <mat-form-field appearance="outline" class="col-md-3">
-          
-          <mat-label>Num Tél</mat-label>
-          
-          <input matInput formControlName="tel" required type="tel" maxlength="8" minlength="8"  />
-          <mat-error *ngIf="f.tel.invalid">Le numéro de téléphone est obligatoire </mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="col-md-5">
-          <mat-label>Rib</mat-label>
-          <input matInput formControlName="rib" required  />
-          <mat-error *ngIf="f.rib.invalid">Le RIB est obligatoire </mat-error>
-        </mat-form-field>
+            </div>
       </div>
 
-<div class="row">
-  <img src="../../../assets/image/avatar.jpg"  #img  hidden>
-</div>
-
-      <div class="row form-group comp">
+      <div class="row">
+        
+          <div class="col">
+            <mat-form-field >
+              <mat-label>Rib</mat-label>
+              <input matInput formControlName="rib" required  />
+              <mat-error *ngIf="f.rib.invalid">Le RIB est obligatoire </mat-error>
+            </mat-form-field>
+          
+           
+         
+      </div>
+      <div class="col">
         <mat-label >Compétences </mat-label>
         <button mat-icon-button (click)="openDialog('add')" type="button"  ><mat-icon>add</mat-icon></button>
       </div>
-      <div class="row form-group">
-          <mat-selection-list formControlName="listCertif"  class="col" >
+      <div class="row">
+        <div class="col">
+        <mat-selection-list formControlName="listCertif"  class="col" >
           <mat-list-item *ngFor="let item of listCertif"    >
             <h3 matLine>{{item.name}}</h3>
             <h4 matLine>{{item.issue_date}}</h4>
@@ -101,151 +113,184 @@
            <mat-error *ngIf="listCertif.length==0">Veuillez Ajouter Au moins une certificat </mat-error>
            <mat-error *ngIf="listCertif.length==5">Vous Ajouter Au maximaum 5 certificats </mat-error>
           </mat-selection-list>
+        </div>
       </div>
+      </div>
+        <div class="submit-container clearfix" style="margin-top: 2rem;">   
+          <button mat-button type="submit"  class="col-md-2 submit"  class="btn btn-irenic float-right" tabindex="1" >Inscrivez Vous</button>
+            <button mat-button  (click)="reset(form)"  class="btn btn-irenic float-right" tabindex="0" >Reinitialiser</button>
+
+          </div>
+          <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+            Signup failed!<br />{{ errorMessage }}
+          </div>
        
-
-
-      
-    
-        
-    
-    
-
-    
-      
-    <div class="row">
-      <div class="col-md-6"></div>
-      <button mat-raised-button    class="col-md-2 submit" (click)="reset(form)" >Reinitialiser</button>
-      <div class="col-md-1">&nbsp;</div>
-      <button mat-raised-button type="submit"  class="col-md-2 submit" >Inscrivez Vous</button>
-
-  
+      </form>
     </div>
-      
-      <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
-        Signup failed!<br />{{ errorMessage }}
+
+    <div class="tile-body" *ngIf="type=='apprenant'">
+      <form name="form1" [formGroup]="form1"  *ngIf="!isSuccessful"
+      (ngSubmit)="onSubmit()"
+       >  
+      <div class="row">
+        <div class="col">
+          <mat-form-field>
+            <mat-label>CIN</mat-label>
+            <input matInput  formControlName="cin" required maxlength="8"  />
+            <mat-error *ngIf="f1.cin.invalid">Veuillez Entrez un CIN valid (8 chiffres)</mat-error>
+          </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field >
+              <mat-label>Nom</mat-label>
+              <input matInput  formControlName="nom" required/>
+              <mat-error *ngIf="f1.nom.invalid">Votre Nom est obligatoire </mat-error>
+            </mat-form-field>
+            </div>
       </div>
-    </form>
-    </div>
-    </div>
-  </div>
-    <!--Apprenant-->
-    <div *ngIf="type=='apprenant'">
-    <form name="form1" [formGroup]="form1"  *ngIf="!isSuccessful"
-    (ngSubmit)="onSubmit()"
-     >
-      <h1>S'inscrire</h1>
-      <fieldset>
-        <mat-form-field appearance="outline">
-          <mat-label>CIN</mat-label>
-          <input matInput  formControlName="cin" required maxlength="8"  />
-          <mat-error *ngIf="f1.cin.invalid">Veuillez Entrez un CIN valid (8 chiffres)</mat-error>
-        </mat-form-field>
-    
-        <mat-form-field appearance="outline">
-          <mat-label>Email</mat-label>
-          <input matInput placeholder="exemple@example.com" formControlName="email" required />
-          <mat-error *ngIf="f1.email.invalid">Veuillez Entrez une adresse mail valid </mat-error>
-        </mat-form-field>
-    
-    
-        <mat-form-field appearance="outline">
-          <mat-label>Nom</mat-label>
-          <input matInput  formControlName="nom" required/>
-          <mat-error *ngIf="f1.nom.invalid">Votre Nom est obligatoire </mat-error>
-        </mat-form-field>
-    
-        <mat-form-field appearance="outline">
-          <mat-label>Prenom</mat-label>
-          <input matInput formControlName="prenom" required  />
-          <mat-error *ngIf="f1.prenom.invalid">Votre Prénom est obligatoire </mat-error>
-        </mat-form-field>
-    
-        <mat-form-field appearance="outline">
+      <div class="row">
+        <div class="col">
+          <mat-form-field >
+            <mat-label>Prenom</mat-label>
+            <input matInput formControlName="prenom" required  />
+            <mat-error *ngIf="f1.prenom.invalid">Votre Prénom est obligatoire </mat-error>
+          </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="exemple@example.com" formControlName="email" required />
+              <mat-error *ngIf="f1.email.invalid">Veuillez Entrez une adresse mail valid </mat-error>
+            </mat-form-field>
+            </div>
+      </div>
+      <div class="row">
+        <div class="col">
+             
+        <mat-form-field>
           <mat-label>Mot de Passe</mat-label>
           <input matInput [type]="hide ? 'password' : 'text'"  formControlName="password">
           <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </mat-form-field>
-    
-        <mat-form-field appearance="outline">
+          </div>
+          <div class="col">
+           
+        <mat-form-field>
           <mat-label>Confirmation Mot de Passe</mat-label>
           <input matInput type="password" formControlName="confirmPass">
         </mat-form-field>
-    
-        <mat-form-field appearance="outline">
-          <mat-label>Date Naissance</mat-label>
-          <input matInput [matDatepicker]="picker" readonly formControlName="datenais" required />
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-    
-        <mat-form-field appearance="outline">
-          <mat-label>Num Tél</mat-label>
-          <input matInput formControlName="tel" required  />
-          <mat-error *ngIf="f1.tel.invalid">Le numéro de téléphone est obligatoire </mat-error>
-        </mat-form-field>
-    
-    
-    
-      </fieldset>
-      <button mat-button type="submit" id="submit" >Inscrivez Vous</button>
-      <div class="alert alert-warning" *ngIf="f1.submitted && isSignUpFailed">
-    
-        Signup failed!<br />{{ errorMessage }}
+
+            </div>
       </div>
-    </form>
+      <div class="row">
+        <div class="col">
+          <mat-form-field>
+            <mat-label>Date Naissance</mat-label>
+            <input matInput [matDatepicker]="picker" readonly formControlName="datenais" required />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          </div>
+          <div class="col">
+           
+            <mat-form-field>
+          
+              <mat-label>Num Tél</mat-label>
+              
+              <input matInput formControlName="tel" required type="tel" maxlength="8" minlength="8"  />
+              <mat-error *ngIf="f1.tel.invalid">Le numéro de téléphone est obligatoire </mat-error>
+            </mat-form-field>
+
+            </div>
+      </div>
+
+   
+        <div class="submit-container clearfix" style="margin-top: 2rem;">   
+          <button mat-button type="submit"  class="col-md-2 submit"  class="btn btn-irenic float-right" tabindex="1" >Inscrivez Vous</button>
+            <button mat-button  (click)="reset(form1)"  class="btn btn-irenic float-right" tabindex="0" >Reinitialiser</button>
+
+          </div>
+          <div class="alert alert-warning" *ngIf="f1.submitted && isSignUpFailed">
+            Signup failed!<br />{{ errorMessage }}
+          </div>
+       
+      </form>
     </div>
-    <div *ngIf="type=='societe'">
+
+    <div class="tile-body" *ngIf="type=='societe'">
       <form name="form2" [formGroup]="form2"  *ngIf="!isSuccessful"
       (ngSubmit)="onSubmit()"
        >
-        <h1>S'inscrire</h1>
-        <fieldset>
-          <mat-form-field appearance="outline">
+      <div class="row">
+        <div class="col">
+          <mat-form-field>
             <mat-label>CIN</mat-label>
             <input matInput  formControlName="cin" required maxlength="8"  />
             <mat-error *ngIf="f2.cin.invalid">Veuillez Entrez un CIN valide (8 chiffres)</mat-error>
           </mat-form-field>
-    
-          <mat-form-field appearance="outline">
-            <mat-label>Email</mat-label>
-            <input matInput placeholder="exemple@example.com" formControlName="email" required />
-            <mat-error *ngIf="f2.email.invalid">Veuillez Entrez une adresse mail valide </mat-error>
-          </mat-form-field>
-    
-    
-          <mat-form-field appearance="outline">
+          </div>
+          <div class="col">
+            <mat-form-field >
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="exemple@example.com" formControlName="email" required />
+              <mat-error *ngIf="f2.email.invalid">Veuillez Entrez une adresse mail valide </mat-error>
+            </mat-form-field>
+            </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field>
             <mat-label>Nom Societé</mat-label>
             <input matInput  formControlName="nom" required/>
             <mat-error *ngIf="f2.nom.invalid">Votre Nom est obligatoire </mat-error>
           </mat-form-field>
-          <mat-form-field appearance="outline">
+          </div>
+          
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field >
             <mat-label>Mot de Passe</mat-label>
             <input matInput [type]="hide ? 'password' : 'text'"  formControlName="password">
             <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </mat-form-field>
-    
-          <mat-form-field appearance="outline">
-            <mat-label>Confirmation Mot de Passe</mat-label>
-            <input matInput type="password" formControlName="confirmPass">
-          </mat-form-field>
-    
-          <mat-form-field appearance="outline">
-            <mat-label>Num Tél</mat-label>
-            <input matInput formControlName="tel" required  />
-            <mat-error *ngIf="f2.tel.invalid">Le numéro de téléphone est obligatoire </mat-error>
-          </mat-form-field>
-    
-        </fieldset>
-        <button mat-button type="submit" id="submit" >Inscrivez Vous</button>
-        <div class="alert alert-warning" *ngIf="f2.submitted && isSignUpFailed">
-          Signup failed!<br />{{ errorMessage }}
-        </div>
+          </div>
+          <div class="col">
+           
+       
+            <mat-form-field >
+              <mat-label>Confirmation Mot de Passe</mat-label>
+              <input matInput type="password" formControlName="confirmPass">
+            </mat-form-field>
+
+            </div>
+      </div>
+      <div class="row">
+        
+          <div class="col">
+            <mat-form-field>
+              <mat-label>Num Tél</mat-label>
+              <input matInput formControlName="tel" required  />
+              <mat-error *ngIf="f2.tel.invalid">Le numéro de téléphone est obligatoire </mat-error>
+            </mat-form-field>
+
+            </div>
+            <div class="col"></div>
+      </div>
+
+   
+        <div class="submit-container clearfix" style="margin-top: 2rem;">   
+          <button mat-button type="submit"  class="col-md-2 submit"  class="btn btn-irenic float-right" tabindex="1" >Inscrivez Vous</button>
+            <button mat-button  (click)="reset(form2)"  class="btn btn-irenic float-right" tabindex="0" >Reinitialiser</button>
+
+          </div>
+          <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+            Signup failed!<br />{{ errorMessage }}
+          </div>
+       
       </form>
-    
-    
     </div>
     <div class="alert alert-success" *ngIf="isSuccessful">
       Your registration is successful!
     </div>
-  </body>
+    

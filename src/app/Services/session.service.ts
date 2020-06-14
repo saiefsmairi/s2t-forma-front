@@ -3,6 +3,8 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 const SESSION_API = 'http://localhost:9080/api/sessions/';
+const REGISTRE_API = 'http://localhost:9080/api/registre/';
+
 const params = new HttpParams();
 
 let httpOptions = {
@@ -29,6 +31,17 @@ export class SessionService {
 
   }
 
+ FindAllSessionsWithoutwhere(): Observable<any> {
+    httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params
+    };
+    return this.http.get(SESSION_API + 'allSession/' , httpOptions);
+
+  }
+
+  
+ 
   getAllSessionsPerFormateur(id): Observable<any> {
     // tslint:disable-next-line: no-shadowed-variable
     const params = new HttpParams().set('id', id);
@@ -56,6 +69,17 @@ getSessionInfo(id, UserRole): Observable<any> {
 
 
 }
+
+getSessionByid(id): Observable<any> {
+  const params = new HttpParams().set('id', id);
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    params
+  };
+      return this.http.get(`${SESSION_API}get-session-ById/${id}`, httpOptions);
+}
+
 
 ajoutSupportCours(file): Observable<any> {
   // tslint:disable-next-line: no-shadowed-variable
@@ -108,7 +132,25 @@ EditSupportCours(file): Observable<any> {
  , httpOptions);
 }
 
+AllSessions(): Observable<any> {
+  // tslint:disable-next-line: no-shadowed-variable
 
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    params
+  };
+  return this.http.get(SESSION_API + 'sessions/' , httpOptions);
 
+}
 
+NbSessionParMonth(): Observable<any> {
+  // tslint:disable-next-line: no-shadowed-variable
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    params
+  };
+  return this.http.get(SESSION_API + 'NbSessionParMonth/' , httpOptions);
+
+}
 }

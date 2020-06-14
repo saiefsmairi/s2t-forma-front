@@ -79,10 +79,7 @@ this.etatfromregistre=data1[0].etat;
     let res = this.formateurService.getRegistrePerUserPerDate(this.id,formattedDate)
     res.subscribe(
       data1 => {
-          console.log(data1);
-          console.log(data1[0].registre_id);
-
-          this.formateurService.updatepresence(data1[0].registre_id, this.selected ).subscribe(
+                  this.formateurService.updatepresence(data1[0].registre_id, this.selected ).subscribe(
             data => {
               console.log(data);
               this._snackBar.open("etat de présence modifié avec succées","", {
@@ -104,6 +101,7 @@ this.etatfromregistre=data1[0].etat;
       }
     );
 
+    this.dialogRef.close();
 
   
   }
