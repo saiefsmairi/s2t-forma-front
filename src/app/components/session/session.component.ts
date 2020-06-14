@@ -9,6 +9,7 @@ import { FormateurService } from 'app/Services/formateur.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { ModifierPresenceParFormateurDialogComponent } from '../modifier-presence-par-formateur-dialog/modifier-presence-par-formateur-dialog.component';
 import { UserService } from 'app/Services/user.service';
+import { formatDate } from '@angular/common';
 
 
 @Component({
@@ -23,6 +24,11 @@ export class SessionComponent implements OnInit {
   userRole: any = JSON.parse(sessionStorage.getItem('auth-user')).roles[0];
   listeDocuments: any;
    date = new Date();
+theme;
+datedebut;
+datefin;
+nbMAxApp;
+status;
 
   constructor(private route: ActivatedRoute,
     private userService:UserService,
@@ -40,8 +46,29 @@ export class SessionComponent implements OnInit {
      }
 
   ngOnInit(): void {
-    console.log(this.userRole)
+    this.sessionService.getSessionByid(this.id).subscribe(data => {
+      console.log(data)
+this.theme=data.theme;
+this.datedebut=data.date_debut;
+this.nbMAxApp=data.nbApprenant;
+this.datefin=data.date_fin;
+
+var dateObj = new Date();
+const format = 'yyyy-MM-dd';
+const myDate = dateObj;
+const locale = 'en-US';
+const formattedDate = formatDate(myDate, format, locale);
+
+if(this.datedebut<=formattedDate){
+  this.status=true;
+}
+else this.status=false;
+
+    });
+
 this.loadData();
+
+
   }
 
 
@@ -55,7 +82,6 @@ this.loadData();
     });
 
   dialogRef.afterClosed().subscribe(result => {
- // tslint:disable-next-line: triple-equals
  if (result == 'ajouté') {
    this.notif.showNotification('top', 'right', 'success', 'Support de cours ajouté avec success')
 this.loadData();
@@ -72,9 +98,9 @@ this.loadData();
      this.date.setMinutes(this.date.getMinutes()-60);
     this.formateurService.ajoutRegistre(this.id,id,etat,this.date).subscribe(data=>{
       console.log('registre postedd');
-      this._snackBar.open("L'apprenant est Marqué "+etat,"", {
-        duration: 2000,
-      });
+      this.notif.showNotification('top', 'right', 'success', 'Apprenant Marqué '+etat+' avec success')
+
+   
       let res = this.formateurService.TauxAbsence(id,this.id)
       res.subscribe(
         data1 => {
@@ -94,9 +120,9 @@ this.loadData();
     },
           err => {
             console.log('breaks here on ajout registre');
-            this._snackBar.open("vous avez déja marquer la présence pour ce apprenant pour aujourd'hui","", {
-              duration: 4000,
-            });
+            this.notif.showNotification('top', 'right', 'danger', 'vous avez déja marquer la présence pour ce apprenant pour aujourdhui')
+
+         
           })
     
     ; 
@@ -171,6 +197,15 @@ public DeletePdf(id) {
 this.loadData();
 
   })
+}
+
+generateReport(){
+  this.formateurService.getRegistreReport('pdf', this.id).subscribe(data => {
+    
+
+  });
+  this.notif.showNotification('top', 'right', 'success', 'Fiche de présence génerer dans E')
+
 }
 
 }

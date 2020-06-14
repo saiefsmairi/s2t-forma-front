@@ -1,3 +1,5 @@
+
+  
 <div class="wrapper">
     <div class="sidebar" data-color="danger" data-background-color="white" >
         <app-sidebar></app-sidebar>
@@ -8,6 +10,7 @@
         <div class="main-content">
 
            <div class="container-fluid" *ngIf="userRole=='ROLE_APPRENANT'">
+<<<<<<< Updated upstream
 
            </div>
            <div class="container-fluid" *ngIf="userRole=='ROLE_FORMATEUR'">
@@ -51,48 +54,227 @@
   
   
    
-
-            </div>
+=======
+            <div class="row">
+              <div class="col-md-8">
+                <div class="card">
+                  <div class="card-header card-header-danger">
+                    <h4 class="card-title">Support De Cours</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+                     
+                    </div>
+                    <div class="row" *ngFor="let document of listeDocuments">
+                      <div>
+                        <div class="card-header">
+                          <h4 class="card-title">{{ document.name }}</h4>
+                        </div>
+                        <div>
+                          <a class="col-md-10" (click)="openPdf(document.id)">{{
+                            document.filename
+                          }}</a>
+                        
+                        </div>
+                      </div>
+                    </div>
+                  </div>
         </div>
-    </div>
+        </div>
+        </div>
+        </div>
+
+
+           <div class="container-fluid" *ngIf="userRole=='ROLE_FORMATEUR'">
+
+<mat-tab-group >
+
+  <mat-tab label="Programme de La Session" > 
+    
+  
+<div class="row">
+  <div class="col-md-8" >
+  <div class="card">
+      <div class="card-header card-header-danger">
+          <h4 class="card-title">Support De Cours</h4>
+      </div>
+      <div class="card-body">
+          <div class="row">
+              <div class="col-md-5">
+                  Ajouter Un Support de Cours
+              </div>
+              <div class="col-md-5">
+              
+              </div>
+              <div class="col-md-2">
+                  <button mat-icon-button (click)="addSupport()" >
+                      <mat-icon>add</mat-icon>
+                    </button>
+              </div>
+
+          </div>
+          <div class="row" *ngFor="let document of listeDocuments">
+<div >
+  <div class="card-header">
+      <h4 class="card-title">{{document.name}}</h4>
+     
+  </div>
+  <div >
+      <a  class="col-md-10" (click)="openPdf(document.id)" >{{document.filename}}</a>
+      <button mat-icon-button (click)="EditSupport(document)">
+          <mat-icon>create</mat-icon>
+        </button>
+        <button mat-icon-button (click)="DeletePdf(document.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+  </div>
+</div>
+
+
+ 
+
+          </div>
+      </div>
+  </div>
 </div>
 <div class="col-md-4">
-    <div class="card">
-        <div class="card-header card-header-danger">
-            <h4 class="card-title">Apprenants Inscrits</h4>
-        </div>
-        <div class="card-body">
-            <mat-list *ngFor="let apprenant of  listeApprenantsInscrits">
-                <mat-list-item>{{apprenant.nom}} {{apprenant.prenom}}</mat-list-item>
+  <div class="card">
+      <div class="card-header card-header-danger">
+          <h4 class="card-title">Apprenants Inscrits</h4>
+      </div>
+      <div class="card-body">
+          <mat-list *ngFor="let apprenant of  listeApprenantsInscrits">
+              <mat-list-item>{{apprenant.nom}} {{apprenant.prenom}}</mat-list-item>
 
-                <div class="container">
-                    <div class="row">
-                      <div class="col-sm">
-                       <button mat-raised-button color="primary" type="submit" (click)='OnPresenceButtonClick(apprenant.user_id,"Present")'>Present</button>
-                      </div>
-                      <div class="col-sm">
-                        <button mat-raised-button color="primary" type="submit" (click)='OnPresenceButtonClick(apprenant.user_id,"Absent")'>Absent</button>
+              <div class="container">
+                  <div class="row">
+                    <div class="col-sm">
+                     <button class="btn btn-outline-success  btn-sm m-0  waves-effect" type="submit" (click)='OnPresenceButtonClick(apprenant.user_id,"Present")'>Present</button>
                     </div>
-                    <div class=".col-	">
-                    <button mat-icon-button (click)="EditPresence(apprenant.user_id,apprenant.nom,apprenant.prenom)">
-                        <mat-icon>create</mat-icon>
-                      </button>
-                    </div>
-                    </div>
-                 
+                    <div class="col-sm">
+                      <button class="btn btn-outline-danger btn-sm m-0  waves-effect" type="submit" (click)='OnPresenceButtonClick(apprenant.user_id,"Absent")'>Absent</button>
+
                   </div>
+                  
+                  <div class=".col-	">
+                  <button mat-icon-button  (click)="EditPresence(apprenant.user_id,apprenant.nom,apprenant.prenom)">
+                      <mat-icon>create</mat-icon>
+                    </button>
+                  </div>
+                  </div>
+               
+                </div>
 
 
-                </mat-list>
-                
+              </mat-list>
+              <div class="row">
+                <div class="col">
+                  <button type="button" class="btn btn-danger" type="submit" (click)='generateReport()'>Télecharger la fiche de présence</button>
 
-        </div>
-        
+                </div>
+              </div>
+
+
+      </div>
       
+    
+>>>>>>> Stashed changes
 
+  </div>
+</div>
+</div>
+  </mat-tab>
+  <mat-tab label=" Informations sur La session" >
+
+    <div class="col-md-8">
+      <div class="card">
+          <div class="card-header card-header-danger">
+              <h4 class="card-title">Détails de La session</h4>
+          </div>
+          <div class="card-body" >
+              <div class="row" style="margin-bottom: 30px;" >
+                  <div class="col">
+                  <div class="row ">
+                    <h4 class="card-title">Numéro</h4>
+
+                  </div>
+                  <div class="row">
+                   {{id}}
+                  </div>
+                  </div>
+                  <div class="col">
+                    <div class="row">
+                      <h4 class="card-title">Théme</h4>
+
+                    </div>
+                    <div class="row">
+                     {{theme}}
+                    </div>
+                    </div>
+              </div>
+              <div class="row"  style="margin-bottom: 30px;">
+                <div class="col">
+                <div class="row">
+                   <h4 class="card-title">Status</h4>
+
+                </div>
+                <div class="row" >
+                  <div *ngIf="status==true;else notStarted" style="color: green;font-weight: bold;">
+                   En cours
+                  </div>
+                 
+                  <ng-template #notStarted>
+                    <div  style="color: red;font-weight: bold;">
+                    Pas Commencé
+                  </div>
+                  </ng-template>
+                </div>
+                </div>
+                <div class="col">
+                  <div class="row">
+                    <h4 class="card-title">                
+                          Nombre d'apprenant Max
+                    </h4>
+
+                  </div>
+                  <div class="row">
+                   {{nbMAxApp}}
+                  </div>
+                  </div>
+            </div>
+
+            <div class="row"  style="margin-bottom: 30px;">
+              <div class="col">
+              <div class="row">
+                <h4 class="card-title">                
+                  Date Début
+
+            </h4>
+              </div>
+              <div class="row">
+               {{datedebut}}
+              </div>
+              </div>
+              <div class="col">
+                <div class="row">
+                  <h4 class="card-title">                
+                    Date Fin  
+              </h4>
+                </div>
+                <div class="row">
+                 {{datefin}}
+                </div>
+                </div>
+          </div>
+          </div>
+      </div>
     </div>
-</div>
-</div>
+
+  </mat-tab>
+</mat-tab-group>
+
+
+
         </div>
 
            
@@ -108,7 +290,13 @@
     </div>
 
 
+<<<<<<< Updated upstream
 
 </div>
 
 <app-chatbot></app-chatbot>
+=======
+
+<app-chatbot></app-chatbot>
+
+>>>>>>> Stashed changes

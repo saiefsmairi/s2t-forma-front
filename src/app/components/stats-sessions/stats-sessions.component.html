@@ -1,0 +1,81 @@
+
+  
+<div class="wrapper">
+    <div class="sidebar" data-color="danger" data-background-color="white" >
+        <app-sidebar></app-sidebar>
+       
+    </div>
+    <div class="main-panel">
+        <app-navbar></app-navbar>
+        <div class="main-content">
+
+           <div class="container-fluid">
+            <div class="row">
+              <div class="col-md">
+                <div class="card">
+                  <div class="card-header card-header-danger">
+                    <h4 class="card-title">Sessions Stats </h4>
+                  </div>
+                  <div class="card-body">
+                   
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="card float">
+                        <div class="card-header card-chart ">
+                          <mat-form-field >
+                            <mat-label>Selectionner une Session </mat-label>
+                            <mat-select [(value)]="sessionSelected" (selectionChange)="tauxAbsencePourUneSession()" >
+                              <mat-option>None</mat-option>
+                              <mat-option value="{{item.session_id}}"  *ngFor="let item of tabSession">{{item.theme}}</mat-option>
+                           
+                            </mat-select>
+                          </mat-form-field>
+                            <canvas   id="canvas" ></canvas>
+                        </div>
+                    
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="card float">
+                        <div class="card-header card-chart ">
+                          
+                            <canvas   id="canvas2" ></canvas>
+                        </div>
+                     
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="card float">
+                        <div class="card-header card-chart ">
+                          
+                            <canvas   id="canvas3" ></canvas>
+                        </div>
+                     
+                      </div>
+                    </div>
+                  </div>
+                
+        </div>
+        </div>
+        </div>
+        </div>
+       
+        
+
+           
+
+
+
+
+        </div>
+        
+
+            <app-footer></app-footer>
+
+    </div>
+
+
+
+<app-chatbot></app-chatbot>
+

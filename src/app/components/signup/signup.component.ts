@@ -24,7 +24,7 @@ import { MustMatch } from '../../Helpers/must-match';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css'],
+  styleUrls: ['./signup.component.scss'],
   providers: [
     {
       provide: DateAdapter,
@@ -125,6 +125,8 @@ export class SignupComponent implements OnInit {
         },
           { validator: MustMatch('password', 'confirmPass') });
       }
+
+
 
   onSubmit() {
     console.log(this.type);
@@ -258,6 +260,23 @@ export class SignupComponent implements OnInit {
     });
 
   }
+
+<<<<<<< Updated upstream
+
+=======
+  public removeValidators(form: FormGroup) {
+    for (const key in form.controls) {
+      this.form.get(key).clearValidators();
+      this.form.get(key).updateValueAndValidity();
+    }
+  }
+reset(form:FormGroup ){
+form.reset();
+this.removeValidators(form);
+
+
+}
+>>>>>>> Stashed changes
 
 
 

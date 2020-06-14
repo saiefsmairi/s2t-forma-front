@@ -77,6 +77,9 @@ import { RepondreReclamationGestDialogComponent } from './components/repondre-re
 import { ModifierUserByGestionnaireComponent } from './components/modifier-user-by-gestionnaire/modifier-user-by-gestionnaire.component';
 import { ModifierPresenceParFormateurDialogComponent } from './components/modifier-presence-par-formateur-dialog/modifier-presence-par-formateur-dialog.component';
 import { ListeAllUsersAdminComponent } from './components/liste-all-users-admin/liste-all-users-admin.component';
+import { StatsAdminComponent } from './components/stats-admin/stats-admin.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { StatsSessionsComponent } from './components/stats-sessions/stats-sessions.component';
 
 
 
@@ -84,6 +87,7 @@ import { ListeAllUsersAdminComponent } from './components/liste-all-users-admin/
   imports: [
     BrowserAnimationsModule,
     FormsModule,
+    MatTabsModule,
     ReactiveFormsModule,
     HttpModule,
     MatButtonModule,
@@ -159,6 +163,8 @@ import { ListeAllUsersAdminComponent } from './components/liste-all-users-admin/
     ModifierUserByGestionnaireComponent,
     ModifierPresenceParFormateurDialogComponent,
     ListeAllUsersAdminComponent,
+    StatsAdminComponent,
+    StatsSessionsComponent,
 
 
 

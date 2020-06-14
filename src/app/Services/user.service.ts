@@ -32,6 +32,17 @@ export class UserService {
 
   }
 
+  Allusers(): Observable<any> {
+    
+
+    httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params
+    };
+    return this.http.get(USERS_API + 'AllUsers/', httpOptions);
+
+  }
+
   update(user, id): Observable<any> {
     const params = new HttpParams().set('id', id);
 

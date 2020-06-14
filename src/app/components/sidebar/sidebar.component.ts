@@ -16,6 +16,7 @@ const ADMINROUTES: RouteInfo[] = [
   { path: '/dashboard', title: 'Tableau De Bord',  icon: 'dashboard', class: '' },
   { path: '/ajout-gestionnaire', title: 'Ajout Gestionnaire',  icon: 'add', class: '' },
   { path: '/liste-All-Users', title: 'Liste des utilisateurs',  icon: 'list_alt', class: '' },
+  { path: '/statistique-platforme' , title: 'Statistique de la platforme',  icon: 'bar_chart', class: '' },
 
 ];
 const APPRENANTROUTES: RouteInfo[] = [
@@ -49,10 +50,20 @@ const SOCIETEROUTES: RouteInfo[] = [
 
 const GESTROUTES: RouteInfo[] = [
   { path: '/dashboard', title: 'Tableau de Bord',  icon: 'dashboard', class: '' },
+<<<<<<< Updated upstream
   { path: '/gestion-utilisateurs', title: 'Gestion Utilisateurs',  icon: 'persons', class: '' },
   { path: '/gestion-sessions', title: 'Gestion Sessions',  icon: 'dashboard', class: '' },
   { path: '/liste-reclamations', title: 'Liste Réclamations',  icon: 'list_alt', class: '' },
   { path: '/gestion-recu', title: 'Gestion Recu',  icon: 'view_list', class: '' },
+=======
+  { path: '/gestion-utilisateurs', title: 'Gestion Utilisateurs',  icon: 'persons', class: ''},
+  { path: '/ajout-session', title: 'Ajout Session',  icon: 'add', class: ''  },
+  { path: '/gestion-sessions', title: 'Gestion Sessions',  icon: 'settings', class: ''  },
+  { path: '/liste-reclamations', title: 'Liste Réclamations',  icon: 'list_alt', class: ''},
+  { path: '/gestion-recu', title: 'Gestion Recu',  icon: 'view_list', class: ''},
+  { path: '/statistique-sessions', title: 'Statistique sur les sessions',  icon: 'bar_chart', class: ''},
+
+>>>>>>> Stashed changes
 
 ];
 

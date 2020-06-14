@@ -21,6 +21,8 @@ import { ListeReclamationComponent } from './components/liste-reclamation/liste-
 import { GestionRecuComponent } from './components/gestion-recu/gestion-recu.component';
 import { SessionComponent } from './components/session/session.component';
 import { ListeAllUsersAdminComponent } from './components/liste-all-users-admin/liste-all-users-admin.component';
+import { StatsAdminComponent } from './components/stats-admin/stats-admin.component';
+import { StatsSessionsComponent } from './components/stats-sessions/stats-sessions.component';
 
 const routes: Routes = [
   {
@@ -90,9 +92,18 @@ const routes: Routes = [
     path:'liste-All-Users',
     component:ListeAllUsersAdminComponent
    }
+   ,
+   {
+    path:'statistique-platforme',
+    component:StatsAdminComponent
+   },
+   {
+    path:'statistique-sessions',
+    component:StatsSessionsComponent
+   }
    
-
-
+   
+   
    
 ];
 
