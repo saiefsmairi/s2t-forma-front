@@ -262,9 +262,7 @@ export class SignupComponent implements OnInit {
 
   }
 
-<<<<<<< Updated upstream
 
-=======
   public removeValidators(form: FormGroup) {
     for (const key in form.controls) {
       this.form.get(key).clearValidators();
@@ -277,12 +275,8 @@ this.removeValidators(form);
 
 
 }
->>>>>>> Stashed changes
 
 
-reset(form:FormGroup ){
-form.reset();
-}
 
 
 }
