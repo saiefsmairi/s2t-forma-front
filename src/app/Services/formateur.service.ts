@@ -85,5 +85,24 @@ TauxAbsence(user_id,session_id): Observable<any> {
 
 }
 
+tauxAbsencePourStats(session_id: any): Observable<any> {
+  // tslint:disable-next-line: no-shadowed-variable
+  const params = new HttpParams().set('session_id', session_id);
 
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    params
+  };
+  return this.http.get(REGISTRE_API + 'tauxAbsencePourStats/' , httpOptions);
+
+}
+getRegistreReport(format,session_id): Observable<any> {
+  const params = new HttpParams().set('format', format).set('session_id',session_id);
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    params
+  };
+  return this.http.get(REGISTRE_API  + 'registreReport/', httpOptions);
+
+}
 }

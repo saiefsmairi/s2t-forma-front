@@ -25,6 +25,8 @@ import { AjoutSessionComponent } from './components/ajout-session/ajout-session.
 import { GestionSessionsComponent } from './components/gestion-sessions/gestion-sessions.component';
 
 import { ListeAllUsersAdminComponent } from './components/liste-all-users-admin/liste-all-users-admin.component';
+import { StatsAdminComponent } from './components/stats-admin/stats-admin.component';
+import { StatsSessionsComponent } from './components/stats-sessions/stats-sessions.component';
 
 
 const routes: Routes = [
@@ -102,9 +104,18 @@ const routes: Routes = [
     path:'liste-All-Users',
     component:ListeAllUsersAdminComponent
    }
+   ,
+   {
+    path:'statistique-platforme',
+    component:StatsAdminComponent
+   },
+   {
+    path:'statistique-sessions',
+    component:StatsSessionsComponent
+   }
    
-
-
+   
+   
    
 ];
 
