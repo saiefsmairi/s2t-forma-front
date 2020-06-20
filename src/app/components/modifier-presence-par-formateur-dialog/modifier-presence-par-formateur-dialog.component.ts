@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormateurService } from 'app/Services/formateur.service';
 import { HttpClient } from '@angular/common/http';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { formatDate } from '@angular/common';
+import { formatDate ,registerLocaleData, DatePipe } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
@@ -24,6 +24,7 @@ form: FormGroup;
 
   constructor(private formateurService:FormateurService,
     private httpClient: HttpClient,
+    private datePipe: DatePipe,
     private _snackBar: MatSnackBar,
     private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<ModifierPresenceParFormateurDialogComponent>,
@@ -47,13 +48,16 @@ form: FormGroup;
     const format = 'yyyy-dd-MM';
 
     const locale = 'en-US';
+    
     let newDate = new Date(this.date);
     newDate.setMinutes(newDate.getMinutes()-60);
-    
-    const formattedDate = formatDate(newDate.toLocaleDateString(), format, locale);
-    let res = this.formateurService.getRegistrePerUserPerDate(this.id,formattedDate)
+   
+    console.log(this.datePipe.transform(newDate,"yyyy-dd-MM"));
+
+    let res = this.formateurService.getRegistrePerUserPerDate(this.id,this.datePipe.transform(newDate,"yyyy-MM-dd").toString())
     res.subscribe(
       data1 => {
+        console.log(data1)
 this.etatfromregistre=data1[0].etat;
           console.log(data1);
         
@@ -75,8 +79,7 @@ this.etatfromregistre=data1[0].etat;
     let newDate = new Date(this.date);
     newDate.setMinutes(newDate.getMinutes()-60);
     
-    const formattedDate = formatDate(newDate.toLocaleDateString(), format, locale);
-    let res = this.formateurService.getRegistrePerUserPerDate(this.id,formattedDate)
+    let res = this.formateurService.getRegistrePerUserPerDate(this.id,this.datePipe.transform(newDate,"yyyy-MM-dd").toString())
     res.subscribe(
       data1 => {
                   this.formateurService.updatepresence(data1[0].registre_id, this.selected ).subscribe(

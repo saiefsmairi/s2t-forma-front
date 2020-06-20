@@ -10,6 +10,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import { ModifierPresenceParFormateurDialogComponent } from '../modifier-presence-par-formateur-dialog/modifier-presence-par-formateur-dialog.component';
 import { UserService } from 'app/Services/user.service';
 import { formatDate } from '@angular/common';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
 
 @Component({
@@ -29,6 +30,26 @@ datedebut;
 datefin;
 nbMAxApp;
 status;
+nomFormateur;
+prenomFormateur;
+userData;
+quest1="La formation que vous venez de suivre a-t-elle respecté le programme annoncé et atteint les objectifs";
+quest2="Pensez-vous que les connaissances que vous avez acquises pourront etre mises en oeuvre dans votre travail ?";
+quest3="Le niveau de compétences techniques de l'animateur vous a paru";
+quest4="Les supports pédagogiques utilisés par l'animateur sont-ils satisfaisantes? (qualité, contenu...)";
+quest5="Les conditions du déroulement de la formation (accueil, local, restauration, rythme, hébergement, durée) vous ont_ils paru ?";
+quest6="Souhaiteriez-vous une suite à cette formation ?";
+
+quest1Forma="Commentez le niveau taux participation des stagiaires l'ambiance de votre session rapidité d'exécution des travaux individuels et de groupe participation de quelques stagiaires seulement vivacité participative questions pertinentes"
+quest2Forma="Avez-vous pu dérouler tout le contenu pédagogique dans le temps imparti ?";
+quest3Forma="après évaluation rapide de votre session quels sont vos conclusions";
+quest4Forma="éventuels problèmes rencontrés";
+quest5Forma="Vos propositions d'amélioration";
+tabQuest:any;
+form:FormGroup;
+form1:FormGroup;
+formattedDate;
+tabQuestForma ;
 
   constructor(private route: ActivatedRoute,
     private userService:UserService,
@@ -36,33 +57,54 @@ status;
     public formateurService:FormateurService,
     public sessionService: SessionService,
     public dialog: MatDialog,
+    private fb: FormBuilder,
     public notif: NotificationsComponent) {
       this.sub = this.route.params.subscribe(params => {
         this.id = +params['id'];
 
 
      });
+     this.form=fb.group({
+      typecheck1:new FormControl('',[Validators.required]),
+      typecheck2:new FormControl('',[Validators.required]),
+      typecheck3:new FormControl('',[Validators.required]),
+      typecheck4:new FormControl('',[Validators.required]),
+      typecheck5:new FormControl('',[Validators.required]),
+      typecheck6:new FormControl('',[Validators.required])
+          });
 
+          this.form1=fb.group({
+            reponse1:new FormControl('',[Validators.required]),
+            reponse2:new FormControl('',[Validators.required]),
+            reponse3:new FormControl('',[Validators.required]),
+            reponse4:new FormControl('',[Validators.required]),
+            reponse5:new FormControl('',[Validators.required]),
+                });
      }
 
   ngOnInit(): void {
+    this.userData = JSON.parse(sessionStorage.getItem('auth-user'));
+    
+
     this.sessionService.getSessionByid(this.id).subscribe(data => {
-      console.log(data)
 this.theme=data.theme;
 this.datedebut=data.date_debut;
 this.nbMAxApp=data.nbApprenant;
 this.datefin=data.date_fin;
-
+this.nomFormateur=data.formateur.nom;
+this.prenomFormateur=data.formateur.prenom;
 var dateObj = new Date();
 const format = 'yyyy-MM-dd';
 const myDate = dateObj;
 const locale = 'en-US';
-const formattedDate = formatDate(myDate, format, locale);
+this.formattedDate = formatDate(myDate, format, locale);
 
-if(this.datedebut<=formattedDate){
+console.log(this.formattedDate+""+this.datefin)
+
+if(this.formattedDate>=this.datedebut&&this.formattedDate<=this.datefin){
   this.status=true;
 }
-else this.status=false;
+else { this.status=false;}
 
     });
 
@@ -70,9 +112,113 @@ this.loadData();
 
 
   }
+  public removeValidators(form: FormGroup) {
+    for (const key in form.controls) {
+      this.form.get(key).clearValidators();
+      this.form.get(key).updateValueAndValidity();
+    }
+  }
+  get f(){return this.form.controls}
+  
+
+  onFeedbackFormSubmit(){
+    this.tabQuest = [
+      {
+          question: this.quest1,
+          check:  this.f.typecheck1.value,
+      },
+      {
+        question: this.quest2,
+        check:  this.f.typecheck2.value,
+    },
+    {
+      question: this.quest3,
+      check:  this.f.typecheck3.value,
+  },
+  {
+    question: this.quest4,
+    check:  this.f.typecheck4.value,
+},
+{
+  question: this.quest5,
+  check:  this.f.typecheck5.value,
+},
+{
+  question: this.quest6,
+  check:  this.f.typecheck6.value,
+}
+  ];
 
 
+  if(!this.form.invalid){
+    this.tabQuest.forEach(element => {
+      console.log(element.check);
+      this.userService.SendFeedback(element.question,element.check,'Apprenant',this.userData.id,this.id).subscribe(data=>{
+      
+        
+      });
+   
+    });
+    this.notif.showNotification('top', 'right', 'success', 'Votre Avis sur Cette session à été envoyé avec succées')
+  this.form.reset();
+    this.removeValidators(this.form);
 
+
+    }
+    else    this.notif.showNotification('top', 'right', 'danger', 'Veuillez Répondre sur toutes les questions')
+
+    
+   
+  
+    
+
+  }
+  get f1(){return this.form1.controls}
+ 
+  onFeedbackFormateurFormSubmit(){
+    this.tabQuestForma = [
+      {
+          question: this.quest1Forma,
+          check:  this.f1.reponse1.value,
+      },
+      {
+        question: this.quest2Forma,
+        check:  this.f1.reponse2.value,
+    },
+    {
+      question: this.quest3Forma,
+      check:  this.f1.reponse3.value,
+  },
+  {
+    question: this.quest4Forma,
+    check:  this.f1.reponse4.value,
+},
+{
+  question: this.quest5Forma,
+  check:  this.f1.reponse5.value,
+}
+  ];
+
+  if(!this.form1.invalid){
+    this.tabQuestForma.forEach(element => {
+      this.userService.SendFeedback(element.question,element.check,'Formateur',this.userData.id,this.id).subscribe(data=>{
+      
+        
+      });
+   
+    });
+    this.notif.showNotification('top', 'right', 'success', 'Votre Avis sur Cette session à été envoyé avec succées')
+    this.form1.reset();
+    for (const key in this.form1.controls) {
+      this.form1.get(key).clearValidators();
+      this.form1.get(key).updateValueAndValidity();
+    }
+  }
+   
+  else    this.notif.showNotification('top', 'right', 'danger', 'Veuillez Répondre sur toutes les questions')
+
+
+  }
   addSupport() {
     const dialogRef = this.dialog.open(AjoutSupportCoursDialogComponent, {
       width: '700px',

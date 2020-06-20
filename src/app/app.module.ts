@@ -88,6 +88,7 @@ import { ModifSessionDialogComponent } from './components/modif-session-dialog/m
 import { StatsAdminComponent } from './components/stats-admin/stats-admin.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { StatsSessionsComponent } from './components/stats-sessions/stats-sessions.component';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -198,7 +199,7 @@ import { StatsSessionsComponent } from './components/stats-sessions/stats-sessio
     ConfirmDialogComponent,
     PhotoProfileDialogComponent
   ],
-  providers: [NotificationsComponent],
+  providers: [NotificationsComponent,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
