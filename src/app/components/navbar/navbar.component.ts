@@ -28,7 +28,10 @@ export class NavbarComponent implements OnInit {
       this.location = location;
           this.sidebarVisible = false;
     }
-
+    removeNbnotif(){
+    
+    this.lengthtab="";
+}
     ngOnInit(){
 
         if(JSON.parse(sessionStorage.getItem('auth-user')).roles=='ROLE_FORMATEUR'||
@@ -44,6 +47,21 @@ export class NavbarComponent implements OnInit {
               console.log("breaks here get notif by user");
             }
           );
+}
+
+else if(JSON.parse(sessionStorage.getItem('auth-user')).roles=='ROLE_GESTIONNAIRE') {
+    let res = this.userService.getlisteNotifForGest();
+    res.subscribe(
+      data1 => {
+        this.tab = data1;
+        this.lengthtab=this.tab.length;
+         
+      },
+      err => {
+        console.log("breaks here get notif by user");
+      }
+    );
+
 }
 
       this.listTitles = ROUTES.filter(listTitle => listTitle);

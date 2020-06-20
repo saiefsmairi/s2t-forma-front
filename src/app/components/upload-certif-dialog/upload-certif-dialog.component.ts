@@ -2,6 +2,7 @@ import { UserService } from 'app/Services/user.service';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
+import { GestionnaireService } from 'app/Services/gestionnaire.service';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class UploadCertifDialogComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<UploadCertifDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     public userService:UserService,
-    private httpClient: HttpClient,
+    private httpClient: HttpClient,private gestionnaireService:GestionnaireService
     ) { }
 
   ngOnInit(): void {
@@ -63,7 +64,24 @@ export class UploadCertifDialogComponent implements OnInit {
           }
         );
       });
-
+      let res3 = this.gestionnaireService.getAllGestionnaire()
+      res3.subscribe(
+        data => {
+        console.log(data);
+          data.forEach(element => {
+               this.userService.sendnotif(element.user_id,5).subscribe(data=>{
+        console.log('gest notified');
+      
+      });
+          });
+    
+        },
+        err => {
+    
+          console.log("breaks here getalformateurs");
+          // this.errorMessage = err.error.message;
+        }
+      );
 
   }
 

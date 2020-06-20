@@ -8,36 +8,284 @@
   <div class="main-panel">
     <app-navbar></app-navbar>
     <div class="main-content">
-      <div class="container-fluid" *ngIf="userRole == 'ROLE_APPRENANT'">
-        <div class="row">
-            <div class="col-md-8">
-              <div class="card">
-                <div class="card-header card-header-danger">
-                  <h4 class="card-title">Support De Cours</h4>
+  
 
-                </div>
-                <div class="card-body">
-                  <div class="row">
-                   
+      <div class="container-fluid" *ngIf="userRole == 'ROLE_APPRENANT'">
+
+        <mat-tab-group >
+        
+          <mat-tab label="Programme de La Session" > 
+            <div class="row">
+              <div class="col-md-8">
+                <div class="card">
+                  <div class="card-header card-header-danger">
+                    <h4 class="card-title">Support De Cours</h4>
+  
                   </div>
-                  <div class="row" *ngFor="let document of listeDocuments">
-                    <div>
-                      <div class="card-header">
-                        <h4 class="card-title">{{ document.name }}</h4>
-                      </div>
+                  <div class="card-body">
+                    <div class="row">
+                     
+                    </div>
+                    <div class="row" *ngFor="let document of listeDocuments">
                       <div>
-                        <a class="col-md-10" (click)="openPdf(document.id)">{{
-                          document.filename
-                        }}</a>
-                      
+                        <div class="card-header">
+                          <h4 class="card-title">{{ document.name }}</h4>
+                        </div>
+                        <div>
+                          <a class="col-md-10" (click)="openPdf(document.id)">{{
+                            document.filename
+                          }}</a>
+                        
+                        </div>
                       </div>
                     </div>
                   </div>
+        </div>
+        </div>
+        </div>
+          </mat-tab>
+          <mat-tab label=" Informations sur La session" >
+        
+            <div class="col-md-8">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title">Détails de La session</h4>
+                  </div>
+                  <div class="card-body" >
+                      <div class="row" style="margin-bottom: 30px;" >
+                        <div class="col">
+                          <div class="row">
+                             <h4 class="card-title">Status</h4>
+          
+                          </div>
+                          <div class="row" >
+                            <div *ngIf="status==true;else notStarted" style="color: green;font-weight: bold;">
+                             En cours
+                            </div>
+                           
+                            <ng-template #notStarted>
+                              <div  style="color: red;font-weight: bold;">
+                                Terminé
+                                                          </div>
+                            </ng-template>
+                          </div>
+                          </div>
+                          <div class="col">
+                            <div class="row">
+                              <h4 class="card-title">Théme</h4>
+        
+                            </div>
+                            <div class="row">
+                             {{theme}}
+                            </div>
+                            </div>
+                      </div>
+                   
+        
+                    <div class="row"  style="margin-bottom: 30px;">
+                      <div class="col">
+                      <div class="row">
+                        <h4 class="card-title">                
+                          Date Début
+        
+                    </h4>
+                      </div>
+                      <div class="row">
+                       {{datedebut}}
+                      </div>
+                      </div>
+                      <div class="col">
+                        <div class="row">
+                          <h4 class="card-title">                
+                            Date Fin  
+                      </h4>
+                        </div>
+                        <div class="row">
+                         {{datefin}}
+                        </div>
+                        </div>
+                  </div>
+                  </div>
+              </div>
+            </div>
+        
+          </mat-tab>
+
+          <mat-tab label=" Evaluation de La session">
+            <div class="main-content">
+              <div class="container1">
+       
+                <form  name="form"  [formGroup]="form" (ngSubmit)="onFeedbackFormSubmit()"   >
+                  <h1>Evaluation de La session</h1>
+                  <table border="1" width="550px" style="margin: 0 auto;margin-top: -20px;" >
+                    <thead>
+                      <tr>
+                        <th colspan="3">Théme de la formation : {{theme}}</th>
+                      </tr>
+                    </thead>
+                    <tbody >
+                      <tr>
+                        <td>Formateur : {{nomFormateur}} {{prenomFormateur}}</td>
+                        <td>Date : {{datefin}}</td>
+                        <td>Lieu : S2T</td>
+                      </tr>
+                      <tr>
+                        <td colspan="3">Nom et prénom du participant : {{userData.nom}} {{userData.prenom}}</td>
+                      </tr>
+                    </tbody>
+                    </table>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-9">
+                        <p>N1 : {{quest1}}
+                        </p>
+                      </div>
+                      <div class="col-1">
+                      <mat-radio-group class="example-radio-group"   required formControlName="typecheck1" >
+                        <mat-radio-button value="trés bien" >trés bien</mat-radio-button>
+                        <mat-radio-button value="bien" >bien</mat-radio-button>
+                        <mat-radio-button value="passable"  >passable</mat-radio-button>
+                        <mat-radio-button value="insuffisant"  >insuffisant</mat-radio-button>
+                
+
+                    </mat-radio-group>
+
+                  </div>
+
+                    </div>
+                    <mat-error *ngIf="f.typecheck1.touched&&f.typecheck1.invalid">Veuillez choisir une option</mat-error>
+ 
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-9">
+                      <p >N2 : {{quest2}}
+                      </p>
+                      </div>
+                      <div class="col-1">
+                      <mat-radio-group class="example-radio-group"   required formControlName="typecheck2">
+                        <mat-radio-button value="trés bien" >trés bien</mat-radio-button>
+                        <mat-radio-button value="bien" >bien</mat-radio-button>
+                        <mat-radio-button value="passable"  >passable</mat-radio-button>
+                        <mat-radio-button value="insuffisant"  >insuffisant</mat-radio-button>
+
+
+                    </mat-radio-group>
+                  </div>
+
+                    </div>
+                    <mat-error *ngIf="f.typecheck2.touched&&f.typecheck2.invalid">Veuillez choisir une option</mat-error>
+
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-9">
+                     <p >
+                      N3 : {{quest3}}
+                    </p> 
+                      </div>
+                      <div class="col-1">
+                      <mat-radio-group class="example-radio-group"   required formControlName="typecheck3">
+                        <mat-radio-button value="trés bien" >trés bien</mat-radio-button>
+                        <mat-radio-button value="bien" >bien</mat-radio-button>
+                        <mat-radio-button value="passable"  >passable</mat-radio-button>
+                        <mat-radio-button value="insuffisant"  >insuffisant</mat-radio-button>
+
+                
+                    </mat-radio-group>
+                  </div>
+
+                    </div>
+                    <mat-error *ngIf="f.typecheck3.touched&&f.typecheck3.invalid">Veuillez choisir une option</mat-error>
+
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-9">
+                        <p >
+                          N4 : {{quest4}}
+                      </p>
+                      </div>
+                      <div class="col-1">
+                      <mat-radio-group class="example-radio-group"   required formControlName="typecheck4">
+                        <mat-radio-button value="trés bien" >trés bien</mat-radio-button>
+                        <mat-radio-button value="bien" >bien</mat-radio-button>
+                        <mat-radio-button value="passable"  >passable</mat-radio-button>
+                        <mat-radio-button value="insuffisant"  >insuffisant</mat-radio-button>
+
+                    </mat-radio-group>
+                  </div>
+
+                    </div>
+                    <mat-error *ngIf="f.typecheck4.touched&&f.typecheck4.invalid">Veuillez choisir une option</mat-error>
+
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-9">
+                        <p >
+                          N5 : {{quest5}}
+                      </p>
+                      </div>
+                      <div class="col-1">
+                      <mat-radio-group class="example-radio-group"   required formControlName="typecheck5">
+                        <mat-radio-button value="trés bien" >trés bien</mat-radio-button>
+                        <mat-radio-button value="bien" >bien</mat-radio-button>
+                        <mat-radio-button value="passable"  >passable</mat-radio-button>
+                        <mat-radio-button value="insuffisant"  >insuffisant</mat-radio-button>
+
+                    </mat-radio-group>
+                  </div>
+
+                    </div>
+                    <mat-error *ngIf="f.typecheck5.touched&&f.typecheck5.invalid">Veuillez choisir une option</mat-error>
+
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-9">
+                        <p >
+                          N6 : {{quest6}}
+                       
+                      </p>
+                      </div>
+                      <div class="col-1">
+                      <mat-radio-group class="example-radio-group"   required formControlName="typecheck6">
+                        <mat-radio-button value="oui" >oui</mat-radio-button>
+                        <mat-radio-button value="non" >non</mat-radio-button>
+
+                
+                
+                    </mat-radio-group>
+                  </div>
+
+                    </div>
+                    <mat-error *ngIf="f.typecheck6.touched&&f.typecheck6.invalid">Veuillez choisir une option</mat-error>
+
+                  </div>
+               
+             
+                    <div class="button-container">
+                      <button type="submit" class="button"  value="Submit" ><span>Submit</span></button>
+
+                    </div>
+               
+                </form>
+               
+              </div>
+            </div>
+            
+          </mat-tab>
+
+        </mat-tab-group>
+        
+        
+        
                 </div>
-      </div>
-      </div>
-      </div>
-      </div>
+        
+                   
+        
+
      
            <div class="container-fluid" *ngIf="userRole=='ROLE_FORMATEUR'">
 
@@ -179,7 +427,7 @@
                  
                   <ng-template #notStarted>
                     <div  style="color: red;font-weight: bold;">
-                    Pas Commencé
+                    Terminé
                   </div>
                   </ng-template>
                 </div>
@@ -224,6 +472,139 @@
       </div>
     </div>
 
+  </mat-tab>
+
+  <mat-tab label=" Evaluation de La session" >
+    <div class="main-content">
+      <div class="container1">
+
+        <form  name="form"  [formGroup]="form1" (ngSubmit)="onFeedbackFormateurFormSubmit()"   >
+          <h1>Evaluation de La session</h1>
+          <table border="1" width="550px" style="margin: 0 auto;margin-top: -20px;" >
+            <thead>
+              <tr>
+                <th colspan="3">Théme de la formation : {{theme}}</th>
+              </tr>
+            </thead>
+            <tbody >
+              <tr>
+                <td>Nom et prénom  : {{nomFormateur}} {{prenomFormateur}}</td>
+                
+                <td>Lieu : S2T</td>
+              </tr>
+              <tr>
+                <td colspan="3">Date : {{datedebut}} au {{datefin}} </td>
+              </tr>
+            </tbody>
+            </table>
+          <div class="form-group">
+            <div class="row">
+              <div class="row">
+                <p>N1 : {{quest1Forma}}
+                </p>
+              </div>
+           
+            </div>
+
+          
+          
+        
+            <mat-form-field class="example-full-width">
+              <mat-label>Décrire avec plus détails</mat-label>
+              <textarea matInput formControlName="reponse1"></textarea>
+
+              <mat-error *ngIf="f1.reponse1.invalid">Veuillez répondre à cette question </mat-error>
+
+            </mat-form-field>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="row">
+                  <p>N2 : {{quest2Forma}}
+                  </p>
+                </div>
+             
+              </div>
+  
+            
+            
+          
+              <mat-form-field class="example-full-width">
+                <mat-label>Décrire avec plus détails</mat-label>
+                <textarea matInput formControlName="reponse2" ></textarea>
+                <mat-error *ngIf="f1.reponse2.invalid">Veuillez répondre à cette question </mat-error>
+
+              </mat-form-field>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="row">
+                    <p>N3 : {{quest3Forma}}
+                    </p>
+                  </div>
+               
+                </div>
+    
+              
+              
+            
+                <mat-form-field class="example-full-width">
+                  <mat-label>Décrire avec plus détails</mat-label>
+                  <textarea matInput formControlName="reponse3" ></textarea>
+                  <mat-error *ngIf="f1.reponse3.invalid">Veuillez répondre à cette question </mat-error>
+                  
+                </mat-form-field>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="row">
+                      <p>N4 : {{quest4Forma}}
+                      </p>
+                    </div>
+                 
+                  </div>
+      
+                
+                
+              
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Décrire avec plus détails</mat-label>
+                    <textarea matInput formControlName="reponse4" ></textarea>
+                    <mat-error *ngIf="f1.reponse4.invalid">Veuillez répondre à cette question </mat-error>
+
+                  </mat-form-field>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="row">
+                        <p>N5 : {{quest5Forma}}
+                        </p>
+                      </div>
+                   
+                    </div>  
+                  
+                  
+                
+                    <mat-form-field class="example-full-width">
+                      <mat-label>Décrire avec plus détails</mat-label>
+                      <textarea matInput formControlName="reponse5" ></textarea>
+                      <mat-error *ngIf="f1.reponse5.invalid">Veuillez répondre à cette question </mat-error>
+
+                    </mat-form-field>
+                    </div>
+         
+       
+     
+            <div class="button-container">
+              <button type="submit" class="button"  value="Submit" ><span>Submit</span></button>
+
+            </div>
+       
+        </form>
+       
+      </div>
+    </div>
+    
   </mat-tab>
 </mat-tab-group>
 

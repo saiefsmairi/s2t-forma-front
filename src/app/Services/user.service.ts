@@ -109,6 +109,16 @@ export class UserService {
     return this.http.get(NOTIF_API + 'liste_notif/'+id, httpOptions);
 
   }
+
+  getlisteNotifForGest(): Observable<any> {
+
+    httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params
+    };
+    return this.http.get(NOTIF_API + 'liste_notifGest', httpOptions);
+
+  }
   
   passwordChange(user, id): Observable<any> {
     console.log('passchange');
@@ -186,6 +196,28 @@ public getUserSessions(id): Observable<any>{
       params
     };
     return this.http.get(USERS_API + 'dashboard-apprenant/'+id, httpOptions);
+}
+
+
+SendFeedback(quest:any,check:any,type:any,user_id :any,session_id :any): Observable<any> {
+  console.log(type);
+  const params = new HttpParams();
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    params
+  };
+
+  return this.http.post(USERS_API + 'ajout-feedback', {
+
+    question:quest,
+    etat: check,
+    //comment:email,
+    type: type,
+    user_id:user_id,
+    session_id:session_id
+
+
+  }, httpOptions);
 }
 
 }

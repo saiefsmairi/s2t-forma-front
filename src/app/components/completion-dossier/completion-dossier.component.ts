@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UploadCertifDialogComponent } from '../upload-certif-dialog/upload-certif-dialog.component';
 import { UserInfoDialogComponent } from '../user-info-dialog/user-info-dialog.component';
+import { UserService } from 'app/Services/user.service';
+import { GestionnaireService } from 'app/Services/gestionnaire.service';
 
 @Component({
   selector: 'app-completion-dossier',
@@ -15,7 +17,9 @@ export class CompletionDossierComponent implements OnInit {
   userId:any;
   
  
-  constructor(  public dialog: MatDialog) { }
+  constructor(  public dialog: MatDialog,private userService
+:UserService,private gestionnaireService:GestionnaireService
+) { }
 
   ngOnInit(): void {
   
@@ -35,6 +39,9 @@ openDialog(id){
   dialogRef.afterClosed().subscribe(res=>{
     this.loadCertif();
   })
+
+ 
+
 }
 
 loadCertif(){
